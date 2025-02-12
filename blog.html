@@ -2,28 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Veloxineology</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="blog-list">
-        <h1>Blog Posts</h1>
-        <div id="posts"></div>
-    </section>
-
-    <script src="assets/js/blog.js"></script>
+    <div class="container">
+        <h1>📝 My Blog</h1>
+        <input type="text" id="search" placeholder="🔍 Search blogs...">
+        <div id="blog-list"></div>
+        <a href="index.html">⬅️ Back to Home</a>
+    </div>
 </body>
 </html>
