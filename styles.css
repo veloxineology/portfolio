@@ -1,20 +1,22 @@
-/* ---- GLOBAL STYLES ---- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Playfair+Display:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Fira Mono', monospace;
     scroll-behavior: smooth;
 }
 
+/* ==== BODY & BACKGROUND ==== */
 body {
     background-color: #121212;
     color: #f8f8f8;
     text-align: center;
-    padding-top: 80px; /* Prevent content from hiding behind the navbar */
+    padding-top: 80px;
 }
 
-/* ---- NAVIGATION BAR ---- */
+/* ==== NAVIGATION BAR ==== */
 nav {
     background-color: rgba(30, 30, 30, 0.95);
     padding: 15px 0;
@@ -46,7 +48,7 @@ nav a:hover {
     color: #121212;
 }
 
-/* ---- WELCOME TEXT ---- */
+/* ==== HEADINGS ==== */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
@@ -68,7 +70,7 @@ h1::after {
     transform: translateX(-50%);
 }
 
-/* ---- PROFILE SECTION ---- */
+/* ==== PROFILE SECTION ==== */
 .profile-section {
     display: flex;
     flex-direction: column;
@@ -92,14 +94,7 @@ h1::after {
     box-shadow: 0px 0px 20px rgba(77, 168, 218, 0.8);
 }
 
-/* PROFILE TEXT */
-.profile-text {
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 15px;
-}
-
-/* ---- SECTION HEADINGS ---- */
+/* ==== SECTION HEADINGS ==== */
 .section-heading {
     font-size: 36px;
     font-weight: bold;
@@ -108,7 +103,7 @@ h1::after {
     text-align: center;
 }
 
-/* HORIZONTAL LINE */
+/* ==== HORIZONTAL LINE ==== */
 hr {
     border: none;
     height: 3px;
@@ -117,7 +112,25 @@ hr {
     width: 80%;
 }
 
-/* ---- BLOG SECTION ---- */
+/* ==== PROJECT & BLOG CARDS ==== */
+.card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-left: 5px solid #4da8da;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(77, 168, 218, 0.3);
+}
+
+/* ==== BLOG LIST ==== */
 .blog-container {
     display: flex;
     flex-direction: column;
@@ -152,7 +165,7 @@ hr {
     text-decoration: underline;
 }
 
-/* ---- CONTACT SECTION ---- */
+/* ==== CONTACT LINKS ==== */
 .contact-container {
     margin-top: 60px;
 }
@@ -175,7 +188,7 @@ hr {
     color: #f8f8f8;
 }
 
-/* ---- FOOTER ---- */
+/* ==== FOOTER ==== */
 footer {
     margin-top: 80px;
     padding: 20px;
@@ -183,7 +196,25 @@ footer {
     color: #888;
 }
 
-/* ---- RESPONSIVE DESIGN ---- */
+/* ==== FADE-IN ANIMATION ==== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
