@@ -15,37 +15,21 @@ h1 {
     font-size: 48px;
     color: #f8f8f8;
     margin-bottom: 15px;
+    position: relative;
 }
 
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    color: #e0e0e0;
-    margin-top: 50px;
-    text-align: center;
+/* Fix for broken underline */
+h1::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #4da8da, transparent);
+    position: absolute;
+    bottom: -10px;
+    left: 0;
 }
 
-/* Paragraphs */
-p {
-    font-size: 22px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-/* Links */
-a {
-    color: #4da8da;
-    text-decoration: none;
-    font-size: 20px;
-    transition: 0.3s;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: #73d2de;
-}
-
-/* Navigation Bar */
+/* Navigation Bar Fix */
 nav {
     background-color: rgba(30, 30, 30, 0.9);
     padding: 15px 0;
@@ -61,10 +45,13 @@ nav {
     z-index: 1000;
 }
 
+/* Ensuring nav extends full width */
 nav a {
+    display: inline-block;
     padding: 12px 15px;
     border-radius: 5px;
     font-weight: bold;
+    color: #4da8da;
 }
 
 nav a:hover {
@@ -81,24 +68,7 @@ nav a:hover {
     text-align: center;
 }
 
-/* Horizontal Line Segments */
-hr {
-    border: none;
-    height: 3px;
-    background: linear-gradient(to right, transparent, #4da8da, transparent);
-    margin: 50px 0;
-    opacity: 0.8;
-}
-
-/* Sections */
-.section {
-    margin: 60px 0;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-
-/* Profile Image */
+/* Profile Image Fix */
 .profile-pic {
     width: 190px;
     height: 190px;
@@ -107,35 +77,26 @@ hr {
     border: 5px solid #4da8da;
     box-shadow: 0px 0px 15px rgba(77, 168, 218, 0.5);
     transition: 0.3s ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.profile-pic:hover {
-    transform: scale(1.05);
+/* Ensuring profile picture and text are aligned */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Project & Blog Cards */
-.card {
-    background: #1e1e1e;
-    padding: 25px;
-    border-radius: 12px;
-    margin: 20px 0;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border-left: 5px solid #4da8da;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 15px rgba(77, 168, 218, 0.3);
-}
-
-/* Footer */
-footer {
-    margin-top: 50px;
-    padding: 20px;
-    background: #1e1e1e;
-    border-top: 3px solid #4da8da;
-    font-size: 20px;
+/* Horizontal Line Fix */
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #4da8da, transparent);
+    margin: 50px auto;
+    width: 80%;
 }
 
 /* Fade-in Animation */
@@ -156,7 +117,7 @@ footer {
     }
 }
 
-/* Responsive */
+/* Responsive Fix */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -170,10 +131,6 @@ footer {
 
     h2 {
         font-size: 28px;
-    }
-
-    p {
-        font-size: 18px;
     }
 
     .profile-pic {
