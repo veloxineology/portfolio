@@ -4,57 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Veloxineology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- ====== NAVIGATION BAR ====== -->
-    <nav class="tabs">
-        <a href="index.html">🏠 Overview</a>
-        <a href="projects.html" class="active">💡 Repositories</a>
-        <a href="blog.html">📝 Blog</a>
-        <a href="books.html">📚 Books</a>
-        <a href="contact.html">📞 Contact</a>
-    </nav>
-
-    <!-- ====== PROJECTS CONTENT ====== -->
-    <main class="content">
-        <h1>💡 My Projects</h1>
-        <p>Here are some of my featured repositories:</p>
-
-        <div id="repo-list">
-            <!-- GitHub Repositories will be loaded here dynamically -->
+    
+    <!-- ====== GITHUB-LIKE SIDEBAR ====== -->
+    <aside class="sidebar">
+        <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
+        <h2>@veloxineology</h2>
+        <p class="tagline">🚀 Tech Enthusiast | Automation | Innovation</p>
+        <div class="social-links">
+            <a href="https://github.com/yourgithub" target="_blank" class="social-link">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://instagram.com/kaushikieee" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://snapchat.com/add/veloxine.rr" target="_blank" class="social-link">
+                <i class="fab fa-snapchat"></i> Snapchat
+            </a>
+            <a href="mailto:veloxineology@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i> Email
+            </a>
         </div>
+    </aside>
+
+    <!-- ====== MAIN CONTENT AREA ====== -->
+    <main class="content">
+        <!-- ====== NAVIGATION TABS ====== -->
+        <nav class="tabs">
+            <a href="index.html"><i class="fas fa-home"></i> Overview</a>
+            <a href="projects.html" class="active"><i class="fas fa-code"></i> Repositories</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="books.html"><i class="fas fa-book"></i> Books</a>
+            <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+        </nav>
+
+        <!-- ====== PROJECTS CONTENT ====== -->
+        <section class="projects-container">
+            <header class="projects-header">
+                <h1 class="gradient-text"><i class="fas fa-code-branch"></i> My Code Repositories</h1>
+                <div class="search-filter">
+                    <input type="text" id="repo-search" placeholder="🔍 Search repositories...">
+                    <select id="filter-language">
+                        <option value="">All Languages</option>
+                    </select>
+                </div>
+            </header>
+
+            <div id="repo-list" class="repo-grid">
+                <!-- Loading Skeleton -->
+                <div class="repo-skeleton">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line medium"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+
+            <div id="error-message" class="error-container" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Failed to load repositories. Please try again later.</p>
+            </div>
+        </section>
+
+        <!-- ====== FOOTER ====== -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>© 2025 Veloxineology | Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#status">Status</a>
+                </div>
+            </div>
+        </footer>
     </main>
+
+    <!-- ====== MOBILE MENU BUTTON ====== -->
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", async function () {
-        const username = "veloxineology"; // Your GitHub username
+    document.addEventListener("DOMContentLoaded", async () => {
+        const username = "veloxineology";
         const apiUrl = `https://api.github.com/users/${username}/repos`;
+        const repoList = document.getElementById("repo-list");
+        const errorContainer = document.getElementById("error-message");
+        const languageFilter = document.getElementById("filter-language");
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
 
         async function fetchRepositories() {
             try {
                 const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('API Error');
                 const repos = await response.json();
-                const repoList = document.getElementById("repo-list");
-
-                repoList.innerHTML = ""; // Clear previous entries
-
+                
+                // Clear skeleton loader
+                repoList.innerHTML = "";
+                
+                // Process repositories
+                const languages = new Set();
                 repos.forEach(repo => {
-                    const repoCard = document.createElement("div");
-                    repoCard.classList.add("repo-card");
-                    repoCard.innerHTML = `
-                        <h2>${repo.name}</h2>
-                        <p>${repo.description || "No description available."}</p>
-                        <a href="${repo.html_url}" target="_blank">🔗 View on GitHub</a>
-                    `;
-                    repoList.appendChild(repoCard);
+                    if (repo.language) languages.add(repo.language);
+                    createRepoCard(repo);
                 });
+
+                // Populate language filter
+                languages.forEach(lang => {
+                    languageFilter.innerHTML += `<option value="${lang}">${lang}</option>`;
+                });
+
             } catch (error) {
-                console.error("Error fetching repositories:", error);
+                repoList.style.display = "none";
+                errorContainer.style.display = "flex";
+                console.error("Error:", error);
             }
         }
+
+        function createRepoCard(repo) {
+            const card = document.createElement("article");
+            card.className = "repo-card";
+            card.innerHTML = `
+                <div class="repo-header">
+                    <i class="fas fa-book"></i>
+                    <h2>${repo.name}</h2>
+                    <span class="repo-star">
+                        <i class="fas fa-star"></i> ${repo.stargazers_count}
+                    </span>
+                </div>
+                <p class="repo-description">${repo.description || "No description available."}</p>
+                <div class="repo-footer">
+                    ${repo.language ? `<span class="repo-language">${repo.language}</span>` : ''}
+                    <div class="repo-actions">
+                        ${repo.homepage ? `<a href="${repo.homepage}" class="demo-btn" target="_blank">View Demo</a>` : ''}
+                        <a href="${repo.html_url}" class="github-btn" target="_blank">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            `;
+            repoList.appendChild(card);
+        }
+
+        // Search functionality
+        document.getElementById("repo-search").addEventListener("input", (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll(".repo-card").forEach(card => {
+                const title = card.querySelector("h2").textContent.toLowerCase();
+                card.style.display = title.includes(searchTerm) ? "block" : "none";
+            });
+        });
+
+        // Language filter
+        languageFilter.addEventListener("change", () => {
+            const selectedLang = languageFilter.value;
+            document.querySelectorAll(".repo-card").forEach(card => {
+                const lang = card.querySelector(".repo-language")?.textContent;
+                card.style.display = (!selectedLang || lang === selectedLang) ? "block" : "none";
+            });
+        });
 
         fetchRepositories();
     });
