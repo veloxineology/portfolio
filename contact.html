@@ -4,31 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Veloxineology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- ====== NAVIGATION BAR ====== -->
-    <nav class="tabs">
-        <a href="index.html">🏠 Overview</a>
-        <a href="projects.html">💡 Repositories</a>
-        <a href="blog.html">📝 Blog</a>
-        <a href="books.html">📚 Books</a>
-        <a href="contact.html" class="active">📞 Contact</a>
-    </nav>
-
-    <!-- ====== CONTACT CONTENT ====== -->
-    <main class="content">
-        <h1>📞 Contact Me</h1>
-        <p>Want to connect? Feel free to reach out! 🚀</p>
-
-        <div class="contact-links">
-            <a href="https://github.com/veloxineology" target="_blank">🐙 GitHub</a>
-            <a href="https://instagram.com/kaushikieee" target="_blank">📸 Instagram</a>
-            <a href="https://snapchat.com/add/veloxine.rr" target="_blank">👻 Snapchat</a>
-            <a href="mailto:veloxineology@gmail.com">📧 Email</a>
+    
+    <!-- ====== SIDEBAR ====== -->
+    <aside class="sidebar">
+        <img src="assets/profile.jpg" alt="Veloxineology Profile Picture" class="profile-pic">
+        <h2>@veloxineology</h2>
+        <p class="tagline">🚀 Tech Enthusiast | Automation | Innovation</p>
+        <div class="social-links">
+            <a href="https://github.com/yourgithub" target="_blank" class="social-link">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://instagram.com/kaushikieee" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://snapchat.com/add/veloxine.rr" target="_blank" class="social-link">
+                <i class="fab fa-snapchat"></i> Snapchat
+            </a>
+            <a href="mailto:veloxineology@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i> Email
+            </a>
         </div>
+    </aside>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="content">
+        <!-- ====== NAVIGATION TABS ====== -->
+        <nav class="tabs">
+            <a href="index.html"><i class="fas fa-home"></i> Overview</a>
+            <a href="projects.html"><i class="fas fa-code"></i> Repositories</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="books.html"><i class="fas fa-book-open"></i> Books</a>
+            <a href="contact.html" class="active"><i class="fas fa-phone"></i> Contact</a>
+        </nav>
+
+        <!-- ====== CONTACT SECTION ====== -->
+        <section class="contact-container fade-in">
+            <header class="contact-header">
+                <h1 class="gradient-text"><i class="fas fa-comment-dots"></i> Let's Connect</h1>
+                <p class="subtitle">Have a question or want to collaborate? Reach out through any channel below</p>
+            </header>
+
+            <div class="contact-grid">
+                <!-- Contact Cards -->
+                <article class="contact-card">
+                    <div class="contact-icon github">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Check my repositories and contributions</p>
+                    <a href="https://github.com/veloxineology" target="_blank" class="contact-link">
+                        Visit Profile <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </article>
+
+                <article class="contact-card">
+                    <div class="contact-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>For direct inquiries and partnerships</p>
+                    <a href="mailto:veloxineology@gmail.com" class="contact-link">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </a>
+                </article>
+
+                <article class="contact-card">
+                    <div class="contact-icon social">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>Social Media</h3>
+                    <p>Connect via Instagram or Snapchat</p>
+                    <div class="social-buttons">
+                        <a href="https://instagram.com/kaushikieee" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://snapchat.com/add/veloxine.rr" target="_blank" class="social-btn snapchat">
+                            <i class="fab fa-snapchat"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ====== FOOTER ====== -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>© 2025 Veloxineology | Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#status">Status</a>
+                </div>
+            </div>
+        </footer>
     </main>
+
+    <!-- ====== MOBILE MENU BUTTON ====== -->
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </body>
 </html>
