@@ -3,26 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Veloxineology</title>
+    <title>About | Veloxineology</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>👤 About Me</h1>
-        <p>Hey there! I'm Kaushik, a tech enthusiast who loves automation & innovation. ✨</p>
-        
-        <h2>📱 My Devices</h2>
-        <div class="device">
-            <img src="assets/nothing-phone.jpg" alt="Nothing Phone 2">
-            <p><strong>📌 Nothing Phone 2</strong><br>⚙️ Kernel: XYZ | ROM: ABC | Storage: 128GB</p>
-        </div>
-        
-        <div class="device">
-            <img src="assets/macbook-air.jpg" alt="MacBook Air M1">
-            <p><strong>💻 MacBook Air M1</strong><br>⚙️ macOS: Sonoma | RAM: 8GB | Storage: 256GB</p>
+
+    <!-- ====== NAVIGATION BAR ====== -->
+    <nav class="tabs">
+        <a href="index.html">🏠 Overview</a>
+        <a href="projects.html">💡 Repositories</a>
+        <a href="blog.html">📝 Blog</a>
+        <a href="books.html">📚 Books</a>
+        <a href="contact.html">📞 Contact</a>
+    </nav>
+
+    <!-- ====== ABOUT CONTENT ====== -->
+    <main class="content">
+        <h1>👨‍💻 About Me</h1>
+        <div class="profile-section">
+            <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
+            <p>🚀 Tech Enthusiast | Automation | Innovation</p>
         </div>
 
-        <a href="index.html">⬅️ Back to Home</a>
-    </div>
+        <hr>
+
+        <!-- TECH INTERESTS -->
+        <section class="interests">
+            <h2>⚡ Tech Interests</h2>
+            <p>🔹 Automation & Smart Systems</p>
+            <p>🔹 System Optimization & Custom ROMs</p>
+            <p>🔹 Repurposing Old Devices for New Use Cases</p>
+            <p>🔹 Web Development & GitHub Automation</p>
+        </section>
+
+        <hr>
+
+        <!-- DEVICE SHOWCASE -->
+        <section class="devices">
+            <h2>📱 My Devices</h2>
+
+            <div class="device">
+                <img src="assets/nothing-phone.jpg" alt="Nothing Phone 2">
+                <p><strong>⚙️ Nothing Phone 2</strong><br>Kernel: XYZ | ROM: ABC | Storage: 128GB</p>
+            </div>
+
+            <div class="device">
+                <img src="assets/macbook.jpg" alt="MacBook Air M1">
+                <p><strong>💻 MacBook Air M1</strong><br>macOS: Sonoma | RAM: 8GB | Storage: 256GB</p>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>
