@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veloxineology | GitHub-Style Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -11,42 +12,116 @@
     
     <!-- ====== GITHUB-LIKE SIDEBAR ====== -->
     <aside class="sidebar">
-        <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="assets/profile.jpg" alt="Veloxineology Profile Picture" class="profile-pic">
         <h2>@veloxineology</h2>
-        <p>🚀 Tech Enthusiast | Automation | Innovation</p>
+        <p class="tagline">🚀 Tech Enthusiast | Automation | Innovation</p>
         <div class="social-links">
-            <a href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
-            <a href="https://instagram.com/kaushikieee" target="_blank">📸 Instagram</a>
-            <a href="https://snapchat.com/add/veloxine.rr" target="_blank">👻 Snapchat</a>
-            <a href="mailto:veloxineology@gmail.com">📧 Email</a>
+            <a href="https://github.com/yourgithub" target="_blank" class="social-link">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://instagram.com/kaushikieee" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://snapchat.com/add/veloxine.rr" target="_blank" class="social-link">
+                <i class="fab fa-snapchat"></i> Snapchat
+            </a>
+            <a href="mailto:veloxineology@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i> Email
+            </a>
         </div>
     </aside>
 
     <!-- ====== MAIN CONTENT AREA ====== -->
     <main class="content">
-        <!-- ====== GITHUB-LIKE NAVIGATION TABS ====== -->
+        <!-- ====== NAVIGATION TABS ====== -->
         <nav class="tabs">
-            <a href="index.html" class="active">🏠 Overview</a>
-            <a href="projects.html">💡 Repositories</a>
-            <a href="blog.html">📝 Blog</a>
-            <a href="books.html">📚 Books</a>
-            <a href="contact.html">📞 Contact</a>
+            <a href="index.html" class="active"><i class="fas fa-home"></i> Overview</a>
+            <a href="projects.html"><i class="fas fa-code"></i> Repositories</a>
+            <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            <a href="books.html"><i class="fas fa-book"></i> Books</a>
+            <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
         </nav>
 
-        <!-- ====== BLOG PREVIEW ====== -->
-        <section class="blog-preview fade-in">
-            <h2>📝 Latest Blog Posts</h2>
-            <input type="text" id="search" placeholder="🔍 Search blogs...">
-            <div id="blog-list"></div>
+        <!-- ====== HERO SECTION ====== -->
+        <section class="hero fade-in">
+            <h1 class="gradient-text">👋 Welcome to My Digital Hub!</h1>
+            <p class="subtitle">Exploring the intersection of technology and creativity through innovation</p>
         </section>
 
-        <hr>
+        <!-- ====== FEATURED PROJECTS ====== -->
+        <section class="featured-projects">
+            <h2><i class="fas fa-star"></i> Featured Projects</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>HomeLifeSync</h3>
+                    <p>Smart automation & safety ecosystem for elderly care</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AI</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Everything Begins Here</h3>
+                    <p>A literary journey through modern technology's impact</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Writing</span>
+                        <span class="tech-tag">Research</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ====== BLOG PREVIEW ====== -->
+        <section class="blog-preview">
+            <div class="blog-header">
+                <h2><i class="fas fa-pencil-alt"></i> Latest Writings</h2>
+                <button class="view-all">View All →</button>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="search" placeholder="🔍 Search articles...">
+            </div>
+
+            <div class="blog-grid" id="blog-list">
+                <article class="blog-post">
+                    <h3>Building This Portfolio: A Tech Stack Deep Dive</h3>
+                    <p class="post-meta">February 13, 2025 • 8 min read</p>
+                    <p class="post-excerpt">Discover the modern web technologies powering this interactive GitHub-style portfolio...</p>
+                </article>
+
+                <article class="blog-post">
+                    <h3>Automating Daily Life with Python Scripts</h3>
+                    <p class="post-meta">January 29, 2025 • 6 min read</p>
+                    <p class="post-excerpt">Practical automation solutions for productivity enthusiasts...</p>
+                </article>
+            </div>
+        </section>
 
         <!-- ====== FOOTER ====== -->
-        <footer>
-            <p>© 2025 Veloxineology | All Rights Reserved.</p>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>© 2025 Veloxineology | Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#status">Status</a>
+                </div>
+            </div>
         </footer>
     </main>
+
+    <!-- ====== MOBILE MENU BUTTON ====== -->
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </body>
 </html>
