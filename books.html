@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veloxineology | GitHub-Style Portfolio</title>
+    <title>Literary Works | Veloxineology</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     
-    <!-- ====== GITHUB-LIKE SIDEBAR ====== -->
+    <!-- ====== SIDEBAR ====== -->
     <aside class="sidebar">
         <img src="assets/profile.jpg" alt="Veloxineology Profile Picture" class="profile-pic">
         <h2>@veloxineology</h2>
@@ -31,84 +31,131 @@
         </div>
     </aside>
 
-    <!-- ====== MAIN CONTENT AREA ====== -->
+    <!-- ====== MAIN CONTENT ====== -->
     <main class="content">
         <!-- ====== NAVIGATION TABS ====== -->
         <nav class="tabs">
             <a href="index.html"><i class="fas fa-home"></i> Overview</a>
-            <a href="projects.html" <i class="fas fa-code"></i> Repositories</a>
+            <a href="projects.html"><i class="fas fa-code"></i> Repositories</a>
             <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-            <a href="books.html" class="active"><i class="fas fa-book"></i> Books</a>
+            <a href="books.html" class="active"><i class="fas fa-book-open"></i> Books</a>
             <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
         </nav>
 
-    <!-- ====== BOOKS CONTENT ====== -->
-    <main class="content">
-        <h1>📚 My Writings</h1>
-        <p>Here are a few excerpts from my poetry and novel.</p>
+        <!-- ====== LITERARY WORKS ====== -->
+        <section class="literary-works">
+            <header class="works-header fade-in">
+                <h1 class="gradient-text"><i class="fas fa-feather"></i> Literary Collections</h1>
+                <p class="subtitle">Exploring human experience through poetry and prose</p>
+            </header>
 
-        <hr>
+            <!-- POETRY SECTION -->
+            <article class="writing-card fade-in">
+                <div class="genre-header">
+                    <h2><i class="fas fa-moon"></i> Poetry</h2>
+                    <p class="genre-sub">Emotional landscapes in verse</p>
+                </div>
 
-        <!-- POEMS SECTION -->
-        <section class="poems">
-            <h2>✍️ Poetry</h2>
+                <div class="writing-grid">
+                    <section class="poem-card">
+                        <div class="poem-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h3>The Bitterness & The Warmth</h3>
+                        <div class="poem-content">
+                            <p>
+                                She is like coffee—dark, bitter, and yet, I crave her.<br>
+                                The first sip scalds, but I keep drinking.<br>
+                                In every sleepless night, she lingers—<br>
+                                A warmth that burns, an addiction I never wish to quit.
+                            </p>
+                        </div>
+                    </section>
 
-            <div class="writing-section">
-                <h3>☕ The Bitterness & The Warmth</h3>
-                <p>
-                    She is like coffee—dark, bitter, and yet, I crave her. <br>
-                    The first sip scalds, but I keep drinking. <br>
-                    In every sleepless night, she lingers— <br>
-                    A warmth that burns, an addiction I never wish to quit.
-                </p>
-            </div>
+                    <section class="poem-card">
+                        <div class="poem-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>The Roar of a Machine</h3>
+                        <div class="poem-content">
+                            <p>
+                                She is a Ferrari—sleek, untamed, and breathtaking.<br>
+                                Her words shift like gears, fast and smooth.<br>
+                                Her presence—like a V12 purr in the dead of night,<br>
+                                A melody only the wild-hearted understand.
+                            </p>
+                        </div>
+                    </section>
 
-            <div class="writing-section">
-                <h3>🚗 The Roar of a Machine</h3>
-                <p>
-                    She is a Ferrari—sleek, untamed, and breathtaking. <br>
-                    Her words shift like gears, fast and smooth. <br>
-                    Her presence—like a V12 purr in the dead of night, <br>
-                    A melody only the wild-hearted understand.
-                </p>
-            </div>
+                    <section class="poem-card">
+                        <div class="poem-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>A Shutter's Blink</h3>
+                        <div class="poem-content">
+                            <p>
+                                She is a camera—silent, but full of stories.<br>
+                                A single blink captures lifetimes,<br>
+                                And even in black and white, she is beautiful.<br>
+                                Framed in my mind, an image I will never delete.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </article>
 
-            <div class="writing-section">
-                <h3>📷 A Shutter’s Blink</h3>
-                <p>
-                    She is a camera—silent, but full of stories. <br>
-                    A single blink captures lifetimes, <br>
-                    And even in black and white, she is beautiful. <br>
-                    Framed in my mind, an image I will never delete.
-                </p>
-            </div>
+            <!-- NOVEL SECTION -->
+            <article class="writing-card fade-in">
+                <div class="genre-header">
+                    <h2><i class="fas fa-book"></i> From <em>Everything Begins Here</em></h2>
+                    <p class="genre-sub">A novel about connection and memory</p>
+                </div>
+
+                <div class="excerpt-grid">
+                    <section class="excerpt-card">
+                        <blockquote>
+                            "Isn't it beautiful? How men and women have been born and dead for as long as time has existed,
+                            how humans forge relationships they hope will stand the tide of time despite knowing the grand
+                            folly of mortality, but you and I happen to be alive on this big blue earth at the same time?"
+                        </blockquote>
+                    </section>
+
+                    <section class="excerpt-card">
+                        <blockquote>
+                            "If I could string everything you've ever said to me into the prettiest friendship bracelet
+                            and wear it, I would. Instead, I remember it, and I'll remember it forever. I'm aware that
+                            I'm yet another victim of the folly of mortality when I make grand claims of forever..."
+                        </blockquote>
+                    </section>
+
+                    <section class="excerpt-card">
+                        <blockquote>
+                            "And when I have no beating heart to hold out as proof of my existence, I'll carry your memory
+                            in my bones, like salt in the sea, like stardust in the sky. They say memory is punishment,
+                            but memory is the greatest gift of all..."
+                        </blockquote>
+                    </section>
+                </div>
+            </article>
         </section>
 
-        <hr>
-
-        <!-- NOVEL EXCERPT -->
-        <section class="novel">
-            <h2>📖 From *Everything Begins Here*</h2>
-
-            <div class="writing-section">
-                <p>
-                    *"Isn't it beautiful? How men and women have been born and dead for as long as time has existed, how humans forge relationships they hope will stand the tide of time despite knowing the grand folly of mortality, but you and I happen to be alive on this big blue earth at the same time? We see the same sun, walk under the same moon, and speak the same thoughts. The stars aligned, and I get the gift of being alive with you."*
-                </p>
+        <!-- ====== FOOTER ====== -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>© 2025 Veloxineology | Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#status">Status</a>
+                </div>
             </div>
-
-            <div class="writing-section">
-                <p>
-                    *"If I could string everything you've ever said to me into the prettiest friendship bracelet and wear it, I would. Instead, I remember it, and I'll remember it forever. I'm aware that I'm yet another victim of the folly of mortality when I make grand claims of forever, but with you, I'd like to be just another foolish human, hoping that I'll always be someone you know and that you'll be someone I'll always know."*
-                </p>
-            </div>
-
-            <div class="writing-section">
-                <p>
-                    *"And when I have no beating heart to hold out as proof of my existence, I'll carry your memory in my bones, like salt in the sea, like stardust in the sky. They say memory is punishment, but memory is the greatest gift of all, memory is the greatest perseverance of the human emotion, and I will carry your memory as a piece of my tapestry."*
-                </p>
-            </div>
-        </section>
+        </footer>
     </main>
+
+    <!-- ====== MOBILE MENU BUTTON ====== -->
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </body>
 </html>
