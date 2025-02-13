@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Viewer | Veloxineology</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="tabs">
+        <a href="index.html">🏠 Overview</a>
+        <a href="projects.html">💡 Repositories</a>
+        <a href="blog.html" class="active">📝 Blog</a>
+        <a href="books.html">📚 Books</a>
+        <a href="contact.html">📞 Contact</a>
+    </nav>
+
+    <main class="content">
+        <h1 id="blog-title">📖 Loading...</h1>
+        <div id="blog-content">Fetching content...</div>
+    </main>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get("file");
+        const repoOwner = "veloxineology";
+        const repoName = "portfolio";
+        const folderPath = "posts";
+
+        if (!fileName) {
+            document.getElementById("blog-content").innerHTML = "Error: No file selected.";
+            return;
+        }
+
+        const apiUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${folderPath}/${fileName}`;
+
+        try {
+            const response = await fetch(apiUrl);
+            const content = await response.text();
+            document.getElementById("blog-title").innerText = fileName.replace(".md", "");
+            document.getElementById("blog-content").innerText = content;
+        } catch (error) {
+            document.getElementById("blog-content").innerHTML = "Error loading blog post.";
+            console.error("Error fetching blog post:", error);
+        }
+    });
+</script>
+</html>
