@@ -8,11 +8,56 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>📝 My Blog</h1>
+
+    <!-- ====== NAVIGATION BAR ====== -->
+    <nav class="tabs">
+        <a href="index.html">🏠 Overview</a>
+        <a href="projects.html">💡 Repositories</a>
+        <a href="blog.html" class="active">📝 Blog</a>
+        <a href="books.html">📚 Books</a>
+        <a href="contact.html">📞 Contact</a>
+    </nav>
+
+    <!-- ====== BLOG CONTENT ====== -->
+    <main class="content">
+        <h1>📝 Blog Posts</h1>
         <input type="text" id="search" placeholder="🔍 Search blogs...">
-        <div id="blog-list"></div>
-        <a href="index.html">⬅️ Back to Home</a>
-    </div>
+        <div id="blog-list">
+            <!-- Blog posts will be loaded here dynamically -->
+        </div>
+    </main>
+
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        const repoOwner = "veloxineology";
+        const repoName = "portfolio";
+        const folderPath = "posts"; // Folder in GitHub repo where blogs are stored
+
+        async function fetchBlogPosts() {
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+            try {
+                const response = await fetch(apiUrl);
+                const files = await response.json();
+
+                const blogList = document.getElementById("blog-list");
+                blogList.innerHTML = ""; // Clear previous entries
+
+                files.forEach(file => {
+                    if (file.name.endsWith(".md")) { // Change extension if needed
+                        const postLink = document.createElement("a");
+                        postLink.href = `blog-viewer.html?file=${file.name}`;
+                        postLink.classList.add("blog-entry");
+                        postLink.innerHTML = `<h2>${file.name.replace(".md", "")}</h2>`;
+                        blogList.appendChild(postLink);
+                    }
+                });
+            } catch (error) {
+                console.error("Error fetching blog posts:", error);
+            }
+        }
+
+        fetchBlogPosts();
+    });
+</script>
 </html>
