@@ -3,97 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veloxineology | Portfolio</title>
+    <title>Veloxineology | GitHub-Style Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    
+    <!-- ====== GITHUB-LIKE SIDEBAR ====== -->
+    <aside class="sidebar">
+        <img src="assets/profile.jpg" alt="Profile Picture" class="profile-pic">
+        <h2>@veloxineology</h2>
+        <p>🚀 Tech Enthusiast | Automation | Innovation</p>
+        <div class="social-links">
+            <a href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
+            <a href="https://instagram.com/kaushikieee" target="_blank">📸 Instagram</a>
+            <a href="https://snapchat.com/add/veloxine.rr" target="_blank">👻 Snapchat</a>
+            <a href="mailto:veloxineology@gmail.com">📧 Email</a>
+        </div>
+    </aside>
 
-    <!-- ===== NAVIGATION BAR ===== -->
-    <nav>
-        <a href="index.html">🏠 Home</a>
-        <a href="about.html">📌 About</a>
-        <a href="projects.html">💡 Projects</a>
-        <a href="blog.html">📝 Blog</a>
-        <a href="books.html">📚 Books</a>
-        <a href="contact.html">📞 Contact</a>
-    </nav>
+    <!-- ====== MAIN CONTENT AREA ====== -->
+    <main class="content">
+        <!-- ====== GITHUB-LIKE NAVIGATION TABS ====== -->
+        <nav class="tabs">
+            <a href="index.html" class="active">🏠 Overview</a>
+            <a href="projects.html">💡 Repositories</a>
+            <a href="blog.html">📝 Blog</a>
+            <a href="books.html">📚 Books</a>
+            <a href="contact.html">📞 Contact</a>
+        </nav>
 
-    <div class="container fade-in">
-        <!-- ===== WELCOME SECTION ===== -->
-        <section id="welcome">
-            <h1>👋 Welcome to My Portfolio!</h1>
-            <hr>
-            <p class="tagline">🚀 Exploring Tech, Automation & Creativity.</p>
-            <img src="unnamed.jpg" alt="Profile Picture" class="profile-pic">
+        <!-- ====== OVERVIEW SECTION ====== -->
+        <section class="overview fade-in">
+            <h1>👋 Welcome to My GitHub-Style Portfolio!</h1>
+            <p>🚀 Exploring Tech, Automation & Creativity.</p>
         </section>
 
         <hr>
 
-        <!-- ===== ABOUT SECTION ===== -->
-        <section id="about">
-            <h2>📌 About Me</h2>
-            <p>I'm Kaushik, a tech enthusiast passionate about automation and innovative tech solutions.</p>
-            
-            <h3>📱 My Devices</h3>
-            <div class="device">
-                <img src="nothing-phone.jpg" alt="Nothing Phone 2">
-                <p><strong>⚙️ Nothing Phone 2</strong><br>Kernel: XYZ | ROM: ABC | Storage: 128GB</p>
-            </div>
-
-            <div class="device">
-                <img src="macbook.jpg" alt="MacBook Air M1">
-                <p><strong>💻 MacBook Air M1</strong><br>macOS: Sonoma | RAM: 8GB | Storage: 256GB</p>
-            </div>
-        </section>
-
-        <hr>
-
-        <!-- ===== PROJECTS SECTION ===== -->
-        <section id="projects">
-            <h2>💡 My Projects</h2>
-            <div class="project-card">
-                <h3>🏠 HomeLifeSync</h3>
-                <p>A smart automation & safety app for elderly care.</p>
-            </div>
-            <div class="project-card">
-                <h3>📖 Everything Begins Here</h3>
-                <p>A novel inspired by real-life experiences.</p>
+        <!-- ====== FEATURED PROJECTS ====== -->
+        <section class="featured-projects fade-in">
+            <h2>📌 Featured Projects</h2>
+            <div class="project-list">
+                <div class="project-card">
+                    <h3>🏠 HomeLifeSync</h3>
+                    <p>Smart automation & safety app for elderly care.</p>
+                </div>
+                <div class="project-card">
+                    <h3>📖 Everything Begins Here</h3>
+                    <p>A novel inspired by real-life experiences.</p>
+                </div>
             </div>
         </section>
 
         <hr>
 
-        <!-- ===== BLOG SECTION ===== -->
-        <section id="blog">
-            <h2>📝 Blog</h2>
+        <!-- ====== BLOG PREVIEW ====== -->
+        <section class="blog-preview fade-in">
+            <h2>📝 Latest Blog Posts</h2>
             <input type="text" id="search" placeholder="🔍 Search blogs...">
             <div id="blog-list"></div>
         </section>
 
         <hr>
 
-        <!-- ===== BOOKS SECTION ===== -->
-        <section id="books">
-            <h2>📚 My Books</h2>
-            <p>Check out my writings & publications!</p>
-        </section>
-
-        <hr>
-
-        <!-- ===== CONTACT SECTION ===== -->
-        <section id="contact">
-            <h2>📞 Contact Me</h2>
-            <p>📧 Email: <a href="mailto:veloxineology@gmail.com">veloxineology@gmail.com</a></p>
-            <p>📸 Instagram: <a href="https://instagram.com/kaushikieee">@kaushikieee</a></p>
-            <p>👻 Snapchat: <a href="https://snapchat.com/add/veloxine.rr">@veloxine.rr</a></p>
-        </section>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <p>© 2025 Veloxineology | All Rights Reserved.</p>
-    </footer>
+        <!-- ====== FOOTER ====== -->
+        <footer>
+            <p>© 2025 Veloxineology | All Rights Reserved.</p>
+        </footer>
+    </main>
 
 </body>
 </html>
