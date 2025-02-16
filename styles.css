@@ -1,32 +1,32 @@
-/* Add to existing styles.css */
-/* ===== BUTTON STYLES ===== */
+/* ===== GENERAL STYLES ===== */
 a:not(.social-link, .tabs a) {
     text-decoration: none;
     color: inherit;
     display: inline-block;
 }
 
+/* ===== BUTTON STYLES ===== */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
-    transition: var(--transition);
-    font-weight: 500;
     border: 2px solid var(--primary-color);
     background: var(--card-bg);
     color: var(--primary-color) !important;
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 .btn:hover {
     background: var(--primary-color);
-    color: white !important;
+    color: #fff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
 }
 
-/* ===== STRUCTURAL IMPROVEMENTS ===== */
+/* ===== STRUCTURAL ELEMENTS ===== */
 .section-divider {
     height: 1px;
     background: var(--border-color);
@@ -53,7 +53,7 @@ a:not(.social-link, .tabs a) {
     margin-bottom: var(--gap-lg);
 }
 
-/* ===== INDEX PAGE IMPROVEMENTS ===== */
+/* ===== HERO SECTION ===== */
 .hero-section {
     text-align: center;
     padding: var(--gap-lg);
@@ -63,6 +63,7 @@ a:not(.social-link, .tabs a) {
     border-left: 4px solid var(--primary-color);
 }
 
+/* ===== FEATURE GRID ===== */
 .feature-grid {
     display: grid;
     gap: var(--gap-md);
@@ -75,6 +76,7 @@ a:not(.social-link, .tabs a) {
     border-radius: 8px;
     position: relative;
     overflow: hidden;
+    transition: var(--transition);
 }
 
 .feature-card::before {
@@ -101,6 +103,7 @@ a:not(.social-link, .tabs a) {
     padding: var(--gap-md);
     border-radius: 8px;
     margin-bottom: var(--gap-lg);
+    flex-wrap: wrap;
 }
 
 .filter-group {
@@ -113,6 +116,7 @@ a:not(.social-link, .tabs a) {
     position: relative;
     padding-left: var(--gap-md);
     border-left: 3px solid var(--border-color);
+    transition: border-color var(--transition);
 }
 
 .repo-card:hover {
@@ -148,7 +152,6 @@ a:not(.social-link, .tabs a) {
     border-left: 3px solid var(--primary-color);
     background: var(--background);
     border-radius: 6px;
-    position: relative;
 }
 
 /* ===== CONTACT PAGE ===== */
