@@ -77,9 +77,14 @@ export default function SpotifyWidget() {
             <p className="text-xs font-mono text-secondary truncate">{currentTrack.artist}</p>
             <p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
             {currentTrack.playlistName && currentTrack.playlistOwner && (
-              <p className="text-xs font-mono text-accent truncate mt-1">
-                <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
-              </p>
+              <div className="overflow-hidden whitespace-nowrap w-full">
+                <span
+                  className="text-xs font-mono text-accent truncate mt-1 inline-block playlist-marquee"
+                  style={{ maxWidth: '100%' }}
+                >
+                  <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
+                </span>
+              </div>
             )}
           </div>
         </motion.div>
@@ -97,3 +102,15 @@ export default function SpotifyWidget() {
     </div>
   )
 }
+
+<style jsx global>{`
+  .playlist-marquee {
+    display: inline-block;
+    min-width: 100%;
+    animation: marquee 8s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+`}</style>
