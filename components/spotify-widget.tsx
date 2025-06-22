@@ -72,15 +72,15 @@ export default function SpotifyWidget() {
               <Play size={10} className="text-white ml-0.5" />
             </motion.div>
           </div>
-          <div className="flex-1 min-w-0">
+          <div className="flex-1">
             <p className="text-sm font-mono font-bold text-primary truncate">{currentTrack.name}</p>
             <p className="text-xs font-mono text-secondary truncate">{currentTrack.artist}</p>
             <p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
             {currentTrack.playlistName && currentTrack.playlistOwner && (
-              <div className="overflow-hidden whitespace-nowrap w-full">
+              <div className="overflow-x-hidden whitespace-nowrap w-full">
                 <span
-                  className="text-xs font-mono text-accent truncate mt-1 inline-block playlist-marquee"
-                  style={{ maxWidth: '100%' }}
+                  className="text-xs font-mono text-accent mt-1 inline-block playlist-marquee"
+                  style={{ whiteSpace: 'nowrap' }}
                 >
                   <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
                 </span>
