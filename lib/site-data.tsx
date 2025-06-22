@@ -29,7 +29,7 @@ export const siteData = {
       { name: "SQL", type: "code" },
       { name: "C", type: "code" },
       { name: "C++", type: "code" }
-    ]
+    ],
     social: {
       github: "https://github.com/veloxineology",
       instagram: "https://instagram.com/kaushikieee",
