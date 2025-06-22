@@ -3,18 +3,44 @@ import { NextResponse } from 'next/server'
 // If you see a type error for 'process', install @types/node as a dev dependency.
 // The 'next' property is not valid in fetch options for Node.js, so it's removed.
 
-export async function GET() {
-  const accessToken = process.env.SPOTIFY_ACCESS_TOKEN
-  if (!accessToken) {
-    return NextResponse.json({ error: 'Spotify access token not set' }, { status: 500 })
+async function getAccessToken() {
+  const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
+  const client_id = process.env.SPOTIFY_CLIENT_ID
+  const client_secret = process.env.SPOTIFY_CLIENT_SECRET
+
+  if (!refresh_token || !client_id || !client_secret) {
+    throw new Error('Missing Spotify credentials')
   }
 
+  const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
+  const body = new URLSearchParams({
+    grant_type: 'refresh_token',
+    refresh_token,
+  })
+
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${basic}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  })
+
+  const data = await response.json()
+  if (!response.ok) {
+    throw new Error('Failed to refresh access token')
+  }
+  return data.access_token
+}
+
+export async function GET() {
   try {
+    const accessToken = await getAccessToken()
     const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-      // Removed 'next' property
     })
 
     if (!res.ok) {
@@ -36,6 +62,6 @@ export async function GET() {
 
     return NextResponse.json(track)
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch from Spotify' }, { status: 500 })
+    return NextResponse.json({ error: (error as Error).message || 'Failed to fetch from Spotify' }, { status: 500 })
   }
 } 
