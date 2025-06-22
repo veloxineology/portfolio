@@ -11,6 +11,8 @@ interface SpotifyTrack {
   album: string
   image: string
   isPlaying: boolean
+  playlistName?: string
+  playlistOwner?: string
 }
 
 export default function SpotifyWidget() {
@@ -74,6 +76,11 @@ export default function SpotifyWidget() {
             <p className="text-sm font-mono font-bold text-primary truncate">{currentTrack.name}</p>
             <p className="text-xs font-mono text-secondary truncate">{currentTrack.artist}</p>
             <p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
+            {currentTrack.playlistName && currentTrack.playlistOwner && (
+              <p className="text-xs font-mono text-accent truncate mt-1">
+                <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
+              </p>
+            )}
           </div>
         </motion.div>
       ) : (
