@@ -21,22 +21,10 @@ export default function SpotifyWidget() {
   useEffect(() => {
     const fetchCurrentTrack = async () => {
       try {
-        // Mock Spotify API call - replace with actual Spotify API integration
-        // const response = await fetch('/api/spotify/now-playing')
-        // const data = await response.json()
-
-        const mockTrack: SpotifyTrack = {
-          name: "Resonance",
-          artist: "HOME",
-          album: "Odyssey",
-          image: "/placeholder.svg?height=64&width=64",
-          isPlaying: Math.random() > 0.4, // 60% chance of playing
-        }
-
-        setTimeout(() => {
-          setCurrentTrack(mockTrack)
-          setIsLoading(false)
-        }, 1000)
+        const response = await fetch('/api/spotify/now-playing')
+        const data = await response.json()
+        setCurrentTrack(data)
+        setIsLoading(false)
       } catch (error) {
         console.error("Failed to fetch Spotify data:", error)
         setIsLoading(false)
