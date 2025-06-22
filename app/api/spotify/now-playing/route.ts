@@ -77,7 +77,6 @@ export async function GET() {
       album: data.item.album.name,
       image: data.item.album.images?.[2]?.url || data.item.album.images?.[0]?.url || '', // 64x64 or fallback
       isPlaying: data.is_playing,
-      playlistName,
       playlistOwner,
     }
 
