@@ -78,7 +78,7 @@ className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items
 <p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
             {currentTrack.playlistName && currentTrack.playlistOwner && (
               <p className="text-xs font-mono text-accent truncate mt-1">
-                <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
+                <span role="img" aria-label="Playlist">💿</span> Playlist : by {currentTrack.playlistOwner}
               </p>
             )}
 </div>
