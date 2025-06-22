@@ -52,12 +52,33 @@ export async function GET() {
       return NextResponse.json({ isPlaying: false }, { status: 200 })
     }
 
+    let playlistName = undefined
+    let playlistOwner = undefined
+    if (data.context && data.context.type === 'playlist' && data.context.href) {
+      try {
+        const playlistRes = await fetch(data.context.href, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        if (playlistRes.ok) {
+          const playlistData = await playlistRes.json()
+          playlistName = playlistData.name
+          playlistOwner = playlistData.owner?.display_name
+        }
+      } catch (e) {
+        // Ignore playlist fetch errors
+      }
+    }
+
     const track = {
       name: data.item.name,
       artist: data.item.artists.map((a: any) => a.name).join(', '),
       album: data.item.album.name,
       image: data.item.album.images?.[2]?.url || data.item.album.images?.[0]?.url || '', // 64x64 or fallback
       isPlaying: data.is_playing,
+      playlistName,
+      playlistOwner,
     }
 
     return NextResponse.json(track)
