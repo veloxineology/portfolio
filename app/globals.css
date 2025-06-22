@@ -354,3 +354,13 @@
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
+
+.playlist-marquee {
+  display: inline-block;
+  min-width: 100%;
+  animation: marquee 8s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
