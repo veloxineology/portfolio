@@ -83,6 +83,8 @@ export default function SpotifyWidget() {
                   style={{ whiteSpace: 'nowrap' }}
                 >
                   <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <span role="img" aria-label="Playlist">💿</span> Playlist : {currentTrack.playlistName} by {currentTrack.playlistOwner}
                 </span>
               </div>
             )}
