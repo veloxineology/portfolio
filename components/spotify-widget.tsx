@@ -72,7 +72,7 @@ export default function SpotifyWidget() {
               <Play size={10} className="text-white ml-0.5" />
             </motion.div>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <p className="text-sm font-mono font-bold text-primary truncate">{currentTrack.name}</p>
             <p className="text-xs font-mono text-secondary truncate">{currentTrack.artist}</p>
             <p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
