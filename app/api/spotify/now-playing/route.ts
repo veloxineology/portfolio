@@ -52,7 +52,6 @@ export async function GET() {
       return NextResponse.json({ isPlaying: false }, { status: 200 })
     }
 
-    let playlistName = undefined
     let playlistOwner = undefined
     if (data.context && data.context.type === 'playlist' && data.context.href) {
       try {
@@ -63,7 +62,6 @@ export async function GET() {
         })
         if (playlistRes.ok) {
           const playlistData = await playlistRes.json()
-          playlistName = playlistData.name
           playlistOwner = playlistData.owner?.display_name
         }
       } catch (e) {

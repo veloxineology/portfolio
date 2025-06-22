@@ -11,7 +11,6 @@ artist: string
 album: string
 image: string
 isPlaying: boolean
-  playlistName?: string
   playlistOwner?: string
 }
 
