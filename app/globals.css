@@ -357,6 +357,7 @@
 
 @media (max-width: 640px) {
   .glass-nav {
+    position: fixed !important;
     top: auto !important;
     bottom: 0 !important;
     left: 0 !important;
@@ -366,6 +367,7 @@
     box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
     padding-left: 0 !important;
     padding-right: 0 !important;
+    z-index: 9999 !important;
   }
   .glass-nav > div {
     justify-content: space-around !important;
@@ -389,5 +391,16 @@
   }
   .w-px {
     display: none !important;
+  }
+  .project-card {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 1rem !important;
+  }
+  .perspective-1000 {
+    perspective: none !important;
+  }
+  .h-80 {
+    height: auto !important;
   }
 }
