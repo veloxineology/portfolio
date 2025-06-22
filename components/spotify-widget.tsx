@@ -102,15 +102,3 @@ export default function SpotifyWidget() {
     </div>
   )
 }
-
-<style jsx global>{`
-  .playlist-marquee {
-    display: inline-block;
-    min-width: 100%;
-    animation: marquee 8s linear infinite;
-  }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-`}</style>
