@@ -357,8 +357,7 @@
 
 .playlist-marquee {
   display: inline-block;
-  min-width: 100%;
-  animation: marquee 8s linear infinite;
+  animation: marquee 12s linear infinite;
 }
 @keyframes marquee {
   0% { transform: translateX(0); }
