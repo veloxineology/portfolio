@@ -26,13 +26,18 @@ export default function CurrentlyDoing() {
       const todayRoutine = about.weeklyRoutine[currentDay]
 
       // Find current activity based on time
-      const currentHour = now.getHours()
-      const activity = todayRoutine.find((item) => {
-        const activityHour = Number.parseInt(item.time.split(":")[0])
-        return currentHour >= activityHour && currentHour < activityHour + 2
-      })
-
-      setCurrentActivity(activity || todayRoutine[0])
+      const nowMinutes = now.getHours() * 60 + now.getMinutes();
+      let latestActivity = todayRoutine[0];
+      for (const item of todayRoutine) {
+        const [h, m] = item.time.split(":").map(Number);
+        const itemMinutes = h * 60 + (m || 0);
+        if (itemMinutes <= nowMinutes) {
+          latestActivity = item;
+        } else {
+          break;
+        }
+      }
+      setCurrentActivity(latestActivity);
     }, 1000)
 
     return () => clearInterval(timer)

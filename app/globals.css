@@ -392,15 +392,19 @@
   .w-px {
     display: none !important;
   }
-  .project-card {
+  .project-card, .blog-card {
+    padding: 1rem !important;
     height: auto !important;
     min-height: 0 !important;
-    padding: 1rem !important;
+    border-radius: 1rem !important;
   }
   .perspective-1000 {
     perspective: none !important;
   }
   .h-80 {
     height: auto !important;
+  }
+  .main-content-mobile-pb {
+    padding-bottom: 4.5rem !important;
   }
 }

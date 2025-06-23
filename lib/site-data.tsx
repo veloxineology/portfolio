@@ -3,7 +3,7 @@ export const siteData = {
     name: "Kaushik S",
     tagline: "Student & Developer",
     greetingEmoji: "👋",
-    location: "📍 Chennai, India",
+    location: "📍 Coimbatore, India",
     description:
       "Poet at heart, with an obsessive devotion to precision—every word, every pixel, placed with purpose in pursuit of perfection.",
     ctaText: "Explore My Work",
