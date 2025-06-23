@@ -42,7 +42,7 @@ export default function HomePage() {
                     <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight font-sans">{home.name}</h1>
                     <div className="flex items-baseline gap-3 mt-1">
                       <p className="text-xl md:text-2xl font-medium text-accent font-sans">{home.tagline}</p>
-                      <span className="text-sm font-medium text-muted font-sans">{home.location}</span>
+                      <span className="text-sm font-medium text-muted font-sans location-mobile">{home.location}</span>
                     </div>
                   </div>
                 </div>

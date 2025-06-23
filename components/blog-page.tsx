@@ -92,7 +92,7 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
+    <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
@@ -216,7 +216,7 @@ export default function BlogPage() {
           <div className="flex justify-center pt-8 border-t border-border">
             <motion.button
               onClick={handlePersonalStuffClick}
-              className="flex items-center gap-2 px-6 py-3 bg-muted/10 hover:bg-muted/20 border border-muted/30 text-muted hover:text-primary font-mono text-sm rounded-xl transition-all duration-200"
+              className="flex items-center gap-2 px-6 py-3 bg-muted/10 hover:bg-muted/20 border border-muted/30 text-muted hover:text-primary font-mono text-sm rounded-xl transition-all duration-200 personal-stuff-btn-mobile"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

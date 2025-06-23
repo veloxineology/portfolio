@@ -34,7 +34,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen py-20 px-6">
+    <div className="min-h-screen py-20 px-6 main-content-mobile-pb">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
