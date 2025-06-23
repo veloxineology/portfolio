@@ -26,7 +26,7 @@ export default function FloatingNavbar({ currentPage, setCurrentPage }: Floating
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 glass-nav"
     >
-      <div className="flex items-center gap-2 px-6 py-3">
+      <div className="flex items-center gap-2 px-6 py-3 justify-center">
         {navItems.map((item) => (
           <motion.button
             key={item.id}
