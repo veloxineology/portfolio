@@ -382,7 +382,6 @@
     flex-direction: column !important;
     gap: 0.25rem !important;
   }
-  .spotify-card,
   .card-minimal,
   .blog-card,
   .gallery-card,
@@ -394,14 +393,18 @@
     margin-right: 0 !important;
     border-radius: 1rem !important;
     overflow: hidden !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding: 1rem !important;
+    background: var(--tw-bg-opacity,1) #fff !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
   }
-  .blog-card,
-  .gallery-card,
-  .project-card {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+  .dark .card-minimal,
+  .dark .blog-card,
+  .dark .gallery-card,
+  .dark .project-card {
+    background: #18181b !important;
+    border: 1px solid #27272a !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
   }
   .main-content-mobile-pb {
     padding-bottom: 5.5rem !important;
