@@ -5,7 +5,6 @@ import { Github, Mail, Camera, MessageCircle } from "lucide-react"
 import { siteData } from "@/lib/site-data"
 import SpotifyWidget from "@/components/spotify-widget"
 import CurrentlyDoing from "@/components/currently-doing"
-import LatestBlogs from "@/components/latest-blogs"
 
 export default function HomePage() {
   const { home, about } = siteData
@@ -270,9 +269,6 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-
-          {/* Latest Blog Posts */}
-          <LatestBlogs />
         </motion.div>
       </div>
     </div>
