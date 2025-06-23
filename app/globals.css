@@ -383,13 +383,44 @@
     gap: 0.25rem !important;
   }
   .spotify-card,
-  .card-minimal {
+  .card-minimal,
+  .blog-card,
+  .gallery-card,
+  .project-card {
     max-width: 100vw !important;
+    width: 100% !important;
     box-sizing: border-box !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     border-radius: 1rem !important;
     overflow: hidden !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .blog-card,
+  .gallery-card,
+  .project-card {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .main-content-mobile-pb {
+    padding-bottom: 5.5rem !important;
+  }
+  .about-page,
+  .contact-page {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .card-minimal input,
+  .card-minimal textarea,
+  .card-minimal button,
+  .contact-page input,
+  .contact-page textarea,
+  .contact-page button {
+    font-size: 1rem !important;
+    border-radius: 0.75rem !important;
   }
   .location-mobile {
     display: none !important;
@@ -404,20 +435,11 @@
   .w-px {
     display: none !important;
   }
-  .project-card, .blog-card {
-    padding: 1rem !important;
-    height: auto !important;
-    min-height: 0 !important;
-    border-radius: 1rem !important;
-  }
   .perspective-1000 {
     perspective: none !important;
   }
   .h-80 {
     height: auto !important;
-  }
-  .main-content-mobile-pb {
-    padding-bottom: 4.5rem !important;
   }
   .footer-mobile {
     padding-bottom: 4.5rem !important;
