@@ -10,15 +10,6 @@ Welcome to the documentation for the **Portfolio Project**!
 
 ---
 
-## 🖼️ Screenshots
-
-![Home Page](./assets/screenshot-home.png)
-![Work/Projects Page](./assets/screenshot-work.png)
-![Blog Page](./assets/screenshot-blog.png)
-![Gallery Page](./assets/screenshot-gallery.png)
-
----
-
 ## 📝 Overview
 This is a modern, responsive portfolio web app built with Next.js, React, and Tailwind CSS. It features a dynamic home page, work/projects showcase, blog, gallery, and integrations like Spotify and a live routine widget.
 
