@@ -16,11 +16,11 @@ export const protectedData = {
         ],
       },
       {
-        title: "Secret Projects",
+        title: "Thoughts about T really",
         emoji: "🤫",
         content: [
-          "Building an AI that only speaks in dad jokes",
-          "Creating a dating app for developers (SwipeRight.js)",
+          "Okay, so on June 22nd of 2025, she sent me this.",
+          "If something ever goes wrong (IF not WHEN (I hope nothing ever goes wrong)), you’ll have such a hard time dealing with everything you create because I’m everywhere in terms of everything. You want to log into something? The password is related to me. You want to use chat gpt for something? Chat gpt believes you’re obsessed with me. You want to see your website? I’m the ‘her’. You want to listen to music? You listen to my playlists. You want to go to school? Everyone is convinced we’re married or smth atp. I’m not saying I’ll be completely fine if something ever goes wrong, but maybe it’s because I’m one bitch, but though I’ll take your opinion or Keerthana’s opinion or my parents opinion, I’ll end up doing whatever I like only",
           "Designing the world's most over-engineered todo app",
           "Writing a novel about a programmer who falls in love with their IDE",
           "Developing a meditation app for stressed developers",
@@ -101,7 +101,7 @@ export const protectedData = {
       "The day I realized I actually enjoy debugging",
     ],
 
-    currentMood: "🚀 Excited about new projects",
-    lastUpdated: "2024-01-22",
+    currentMood: "im quite annoyed rn actually",
+    lastUpdated: "2025-06-24",
   },
 }
