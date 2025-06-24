@@ -62,7 +62,7 @@ export default function BlogPage() {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (password === "shelikesgwagons") {
+    if (password === "shelovesgwagons") {
       setShowPersonalStuff(true)
       setShowPasswordPrompt(false)
       setPassword("")
