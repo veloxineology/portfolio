@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Kaushik S',
-  description: 'Created with Cursor',
+  description: 'hello <3',
   generator: 'kaushikieee.dev',
 }
 
