@@ -28,7 +28,7 @@ export default function HomePage() {
                 <div className="flex items-start gap-6">
                   {/* Profile Photo */}
                   <div className="relative flex-shrink-0">
-                    <div className="w-24 h-24 border-2 border-accent rounded-lg overflow-hidden font-mono">
+                    <div className="w-24 h-24 rounded-lg overflow-hidden font-mono">
                       <img
                         src={about.profileImage || "/image-not-found.png"}
                         width={120}
@@ -46,7 +46,7 @@ export default function HomePage() {
                       <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight font-sans">{home.name}</h1>
                       <div className="flex items-baseline gap-3 mt-1">
                         <p className="text-xl md:text-2xl font-medium text-accent font-sans">{home.tagline}</p>
-                        <span className="text-sm font-medium text-muted font-sans location-mobile hidden md:inline">{home.location}</span>
+                        <span className="text-sm font-medium text-muted font-sans location-mobile">{home.location}</span>
                       </div>
                     </div>
                   </div>
