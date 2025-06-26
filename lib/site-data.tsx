@@ -71,12 +71,12 @@ export const siteData = {
 
     // Personal details
     funFacts: [
-      "Currently making her my world (Literally)",
-      "Built my first computer at age 7",
-      "Can solve a complex bugs within 30 seconds",
-      "Speaks 15 programming languages fluently",
-      "Once debugged code for 26 hours straight",
-      "Has 4000 contributions on GitHub in a single year",
+      "I'm currently making her my world (Literally)",
+      "I built my first computer at age 7",
+      "I can solve complex bugs within 30 seconds",
+      "I speak 15 programming languages fluently",
+      "I once debugged code for 26 hours straight",
+      "I have over 4000 contributions on GitHub in a single year",
     ],
 
     // Weekly routine - different for each day
@@ -89,7 +89,7 @@ export const siteData = {
         { time: "1:00 PM", activity: "School again.", emoji: "🤝" },
         { time: "4:00 PM", activity: "Reaching Home rn...", emoji: "🚀" },
         { time: "6:00 PM", activity: "Reading & learning", emoji: "📚" },
-        { time: "10:00 PM", activity: "Wait for her texts", emoji: "😴" },
+        { time: "10:00 PM", activity: "Waiting for her texts", emoji: "😴" },
       ],
       tuesday: [
         { time: "5:00 AM", activity: "Wake up & Workout", emoji: "☕" },
@@ -99,7 +99,7 @@ export const siteData = {
         { time: "1:00 PM", activity: "School again.", emoji: "🤝" },
         { time: "4:00 PM", activity: "Reaching Home rn...", emoji: "🚀" },
         { time: "6:00 PM", activity: "Reading & learning", emoji: "📚" },
-        { time: "10:00 PM", activity: "Wait for her texts", emoji: "😴" },
+        { time: "10:00 PM", activity: "Waiting for her texts", emoji: "😴" },
       ],
       wednesday: [
         { time: "5:00 AM", activity: "Wake up & Workout", emoji: "☕" },
@@ -109,7 +109,7 @@ export const siteData = {
         { time: "1:00 PM", activity: "School again.", emoji: "🤝" },
         { time: "4:00 PM", activity: "Reaching Home rn...", emoji: "🚀" },
         { time: "6:00 PM", activity: "Reading & learning", emoji: "📚" },
-        { time: "10:00 PM", activity: "Wait for her texts", emoji: "😴" },
+        { time: "10:00 PM", activity: "Waiting for her texts", emoji: "😴" },
       ],
       thursday: [
         { time: "5:00 AM", activity: "Wake up & Workout", emoji: "☕" },
@@ -119,7 +119,7 @@ export const siteData = {
         { time: "1:00 PM", activity: "School again.", emoji: "🤝" },
         { time: "4:00 PM", activity: "Reaching Home rn...", emoji: "🚀" },
         { time: "6:00 PM", activity: "Reading & learning", emoji: "📚" },
-        { time: "10:00 PM", activity: "Wait for her texts", emoji: "😴" },
+        { time: "10:00 PM", activity: "Waiting for her texts", emoji: "😴" },
       ],
       friday: [
         { time: "5:00 AM", activity: "Wake up & Workout", emoji: "☕" },
@@ -129,7 +129,7 @@ export const siteData = {
         { time: "1:00 PM", activity: "School again.", emoji: "🤝" },
         { time: "4:00 PM", activity: "Reaching Home rn...", emoji: "🚀" },
         { time: "6:00 PM", activity: "Reading & learning", emoji: "📚" },
-        { time: "10:00 PM", activity: "Wait for her texts", emoji: "😴" },
+        { time: "10:00 PM", activity: "Waiting for her texts", emoji: "😴" },
       ],
       saturday: [
         { time: "5:00 AM", activity: "Wake up & Workout", emoji: "☕" },
