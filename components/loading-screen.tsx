@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useEffect } from "react"
 
 export default function LoadingScreen() {
@@ -20,20 +19,10 @@ export default function LoadingScreen() {
   }, [])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-dark-bg flex items-center justify-center z-50"
-    >
+    <div className="fixed inset-0 bg-dark-bg flex items-center justify-center z-50">
       <div className="text-center">
         {/* Large Lottie Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center items-center"
-        >
+        <div className="flex justify-center items-center">
           <dotlottie-player
             src="https://lottie.host/10d4a931-f0cd-4d13-a1e4-7f92ad5d1c01/iDXQGQri75.lottie"
             background="transparent"
@@ -46,8 +35,8 @@ export default function LoadingScreen() {
             loop
             autoplay
           />
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

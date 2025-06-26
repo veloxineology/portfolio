@@ -36,33 +36,107 @@
     font-family: "JetBrains Mono", "IBM Plex Mono", "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       "Liberation Mono", "Courier New", monospace;
     @apply bg-dark-bg text-dark-text transition-colors duration-300;
+    /* Ensure smooth scrolling */
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent layout shift during loading */
+  html {
+    overflow-x: hidden;
   }
 }
 
 @layer components {
-  /* Glass navigation - iOS style */
-  .glass-nav {
+  /* macOS Dock-style navigation */
+  .dock-nav {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .dock-nav {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  /* Dock item styling */
+  .dock-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .dock-item:hover {
+    transform: translateY(-4px) scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .dock-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dock-item-active {
+    background: rgba(var(--color-accent), 0.2);
+    color: var(--color-accent);
+  }
+
+  .dock-item-active:hover {
+    background: rgba(var(--color-accent), 0.25);
+  }
+
+  /* Enhanced Glass navigation - iOS style with better blur */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
   .dark .glass-nav {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
-  /* Navigation items */
+  /* Navigation items with better hover states */
   .nav-item {
-    @apply flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 font-mono text-sm;
-    @apply text-muted hover:text-primary hover:bg-white/10;
+    @apply flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-200 font-mono text-sm;
+    @apply text-muted hover:text-primary;
+    position: relative;
+    min-height: 44px; /* Better touch targets */
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .dark .nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .nav-item-active {
-    @apply text-accent bg-accent/10 border border-accent/30;
+    @apply text-accent;
+    background: rgba(var(--color-accent), 0.15) !important;
+    border: 1px solid rgba(var(--color-accent), 0.3);
+    box-shadow: 0 2px 8px rgba(var(--color-accent), 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   /* Buttons */
@@ -355,33 +429,23 @@
   outline-offset: 2px;
 }
 
+/* Mobile optimizations for dock-style navbar */
 @media (max-width: 640px) {
-  /* .glass-nav {
-    position: fixed !important;
-    top: auto !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;
-    border-radius: 0 !important;
-    box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    z-index: 9999 !important;
-  } */
-  .glass-nav > div {
-    justify-content: space-around !important;
-    gap: 0.5rem !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  .dock-nav {
+    border-radius: 16px;
+    padding: 8px;
   }
-  .nav-item {
-    padding: 0.5rem 0.5rem !important;
-    font-size: 0.85rem !important;
-    min-width: 44px;
-    flex-direction: column !important;
-    gap: 0.25rem !important;
+
+  .dock-item {
+    padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
   }
+
+  .dock-item:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+
   .card-minimal,
   .blog-card,
   .gallery-card,
@@ -394,21 +458,24 @@
     border-radius: 1rem !important;
     overflow: hidden !important;
     padding: 1rem !important;
-    background: var(--tw-bg-opacity,1) #fff !important;
+    background: var(--tw-bg-opacity, 1) #fff !important;
     border: 1px solid #e5e7eb !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
   }
+
   .dark .card-minimal,
   .dark .blog-card,
   .dark .gallery-card,
   .dark .project-card {
     background: #18181b !important;
     border: 1px solid #27272a !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
   }
+
   .main-content-mobile-pb {
-    padding-bottom: 5.5rem !important;
+    padding-bottom: 6rem !important;
   }
+
   .about-page,
   .contact-page {
     padding-left: 0.5rem !important;
@@ -416,6 +483,7 @@
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
   }
+
   .card-minimal input,
   .card-minimal textarea,
   .card-minimal button,
@@ -425,38 +493,34 @@
     font-size: 1rem !important;
     border-radius: 0.75rem !important;
   }
+
   .location-mobile {
     display: none !important;
   }
-  .nav-item span {
-    display: none;
-  }
-  .nav-item svg {
-    width: 22px !important;
-    height: 22px !important;
-  }
-  .w-px {
-    display: none !important;
-  }
+
   .perspective-1000 {
     perspective: none !important;
   }
+
   .h-80 {
     height: auto !important;
   }
+
   .footer-mobile {
-    padding-bottom: 4.5rem !important;
+    padding-bottom: 5rem !important;
     text-align: center !important;
     font-size: 0.95rem !important;
     background: none !important;
     border: none !important;
   }
+
   .location-mobile {
     display: block !important;
     text-align: left !important;
     margin-top: 0.25rem !important;
     font-size: 0.95rem !important;
   }
+
   .personal-stuff-btn-mobile {
     width: 100% !important;
     font-size: 1rem !important;
@@ -466,6 +530,6 @@
     color: #fff !important;
     border: none !important;
     margin-bottom: 0.5rem !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 }
