@@ -356,7 +356,7 @@
 }
 
 @media (max-width: 640px) {
-  .glass-nav {
+  /* .glass-nav {
     position: fixed !important;
     top: auto !important;
     bottom: 0 !important;
@@ -368,7 +368,7 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
     z-index: 9999 !important;
-  }
+  } */
   .glass-nav > div {
     justify-content: space-around !important;
     gap: 0.5rem !important;
