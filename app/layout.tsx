@@ -50,7 +50,14 @@ export const metadata: Metadata = {
     "veloxineology developer",
     "veloxineology blog",
     "veloxineology work"
-  ]
+  ],
+  twitter: {
+    card: "summary_large_image",
+    site: "@kaushikieee",
+    title: "kaushikieee Portfolio",
+    description: "Projects, blog, and more by kaushikieee.",
+    images: ["/og-image.png"]
+  }
 }
 
 export default function RootLayout({
@@ -60,6 +67,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </head>
       <body className={inter.className}>
         <ClientRootLayout>{children}</ClientRootLayout>
       </body>
