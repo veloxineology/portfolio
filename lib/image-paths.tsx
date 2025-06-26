@@ -53,7 +53,7 @@ export const imagePaths = {
     },
   ],
   fallback: {
-    path: "/assets/image not found lmao.png",
+    path: "/image not found lmao. i forgot to add paths i guess....png",
     width: 300,
     height: 250,
   },
