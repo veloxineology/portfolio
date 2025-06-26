@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { siteData } from "@/lib/site-data"
-import { imagePaths } from "@/lib/image-paths"
 
 const ITEMS_PER_PAGE = 6
 
@@ -37,7 +36,7 @@ export default function GalleryPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {currentItems.map((item, index) => {
-              const imageData = imagePaths.gallery.find(img => img.id === item.id) || imagePaths.fallback
+              const imageSrc = item.image || "/image-not-found.png"
               return (
                 <motion.div
                   key={item.id}
@@ -51,9 +50,7 @@ export default function GalleryPage() {
                   }}
                 >
                   <img
-                    src={imageData.path}
-                    width={imageData.width}
-                    height={imageData.height}
+                    src={imageSrc}
                     alt={item.title}
                     className="w-full h-48 object-cover rounded border border-border mb-3"
                   />

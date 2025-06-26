@@ -5,7 +5,6 @@ import { MapPin, Quote, Heart } from "lucide-react"
 import { siteData } from "@/lib/site-data"
 import SpotifyWidget from "@/components/spotify-widget"
 import DailyRoutine from "@/components/daily-routine"
-import { imagePaths } from "@/lib/image-paths"
 
 export default function AboutPage() {
   const { about } = siteData
@@ -26,9 +25,9 @@ export default function AboutPage() {
                 <div className="flex items-start gap-6 mb-6">
                   <div className="relative">
                     <img
-                      src={imagePaths.profile.about.path || imagePaths.fallback.path}
-                      width={imagePaths.profile.about.width || imagePaths.fallback.width}
-                      height={imagePaths.profile.about.height || imagePaths.fallback.height}
+                      src={about.profileImage || "/image-not-found.png"}
+                      width={120}
+                      height={120}
                       alt="Kaushik"
                       className="w-24 h-24 rounded-full border-2 border-accent"
                     />
