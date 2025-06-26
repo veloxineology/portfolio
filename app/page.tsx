@@ -1,74 +1,34 @@
-"use client"
+import React from 'react';
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import LoadingScreen from "@/components/loading-screen"
-import FloatingNavbar from "@/components/floating-navbar"
-import HomePage from "@/components/home-page"
-import WorkPage from "@/components/work-page"
-import BlogPage from "@/components/blog-page"
-import GalleryPage from "@/components/gallery-page"
-import { ThemeProvider } from "@/components/theme-provider"
+export const metadata = {
+  title: "Kaushik S – Portfolio",
+  description: "Poet at heart, developer by trade. Explore my work, blog, and more.",
+  keywords: [
+    "Kaushikieee", "kaushikieee", "Kaushik S", "kaushik s", "Veloxineology Labs", "veloxineology labs", "Veloxineology", "veloxineology", "Veloxine", "veloxine", "GhostGMS", "ghostgms", "ghostgms github", "github kaushikieee", "veloxineology github", "kaushikieee instagram", "kaushikieee snapchat", "kaushik s instagram", "kaushik s snapchat", "kaushik s portfolio", "kaushikieee portfolio", "veloxineology labs portfolio", "kaushik s developer", "kaushik s blog", "kaushik s projects", "kaushik s work", "kaushik s poetry", "kaushik s tech stack", "kaushik s github", "kaushik s contact", "kaushik s email", "kaushik s website", "kaushik s personal site", "kaushik s open source", "kaushik s india", "kaushik s software engineer", "kaushik s frontend developer", "kaushik s backend developer", "kaushik s full stack", "kaushik s portfolio site", "kaushik s creative", "kaushik s coder", "kaushik s programmer", "kaushik s resume", "kaushik s experience", "kaushik s achievements", "kaushik s skills"
+  ],
+  openGraph: {
+    title: "Kaushik S – Portfolio",
+    description: "Poet at heart, developer by trade. Explore my work, blog, and more.",
+    url: "https://kaushikieee.me/",
+    siteName: "Kaushik S Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kaushik S – Portfolio",
+    description: "Poet at heart, developer by trade. Explore my work, blog, and more.",
+    images: ["/og-image.png"],
+  },
+};
 
-export default function Portfolio() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [currentPage, setCurrentPage] = useState("home")
-
-  useEffect(() => {
-    // 8 second loading duration for longer experience
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 8000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <HomePage />
-      case "work":
-        return <WorkPage />
-      case "blog":
-        return <BlogPage />
-      case "gallery":
-        return <GalleryPage />
-      default:
-        return <HomePage />
-    }
-  }
-
-  return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-dark-bg text-dark-text transition-colors duration-300">
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <LoadingScreen key="loading" />
-          ) : (
-            <motion.div
-              key="main"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="relative"
-            >
-              <FloatingNavbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-              <main className="pt-24">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentPage}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {renderPage()}
-                  </motion.div>
-                </AnimatePresence>
-              </main>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </ThemeProvider>
-  )
+export default function Page() {
+  return <div>Welcome to Kaushik S – Portfolio!</div>;
 }
