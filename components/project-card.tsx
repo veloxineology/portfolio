@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useState } from "react"
 import { Github, ExternalLink } from "lucide-react"
 
@@ -25,18 +24,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const [isFlipped, setIsFlipped] = useState(false)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="relative h-80 perspective-1000"
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
+    <div
+      className="project-card"
+      onClick={() => setIsFlipped(!isFlipped)}
     >
-      <motion.div
+      <div
         className="relative w-full h-full preserve-3d cursor-pointer"
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
       >
         {/* Front of card */}
         <div className="absolute inset-0 backface-hidden backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl overflow-hidden">
@@ -94,6 +87,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
