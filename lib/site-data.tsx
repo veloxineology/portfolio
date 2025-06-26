@@ -188,62 +188,6 @@ export const siteData = {
 
   work: {
     visible: true,
-    projects: [
-      {
-        id: "1",
-        title: "Design System Kit",
-        description: "A comprehensive design system with React components, design tokens, and documentation.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["React", "TypeScript", "Storybook", "Figma"],
-        githubUrl: "https://github.com/kaushik/design-system",
-        liveUrl: "https://design-system.kaushik.dev",
-      },
-      {
-        id: "2",
-        title: "Code Editor Theme",
-        description: "A minimal dark theme for VS Code with carefully crafted syntax highlighting.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["JSON", "VS Code API", "Color Theory"],
-        githubUrl: "https://github.com/kaushik/vscode-theme",
-        liveUrl: "https://marketplace.visualstudio.com/items?itemName=kaushik.minimal-dark",
-      },
-      {
-        id: "3",
-        title: "API Documentation Tool",
-        description: "Interactive API documentation generator with live examples and testing capabilities.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["Next.js", "MDX", "OpenAPI", "Tailwind"],
-        githubUrl: "https://github.com/kaushik/api-docs",
-        liveUrl: "https://api-docs.kaushik.dev",
-      },
-      {
-        id: "4",
-        title: "Portfolio Template",
-        description: "A clean, developer-focused portfolio template with dark mode and responsive design.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["React", "Framer Motion", "Tailwind", "TypeScript"],
-        githubUrl: "https://github.com/kaushik/portfolio-template",
-        liveUrl: "https://portfolio-template.kaushik.dev",
-      },
-      {
-        id: "5",
-        title: "Terminal Dashboard",
-        description: "A terminal-inspired dashboard for monitoring system metrics and logs.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["Node.js", "WebSocket", "Chart.js", "Express"],
-        githubUrl: "https://github.com/kaushik/terminal-dashboard",
-        liveUrl: "https://terminal.kaushik.dev",
-      },
-      {
-        id: "6",
-        title: "Icon Library",
-        description: "A collection of minimal, consistent icons for web and mobile applications.",
-        image: "/placeholder.svg?height=200&width=300",
-        techStack: ["SVG", "React", "Figma", "npm"],
-        githubUrl: "https://github.com/kaushik/icons",
-        liveUrl: "https://icons.kaushik.dev",
-      },
-    ],
   },
 
   blog: {
