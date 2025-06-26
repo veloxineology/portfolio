@@ -48,7 +48,7 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="pt-0 md:pt-20 pb-20 md:pb-0 min-h-screen">
+            <div className="pt-0 md:pt-32 pb-20 md:pb-0 min-h-screen">
               {children}
             </div>
           </motion.div>
