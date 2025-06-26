@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePage from "@/components/home-page";
 
 export const metadata = {
   title: "Kaushik S – Portfolio",
@@ -30,5 +31,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <div>Welcome to Kaushik S – Portfolio!</div>;
+  return <HomePage />;
 }
