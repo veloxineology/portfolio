@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Calendar, Github, Linkedin, Mail, MapPin, Clock } from "lucide-react"
 import { useState, useEffect } from "react"
 import { siteData } from "@/lib/site-data"
+import { imagePaths } from "@/lib/image-paths"
 
 export default function HeroSection() {
   const [currentTime, setCurrentTime] = useState(new Date())
@@ -67,7 +68,9 @@ export default function HeroSection() {
             <div className="relative w-32 h-32 mx-auto mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full blur-lg opacity-30"></div>
               <img
-                src={hero.profileImage || "/placeholder.svg?height=128&width=128"}
+                src={imagePaths.profile.about.path || imagePaths.fallback.path}
+                width={imagePaths.profile.about.width || imagePaths.fallback.width}
+                height={imagePaths.profile.about.height || imagePaths.fallback.height}
                 alt="Kaushik"
                 className="relative w-full h-full rounded-full object-cover border-4 border-white/10 shadow-2xl"
               />

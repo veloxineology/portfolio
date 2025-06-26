@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { siteData } from "@/lib/site-data"
+import { imagePaths } from "@/lib/image-paths"
 
 const ITEMS_PER_PAGE = 6
 
@@ -35,28 +36,33 @@ export default function GalleryPage() {
           <h1 className="text-3xl font-mono font-bold text-primary mb-8">// Gallery</h1>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {currentItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="gallery-card"
-                whileHover={{
-                  scale: 1.01,
-                  boxShadow: "0 0 12px rgba(0, 255, 150, 0.3)",
-                }}
-              >
-                <img
-                  src={item.image || "/placeholder.svg?height=250&width=300"}
-                  alt={item.title}
-                  className="w-full h-48 object-cover rounded border border-border mb-3"
-                />
-                <h3 className="text-sm font-mono font-semibold text-primary mb-1">{item.title}</h3>
-                <p className="text-xs font-mono text-secondary mb-2">{item.description}</p>
-                <span className="text-xs font-mono text-accent">#{item.category}</span>
-              </motion.div>
-            ))}
+            {currentItems.map((item, index) => {
+              const imageData = imagePaths.gallery.find(img => img.id === item.id) || imagePaths.fallback
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="gallery-card"
+                  whileHover={{
+                    scale: 1.01,
+                    boxShadow: "0 0 12px rgba(0, 255, 150, 0.3)",
+                  }}
+                >
+                  <img
+                    src={imageData.path}
+                    width={imageData.width}
+                    height={imageData.height}
+                    alt={item.title}
+                    className="w-full h-48 object-cover rounded border border-border mb-3"
+                  />
+                  <h3 className="text-sm font-mono font-semibold text-primary mb-1">{item.title}</h3>
+                  <p className="text-xs font-mono text-secondary mb-2">{item.description}</p>
+                  <span className="text-xs font-mono text-accent">#{item.category}</span>
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* Pagination */}

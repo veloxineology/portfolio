@@ -5,6 +5,7 @@ import { Github, Mail, Camera, MessageCircle } from "lucide-react"
 import { siteData } from "@/lib/site-data"
 import SpotifyWidget from "@/components/spotify-widget"
 import CurrentlyDoing from "@/components/currently-doing"
+import { imagePaths } from "@/lib/image-paths"
 
 export default function HomePage() {
   const { home, about } = siteData
@@ -27,7 +28,9 @@ export default function HomePage() {
                 <div className="relative flex-shrink-0">
                   <div className="w-24 h-24 border-2 border-accent rounded-lg overflow-hidden font-mono">
                     <img
-                      src={about.profileImage || "/placeholder.svg?height=96&width=96"}
+                      src={imagePaths.profile.about.path || imagePaths.fallback.path}
+                      width={imagePaths.profile.about.width || imagePaths.fallback.width}
+                      height={imagePaths.profile.about.height || imagePaths.fallback.height}
                       alt="Kaushik"
                       className="w-full h-full object-cover"
                     />

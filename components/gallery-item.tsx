@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Star } from "lucide-react"
+import { imagePaths } from "@/lib/image-paths"
 
 interface GalleryImage {
   id: string
@@ -19,6 +20,8 @@ interface GalleryItemProps {
 }
 
 export default function GalleryItem({ image, index, isFavorite, onToggleFavorite, onOpenLightbox }: GalleryItemProps) {
+  const imageData = imagePaths.gallery.find(img => img.id === image.id) || imagePaths.fallback
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -29,7 +32,9 @@ export default function GalleryItem({ image, index, isFavorite, onToggleFavorite
     >
       <div className="relative backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl overflow-hidden">
         <img
-          src={image.src || "/placeholder.svg"}
+          src={imageData.path}
+          width={imageData.width}
+          height={imageData.height}
           alt={image.caption}
           className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
         />
