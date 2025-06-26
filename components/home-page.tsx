@@ -5,7 +5,6 @@ import { Github, Mail, Camera, MessageCircle } from "lucide-react"
 import { siteData } from "@/lib/site-data"
 import SpotifyWidget from "@/components/spotify-widget"
 import CurrentlyDoing from "@/components/currently-doing"
-import FloatingNavbar from "./floating-navbar"
 import { useState } from "react"
 
 export default function HomePage() {
@@ -14,7 +13,6 @@ export default function HomePage() {
 
   return (
     <>
-      <FloatingNavbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
