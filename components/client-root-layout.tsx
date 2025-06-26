@@ -4,7 +4,18 @@ import FloatingNavbar from "@/components/floating-navbar";
 import LoadingScreen from "@/components/loading-screen";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+function PrefetchAllRoutes() {
+  const router = useRouter();
+  useEffect(() => {
+    router.prefetch("/work");
+    router.prefetch("/blog");
+    router.prefetch("/gallery");
+    router.prefetch("/");
+  }, [router]);
+  return null;
+}
 
 export default function ClientRootLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -34,6 +45,7 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
 
   return (
     <ThemeProvider>
+      <PrefetchAllRoutes />
       <FloatingNavbar />
       <AnimatePresence mode="wait">
         {loading && !hasLoaded ? (
