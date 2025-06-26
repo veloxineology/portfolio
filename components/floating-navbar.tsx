@@ -18,10 +18,13 @@ export default function FloatingNavbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed bottom-0 left-0 right-0 w-full z-50 glass-nav md:top-6 md:bottom-auto md:left-1/2 md:right-auto md:w-auto md:max-w-xl md:transform md:-translate-x-1/2"
+      className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 glass-nav max-w-xl w-full md:w-auto md:max-w-2xl rounded-2xl shadow-2xl"
+      style={{
+        // Always bottom center, like a dock
+      }}
     >
       <div className="flex items-center justify-between w-full px-6 py-3">
         <div className="flex gap-2 mx-auto">
@@ -30,11 +33,12 @@ export default function FloatingNavbar() {
               key={item.id}
               onClick={() => router.push(item.href)}
               className={`nav-item relative`}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.12 }}
               whileTap={{ scale: 0.95 }}
+              style={{ borderRadius: '1rem' }}
             >
-              <item.icon size={16} />
-              <span className="font-mono text-xs">{item.label}</span>
+              <item.icon size={22} />
+              <span className="font-mono text-xs hidden md:inline">{item.label}</span>
             </motion.button>
           ))}
         </div>
@@ -43,12 +47,13 @@ export default function FloatingNavbar() {
           <motion.button
             onClick={toggleTheme}
             className="nav-item"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.12 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle theme"
+            style={{ borderRadius: '1rem' }}
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            <span className="font-mono text-xs">Theme</span>
+            {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
+            <span className="font-mono text-xs hidden md:inline">Theme</span>
           </motion.button>
         </div>
       </div>
