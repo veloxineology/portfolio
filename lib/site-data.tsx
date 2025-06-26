@@ -45,8 +45,8 @@ export const siteData = {
     longBio:
       "I'm Kaushik, a design engineer with 5+ years of experience building products that users love. I started as a frontend developer and gradually moved into design, finding my sweet spot at the intersection of both disciplines. I believe great products come from understanding both the technical constraints and user needs. Currently focused on building design systems and developer tools, particularly interested in how AI can enhance the design-to-code workflow.",
     location: "San Francisco, CA (Asia/Kolkata timezone)",
-    signatureEmoji: "🧠✨",
-    profileImage: "/placeholder.svg?height=120&width=120",
+    signatureEmoji: "",
+    profileImage: "/profile.jpg?height=120&width=120",
 
     // Spotify integration
     nowPlaying: {
