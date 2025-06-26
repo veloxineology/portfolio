@@ -21,10 +21,7 @@ export default function FloatingNavbar() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 glass-nav max-w-xl w-full md:w-auto md:max-w-2xl rounded-2xl shadow-2xl"
-      style={{
-        // Always bottom center, like a dock
-      }}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-nav w-auto max-w-lg rounded-2xl shadow-2xl"
     >
       <div className="flex items-center justify-between w-full px-6 py-3">
         <div className="flex gap-2 mx-auto">
