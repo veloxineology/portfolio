@@ -12,6 +12,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  title: "Kaushik S - Student & Developer Portfolio",
+  description: "Poet at heart, with an obsessive devotion to precision—every word, every pixel, placed with purpose in pursuit of perfection. Explore my projects, blog, and creative work.",
   keywords: [
     "kaushikieee",
     "kaushikieee portfolio",
