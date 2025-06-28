@@ -4,7 +4,12 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import ClientRootLayout from "@/components/client-root-layout"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial']
+})
 
 export const metadata: Metadata = {
   keywords: [
@@ -69,6 +74,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
+        {/* Preload critical resources */}
+        <link rel="preload" href="/profile.jpg" as="image" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
       <body className={inter.className}>
         <ClientRootLayout>{children}</ClientRootLayout>
