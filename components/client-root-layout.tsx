@@ -1,24 +1,14 @@
 "use client"
 import { ThemeProvider } from "@/components/theme-provider"
 import type React from "react"
-import FloatingNavbar from "@/components/floating-navbar"
 import LoadingScreen from "@/components/loading-screen"
 import { useEffect, useRef, useState } from "react"
-import { useRouter } from "next/navigation"
 
 // Preload all page components and data
 function PreloadAllContent() {
-  const router = useRouter()
-
   useEffect(() => {
     const preloadEverything = async () => {
       try {
-        // Prefetch all routes immediately
-        const routes = ["/", "/work", "/blog", "/gallery"]
-
-        // Prefetch all routes in parallel
-        await Promise.all(routes.map((route) => router.prefetch(route)))
-
         // Preload all dynamic imports and data
         await Promise.all([
           // Preload page components
@@ -62,7 +52,7 @@ function PreloadAllContent() {
     }
 
     preloadEverything()
-  }, [router])
+  }, [])
 
   return null
 }
@@ -82,7 +72,7 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
         setHasLoaded(true)
         isFirstLoad.current = false
         console.log("🚀 Site fully loaded and ready")
-      }, 2500) // Reduced time since we're preloading everything
+      }, 2500)
 
       return () => clearTimeout(timer)
     } else {
@@ -93,7 +83,6 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
   return (
     <ThemeProvider>
       <PreloadAllContent />
-      <FloatingNavbar />
       {loading && !hasLoaded ? (
         <LoadingScreen />
       ) : (
