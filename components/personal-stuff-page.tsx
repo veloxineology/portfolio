@@ -4,6 +4,11 @@ import { motion } from "framer-motion"
 import { ArrowLeft, Calendar, Heart } from "lucide-react"
 import { protectedData } from "@/lib/protected-data"
 
+// Markdown parser for italic text
+const parseMarkdown = (text: string): string => {
+  return text.replace(/\*(.*?)\*/g, "<em>$1</em>")
+}
+
 interface PersonalStuffPageProps {
   onBack: () => void
 }
@@ -61,7 +66,7 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
                 <ul className="space-y-2">
                   {section.content.map((item, itemIndex) => (
                     <li key={itemIndex} className="text-xs font-mono text-secondary leading-relaxed">
-                      • {item}
+                      • <span dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }} />
                     </li>
                   ))}
                 </ul>

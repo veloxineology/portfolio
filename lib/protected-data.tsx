@@ -20,10 +20,10 @@ export const protectedData = {
         emoji: "🤫",
         content: [
           "Okay, so on June 22nd of 2025, she sent me this.",
-          "If something ever goes wrong (IF not WHEN (I hope nothing ever goes wrong)), you’ll have such a hard time dealing with everything you create because I’m everywhere in terms of everything. You want to log into something? The password is related to me. You want to use chat gpt for something? Chat gpt believes you’re obsessed with me. You want to see your website? I’m the ‘her’. You want to listen to music? You listen to my playlists. You want to go to school? Everyone is convinced we’re married or smth atp. I’m not saying I’ll be completely fine if something ever goes wrong, but maybe it’s because I’m one bitch, but though I’ll take your opinion or Keerthana’s opinion or my parents opinion, I’ll end up doing whatever I like only",
-          "And honestly... I just don’t know what to do right now.",
-          "I don’t know where this is going, or what she’s thinking.",
-          "But even if things go south... maybe I’ll figure it out somehow I guess.",
+          "*If something ever goes wrong (IF not WHEN (I hope nothing ever goes wrong)), you'll have such a hard time dealing with everything you create because I'm everywhere in terms of everything. You want to log into something? The password is related to me. You want to use chat gpt for something? Chat gpt believes you're obsessed with me. You want to see your website? I'm the 'her'. You want to listen to music? You listen to my playlists. You want to go to school? Everyone is convinced we're married or smth atp. I'm not saying I'll be completely fine if something ever goes wrong, but maybe it's because I'm one bitch, but though I'll take your opinion or Keerthana's opinion or my parents opinion, I'll end up doing whatever I like only*",
+          "And honestly... I just don't know what to do right now.",
+          "I don't know where this is going, or what she's thinking.",
+          "But even if things go south... maybe I'll figure it out somehow I guess.",
         ],
       },
       {
