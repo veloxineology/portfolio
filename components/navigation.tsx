@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "next-themes"
 import { Sun, Moon } from "lucide-react"
 
 const navItems = [
@@ -18,7 +18,13 @@ interface NavigationProps {
 }
 
 export default function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+
+  const toggleTheme = () => {
+    if (theme === "light") setTheme("dark")
+    else if (theme === "dark") setTheme("system")
+    else setTheme("light")
+  }
 
   return (
     <motion.nav
@@ -60,7 +66,7 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+          {theme === "light" ? <Moon size={20} /> : theme === "dark" ? <Sun size={20} /> : <Sun size={20} />}
         </motion.button>
       </div>
     </motion.nav>

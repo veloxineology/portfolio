@@ -85,7 +85,6 @@ const nextConfig = {
   },
 
   // Build optimizations
-  swcMinify: true,
   poweredByHeader: false,
   compress: true,
 
