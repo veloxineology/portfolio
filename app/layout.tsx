@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import ClientRootLayout from "@/components/client-root-layout"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -12,59 +12,57 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Kaushik S - Student & Developer Portfolio",
-  description: "Poet at heart, with an obsessive devotion to precision—every word, every pixel, placed with purpose in pursuit of perfection. Explore my projects, blog, and creative work.",
-  keywords: [
-    "kaushikieee",
-    "kaushikieee portfolio",
-    "kaushikieee developer",
-    "kaushikieee blog",
-    "kaushikieee projects",
-    "kaushikieee work",
-    "kaushikieee poetry",
-    "kaushikieee tech stack",
-    "kaushikieee github",
-    "kaushikieee contact",
-    "kaushikieee email",
-    "kaushikieee website",
-    "kaushikieee open source",
-    "kaushikieee india",
-    "kaushikieee software engineer",
-    "kaushikieee frontend developer",
-    "kaushikieee backend developer",
-    "kaushikieee full stack",
-    "kaushikieee creative",
-    "kaushikieee coder",
-    "kaushikieee programmer",
-    "kaushikieee resume",
-    "kaushikieee experience",
-    "kaushikieee achievements",
-    "kaushikieee skills",
-    "ghostgms",
-    "ghostgms github",
-    "ghostgms portfolio",
-    "ghostgms project",
-    "ghostgms veloxineology",
-    "veloxineologylabs portfolio",
-    "veloxineologylabs",
-    "veloxineology",
-    "veloxineology labs",
-    "veloxineology github",
-    "veloxineology labs portfolio",
-    "veloxineology labs github",
-    "veloxineology open source",
-    "veloxineology projects",
-    "veloxineology developer",
-    "veloxineology blog",
-    "veloxineology work"
-  ],
+  title: "Kaushik S - Portfolio",
+  description: "Student & Developer. Poet at heart, with an obsessive devotion to precision—every word, every pixel, placed with purpose in pursuit of perfection.",
+  keywords: ["kaushikieee", "portfolio", "developer", "designer", "student", "react", "next.js", "typescript"],
+  authors: [{ name: "Kaushik S" }],
+  creator: "Kaushik S",
+  publisher: "Kaushik S",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://kaushikieee.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Kaushik S - Portfolio",
+    description: "Student & Developer. Poet at heart, with an obsessive devotion to precision.",
+    url: 'https://kaushikieee.vercel.app',
+    siteName: 'Kaushik S Portfolio',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Kaushik S Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
   twitter: {
-    card: "summary_large_image",
-    site: "@kaushikieee",
-    title: "kaushikieee Portfolio",
-    description: "Projects, blog, and more by kaushikieee.",
-    images: ["/og-image.png"]
-  }
+    card: 'summary_large_image',
+    title: "Kaushik S - Portfolio",
+    description: "Student & Developer. Poet at heart, with an obsessive devotion to precision.",
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
 }
 
 export default function RootLayout({
@@ -73,16 +71,69 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/png" href="/favicon.png" />
         {/* Preload critical resources */}
-        <link rel="preload" href="/profile.jpg" as="image" />
+        <link rel="preload" href="/api/spotify/now-playing" as="fetch" crossOrigin="anonymous" />
+        
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.spotify.com" />
+        
+        {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//api.spotify.com" />
+        
+        {/* Resource hints for better loading */}
+        <link rel="preload" href="/profile.jpg" as="image" />
+        
+        {/* Security headers */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        
+        {/* Performance optimizations */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="light dark" />
+        
+        {/* PWA support */}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        {/* Structured data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Kaushik S",
+              "jobTitle": "Student & Developer",
+              "description": "Poet at heart, with an obsessive devotion to precision",
+              "url": "https://kaushikieee.vercel.app",
+              "sameAs": [
+                "https://github.com/veloxineology",
+                "https://instagram.com/kaushikieee"
+              ],
+              "knowsAbout": [
+                "React", "TypeScript", "Next.js", "Design Systems", "UI/UX"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={inter.className}>
-        <ClientRootLayout>{children}</ClientRootLayout>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
