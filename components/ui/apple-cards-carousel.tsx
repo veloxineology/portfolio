@@ -48,7 +48,7 @@ export const Card = ({ card, index }: CardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
+        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
         isHovered && "scale-105",
         isSelected && "scale-110"
       )}
