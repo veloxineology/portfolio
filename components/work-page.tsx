@@ -4,6 +4,7 @@ import { ExternalLink, Github, ChevronLeft, ChevronRight, Search } from "lucide-
 import { useState, useMemo, useEffect } from "react"
 import { projectsData } from "@/lib/projects-data"
 import FloatingDock from "@/components/floating-navbar"
+import SpotlightCard from "@/components/SpotlightCard";
 
 const PROJECTS_PER_PAGE = 6
 
@@ -113,10 +114,7 @@ export default function WorkPage() {
             {currentProjects.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {currentProjects.map((project, index) => (
-                  <div
-                    key={project.slug}
-                    className="project-card"
-                  >
+                  <SpotlightCard key={project.slug} className="project-card">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="text-3xl">{project.emoji}</span>
                       <h3 className="text-lg font-bold text-primary">{project.title}</h3>
@@ -164,7 +162,7 @@ export default function WorkPage() {
                         </a>
                       )}
                     </div>
-                  </div>
+                  </SpotlightCard>
                 ))}
               </div>
             ) : (
