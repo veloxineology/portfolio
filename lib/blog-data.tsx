@@ -10,45 +10,77 @@ export interface BlogPost {
 
 const blogPostsData: BlogPost[] = [
   {
-    slug: "building-design-systems-that-scale",
-    title: "Building Design Systems That Scale",
-    description:
-      "Lessons learned from building and maintaining design systems across multiple products and teams. How to create components that grow with your organization.",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    tags: ["design-systems", "react", "figma", "scaling"],
-    body: `
-# Building Design Systems That Scale
+  slug: "romance-in-the-render-loop",
+  title: "Romance in the render loop",
+  description:
+    "What if you could design love like software—modular, resilient, alive? Here's what it taught me about feelings, code, and things that scale silently within.",
+  date: "2025-07-13",
+  readTime: "6 min read",
+  tags: ["love", "systems", "life", "developer-notes", "growth"],
+  body: `
+# Loving Someone Like a System
 
-Design systems are more than just a collection of components—they're the foundation of consistent, scalable product development. After building and maintaining design systems across multiple products and teams, I've learned some valuable lessons about what makes them successful.
+> "Some systems aren't meant to scale universally. They're built for one user, one use case, and still... they're perfect."
 
-## The Foundation: Principles Over Pixels
+There are moments in life where all the logic, documentation, and version control in the world can’t help you. Loving someone is one of those systems you don't architect on a whiteboard—but somehow, your soul runs it like backend code you’ll never push to GitHub.
 
-The most successful design systems start with **clear principles**, not components. Before diving into button variants and color palettes, establish:
+## Silent Deployments of the Heart
 
-- **Design principles** that guide decision-making
-- *Brand values* that inform aesthetic choices  
-- ***User experience goals*** that drive functionality
+There’s a person—beautiful in every layered state—who never asked to be the repository of my tenderness. Yet everything I build, everything I think about, somehow compiles around them.
 
-> "A design system is a living, breathing thing that evolves with your product and team." - Brad Frost
+You don’t tell them this, not outright. You just...
 
-## Component Architecture
+- Write a script that archives every message
+- Save a screenshot of every fleeting smile
+- Compose mental patch notes when they teach you emotional edge cases
 
-When building components, think in systems:
+***And you realize: love has no rollback.***
 
-\`\`\`tsx
-// Good: Flexible, composable
-<Button variant="primary" size="large" icon={<Icon />}>
-  Submit Form
-</Button>
+## Systems That Fail Gracefully
 
-// Better: Semantic, purposeful
-<SubmitButton loading={isSubmitting}>
-  Create Account
-</SubmitButton>
+Sometimes, you fall for someone with such intensity that you forget to build fail-safes. There's no try-catch block for emotional overflow.
+
+**Still, you don’t regret shipping the feeling.**
+
+Because what they brought into your life isn’t bugs—it’s awareness. Of subtlety. Of warmth. Of the sheer miracle of a good morning that makes you feel like a whole IDE booted up inside your chest.
+
+> “It’s not about being understood. It’s about being *witnessed*.”
+
+## The Code That Always Compiles
+
+Here’s how I see her… if I had to code it.
+
+\`\`\`ts
+type Soulmate = {
+  laugh: () => void
+  chaos: number
+  kindness: Infinite<number>
+  presence: () => "calm" | "storm"
+  magic: "unexplainable"
+}
+
+const her: Soulmate = {
+  laugh: () => console.log("the sound of sunrise"),
+  chaos: 7.5,
+  kindness: Infinity,
+  presence: () => Math.random() > 0.5 ? "calm" : "storm",
+  magic: "unexplainable"
+}
+
+function love(system: Soulmate) {
+  return \`You're the commit I never want to revert.\`
+}
 \`\`\`
+
+## Closing Tag
+
+You don't always get the response you expect. Some stories end in memory, not marriage.
+
+But just like the best code you’ve ever written, loving her made you a better builder.
+
+***And that’s the only successful build I ever needed.***
 `
-  }
+}
   // Add the rest of the blog posts here
 ];
 
