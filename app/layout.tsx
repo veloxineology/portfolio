@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import ClickSpark from "@/components/click-spark"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -130,6 +131,7 @@ export default function RootLayout({
           <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
             {children}
           </ClickSpark>
+          <Analytics />
 
         </ThemeProvider>
       </body>
