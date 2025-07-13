@@ -50,9 +50,9 @@ export default function FloatingNavbar() {
         <div
           ref={divRef}
           onMouseMove={handleMouseMove}
-          className="dock-nav px-6 py-3 shadow-lg"
+          className="dock-nav px-10 py-5 shadow-lg"
         >
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
