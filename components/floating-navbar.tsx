@@ -4,7 +4,10 @@ import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
+import React from "react"
 import { siteData } from "@/lib/site-data"
+import { usePathname } from "next/navigation"
+import "./SpotlightCard.css"
 
 export default function FloatingNavbar() {
   const { theme, setTheme } = useTheme()
@@ -26,16 +29,27 @@ export default function FloatingNavbar() {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const pathname = usePathname();
+  const divRef = React.useRef<HTMLDivElement>(null);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    divRef.current.style.setProperty("--mouse-x", `${x}px`);
+    divRef.current.style.setProperty("--mouse-y", `${y}px`);
+    divRef.current.style.setProperty("--spotlight-color", "rgba(100, 255, 218, 0.15)");
+  };
+
   return (
     <>
       {/* Floating Navigation Bar */}
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="fixed bottom-4 left-0 right-0 flex justify-center z-50"
-      >
-        <div className="bg-card/80 backdrop-blur-md border border-border rounded-full px-6 py-3 shadow-lg">
+      <div className="fixed bottom-4 left-0 right-0 flex justify-center z-50">
+        <div
+          ref={divRef}
+          onMouseMove={handleMouseMove}
+          className="card-spotlight bg-card/80 backdrop-blur-md border border-border rounded-full px-6 py-3 shadow-lg"
+        >
           <div className="flex items-center gap-6">
             {/* Theme Toggle */}
             <motion.button
@@ -60,7 +74,7 @@ export default function FloatingNavbar() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-mono text-secondary hover:text-accent transition-colors duration-200"
+                  className={`text-sm font-mono transition-colors duration-200 ${pathname === item.href ? "text-accent font-bold" : "text-secondary hover:text-accent"}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -80,7 +94,7 @@ export default function FloatingNavbar() {
             </motion.button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (

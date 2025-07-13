@@ -59,7 +59,7 @@ export default function WorkPage() {
   // Don't render until client-side
   if (!isClient) {
     return (
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 pb-40 main-content-mobile-pb">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse">
             <div className="h-8 bg-card rounded-lg w-1/3 mb-8"></div>
@@ -84,7 +84,7 @@ export default function WorkPage() {
 
   return (
     <>
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 pb-40 main-content-mobile-pb">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
