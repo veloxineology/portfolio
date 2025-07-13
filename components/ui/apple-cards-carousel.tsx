@@ -36,7 +36,6 @@ interface CardProps {
 }
 
 export const Card = ({ card, index }: CardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -48,12 +47,9 @@ export const Card = ({ card, index }: CardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
-        isHovered && "scale-105",
+        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
         isSelected && "scale-110"
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsSelected(!isSelected)}
     >
       {/* Image fills the card */}
@@ -62,7 +58,7 @@ export const Card = ({ card, index }: CardProps) => {
         alt={card.title}
         className="absolute inset-0 z-10 w-full h-full object-cover transition-transform duration-300 ease-out"
         style={{
-          transform: isHovered ? "scale(1.08)" : "scale(1)",
+          transform: isSelected ? "scale(1.08)" : "scale(1)",
         }}
       />
       {/* Gradient overlay at top */}
