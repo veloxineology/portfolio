@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/app/sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/app/sf-pro-display/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/app/sf-pro-display/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     /* Light theme colors */
@@ -33,13 +55,16 @@
   }
 
   body {
-    font-family: "JetBrains Mono", "IBM Plex Mono", "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     @apply bg-dark-bg text-dark-text transition-colors duration-300;
     /* Ensure smooth scrolling */
     scroll-behavior: smooth;
     /* Optimize animations */
     will-change: scroll-position;
+  }
+
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", "IBM Plex Mono", "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   }
 
   /* Smooth page transitions */
