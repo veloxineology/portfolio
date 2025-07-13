@@ -1,4 +1,5 @@
 import WorkPage from "@/components/work-page";
+import "@/components/SpotlightCard.css";
 
 export const metadata = {
   title: "Work & Projects - Kaushik S Portfolio",
