@@ -86,7 +86,7 @@ export default function GalleryPage() {
     <>
       <div className="min-h-screen py-8 pb-32 main-content-mobile-pb">
         <div className="px-8 md:px-16 lg:px-24">
-          <h1 className="text-3xl font-bold text-primary mb-8">// Gallery</h1>
+          <h1 className="text-3xl font-bold text-primary mb-8">// My Artwork</h1>
           <div className="w-full h-full">
             <Masonry
               items={items}

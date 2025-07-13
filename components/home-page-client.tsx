@@ -62,9 +62,9 @@ function HomeContent({ home, about }: { home: any; about: any }) {
   return (
     <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
       <div className="max-w-7xl mx-auto">
-        <div className="space-y-12">
+        <div className="space-y-6">
           {/* Hero Section - Full enhanced content */}
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
+          <div className="grid lg:grid-cols-3 gap-6 items-start">
             {/* Left: Profile & Intro */}
             <div className="lg:col-span-2 space-y-6">
               <div className="flex items-start gap-6">
