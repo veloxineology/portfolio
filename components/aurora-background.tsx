@@ -5,7 +5,103 @@ import "@/app/aurora.css";
 
 const VERT = `#version 300 es\nin vec2 position;\nvoid main() {\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n`;
 
-const FRAG = `#version 300 es\nprecision highp float;\n\nuniform float uTime;\nuniform float uAmplitude;\nuniform vec3 uColorStops[3];\nuniform vec2 uResolution;\nuniform float uBlend;\n\nout vec4 fragColor;\n\nvec3 permute(vec3 x) {\n  return mod(((x * 34.0) + 1.0) * x, 289.0);\n}\n\nfloat snoise(vec2 v){\n  const vec4 C = vec4(\n      0.211324865405187, 0.366025403784439,\n      -0.577350269189626, 0.024390243902439\n  );\n  vec2 i  = floor(v + dot(v, C.yy));\n  vec2 x0 = v - i + dot(i, C.xx);\n  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);\n  vec4 x12 = x0.xyxy + C.xxzz;\n  x12.xy -= i1;\n  i = mod(i, 289.0);\n\n  vec3 p = permute(\n      permute(i.y + vec3(0.0, i1.y, 1.0))\n    + i.x + vec3(0.0, i1.x, 1.0)\n  );\n\n  vec3 m = max(\n      0.5 - vec3(\n          dot(x0, x0),\n          dot(x12.xy, x12.xy),\n          dot(x12.zw, x12.zw)\n      ), \n      0.0\n  );\n  m = m * m;\n  m = m * m;\n\n  vec3 x = 2.0 * fract(p * C.www) - 1.0;\n  vec3 h = abs(x) - 0.5;\n  vec3 ox = floor(x + 0.5);\n  vec3 a0 = x - ox;\n  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);\n\n  vec3 g;\n  g.x  = a0.x  * x0.x  + h.x  * x0.y;\n  g.yz = a0.yz * x12.xz + h.yz * x12.yw;\n  return 130.0 * dot(m, g);\n}\n\nstruct ColorStop {\n  vec3 color;\n  float position;\n};\n\n#define COLOR_RAMP(colors, factor, finalColor) {              \\n  int index = 0;                                            \\n  for (int i = 0; i < 2; i++) {                               \\n     ColorStop currentColor = colors[i];                    \\n     bool isInBetween = currentColor.position <= factor;    \\n     index = int(mix(float(index), float(i), float(isInBetween))); \\n  }                                                         \\n  ColorStop currentColor = colors[index];                   \\n  ColorStop nextColor = colors[index + 1];                  \\n  float range = nextColor.position - currentColor.position; \\n  float lerpFactor = (factor - currentColor.position) / range; \\n  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \\n}\n\nvoid main() {\n  vec2 uv = gl_FragCoord.xy / uResolution;\n  \n  ColorStop colors[3];\n  colors[0] = ColorStop(uColorStops[0], 0.0);\n  colors[1] = ColorStop(uColorStops[1], 0.5);\n  colors[2] = ColorStop(uColorStops[2], 1.0);\n  \n  vec3 rampColor;\n  COLOR_RAMP(colors, uv.x, rampColor);\n  \n  float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;\n  height = exp(height);\n  height = (uv.y * 2.0 - height + 0.2);\n  float intensity = 0.6 * height;\n  \n  float midPoint = 0.20;\n  float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);\n  \n  vec3 auroraColor = intensity * rampColor;\n  \n  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);\n}\n`;
+const FRAG = `#version 300 es
+precision highp float;
+
+uniform float uTime;
+uniform float uAmplitude;
+uniform vec3 uColorStops[3];
+uniform vec2 uResolution;
+uniform float uBlend;
+
+out vec4 fragColor;
+
+vec3 permute(vec3 x) {
+  return mod(((x * 34.0) + 1.0) * x, 289.0);
+}
+
+float snoise(vec2 v){
+  const vec4 C = vec4(
+      0.211324865405187, 0.366025403784439,
+      -0.577350269189626, 0.024390243902439
+  );
+  vec2 i  = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod(i, 289.0);
+
+  vec3 p = permute(
+      permute(i.y + vec3(0.0, i1.y, 1.0))
+    + i.x + vec3(0.0, i1.x, 1.0)
+  );
+
+  vec3 m = max(
+      0.5 - vec3(
+          dot(x0, x0),
+          dot(x12.xy, x12.xy),
+          dot(x12.zw, x12.zw)
+      ), 
+      0.0
+  );
+  m = m * m;
+  m = m * m;
+
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+
+  vec3 g;
+  g.x  = a0.x  * x0.x  + h.x  * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+struct ColorStop {
+  vec3 color;
+  float position;
+};
+
+vec3 colorRamp(ColorStop[3] colors, float factor) {
+  int index = 0;
+  for (int i = 0; i < 2; i++) {
+    if (colors[i].position <= factor) {
+      index = i;
+    }
+  }
+  ColorStop currentColor = colors[index];
+  ColorStop nextColor = colors[index + 1];
+  float range = nextColor.position - currentColor.position;
+  float lerpFactor = (factor - currentColor.position) / range;
+  return mix(currentColor.color, nextColor.color, lerpFactor);
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  
+  ColorStop colors[3];
+  colors[0] = ColorStop(uColorStops[0], 0.0);
+  colors[1] = ColorStop(uColorStops[1], 0.5);
+  colors[2] = ColorStop(uColorStops[2], 1.0);
+  
+  vec3 rampColor = colorRamp(colors, uv.x);
+  
+  float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
+  height = exp(height);
+  height = (uv.y * 2.0 - height + 0.2);
+  float intensity = 0.6 * height;
+  
+  float midPoint = 0.20;
+  float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
+  
+  vec3 auroraColor = intensity * rampColor;
+  
+  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+}
+`;
 
 export default function AuroraBackground(props: any) {
   const {
@@ -101,5 +197,5 @@ export default function AuroraBackground(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="aurora-container" style={{ border: '2px solid red' }} />;
+  return <div ref={ctnDom} className="aurora-container" />;
 } 
