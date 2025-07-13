@@ -54,27 +54,20 @@ export default function GalleryPage() {
     )
   }
 
-  // Example images for Masonry
+  // Example images for Masonry (filled grid)
   const items = [
-    {
-      id: "1",
-      img: "https://picsum.photos/id/1015/600/900?grayscale",
-      url: "https://example.com/one",
-      height: 400,
-    },
-    {
-      id: "2",
-      img: "https://picsum.photos/id/1011/600/750?grayscale",
-      url: "https://example.com/two",
-      height: 250,
-    },
-    {
-      id: "3",
-      img: "https://picsum.photos/id/1020/600/800?grayscale",
-      url: "https://example.com/three",
-      height: 600,
-    },
-    // ... more items
+    { id: "1", img: "https://picsum.photos/200/250?random=1", url: "https://picsum.photos/200/250?random=1", height: 250 },
+    { id: "2", img: "https://picsum.photos/200/300?random=2", url: "https://picsum.photos/200/300?random=2", height: 300 },
+    { id: "3", img: "https://picsum.photos/200/350?random=3", url: "https://picsum.photos/200/350?random=3", height: 350 },
+    { id: "4", img: "https://picsum.photos/200/400?random=4", url: "https://picsum.photos/200/400?random=4", height: 400 },
+    { id: "5", img: "https://picsum.photos/200/450?random=5", url: "https://picsum.photos/200/450?random=5", height: 450 },
+    { id: "6", img: "https://picsum.photos/200/500?random=6", url: "https://picsum.photos/200/500?random=6", height: 500 },
+    { id: "7", img: "https://picsum.photos/200/275?random=7", url: "https://picsum.photos/200/275?random=7", height: 275 },
+    { id: "8", img: "https://picsum.photos/200/325?random=8", url: "https://picsum.photos/200/325?random=8", height: 325 },
+    { id: "9", img: "https://picsum.photos/200/375?random=9", url: "https://picsum.photos/200/375?random=9", height: 375 },
+    { id: "10", img: "https://picsum.photos/200/425?random=10", url: "https://picsum.photos/200/425?random=10", height: 425 },
+    { id: "11", img: "https://picsum.photos/200/475?random=11", url: "https://picsum.photos/200/475?random=11", height: 475 },
+    { id: "12", img: "https://picsum.photos/200/525?random=12", url: "https://picsum.photos/200/525?random=12", height: 525 },
   ];
 
   return (
