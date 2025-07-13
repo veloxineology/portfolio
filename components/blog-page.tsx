@@ -20,9 +20,16 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
   const [blogPosts, setBlogPosts] = useState(getBlogPosts())
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Filter blog posts based on search query
   const filteredPosts = useMemo(() => {
+    if (!isClient || !blogPosts || !Array.isArray(blogPosts)) return []
     if (!searchQuery.trim()) return blogPosts
 
     const query = searchQuery.toLowerCase()
@@ -30,10 +37,10 @@ export default function BlogPage() {
       (post) =>
         post.title.toLowerCase().includes(query) ||
         post.description.toLowerCase().includes(query) ||
-        post.tags.some((tag: string) => tag.toLowerCase().includes(query)) ||
+        post.tags?.some((tag: string) => tag.toLowerCase().includes(query)) ||
         post.body.toLowerCase().includes(query)
     )
-  }, [searchQuery, blogPosts])
+  }, [searchQuery, blogPosts, isClient])
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE
@@ -84,6 +91,36 @@ export default function BlogPage() {
 
   if (showPersonalStuff) {
     return <PersonalStuffPage onBack={() => setShowPersonalStuff(false)} />
+  }
+
+  // Don't render until client-side
+  if (!isClient) {
+    return (
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
+        <div className="max-w-7xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-card rounded-lg w-1/3 mb-8"></div>
+            <div className="space-y-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="h-8 bg-card rounded-lg w-3/4 mb-4"></div>
+                  <div className="h-4 bg-card rounded-lg w-full mb-2"></div>
+                  <div className="h-4 bg-card rounded-lg w-5/6 mb-6"></div>
+                  <div className="flex gap-4 mb-4">
+                    <div className="h-4 bg-card rounded-lg w-24"></div>
+                    <div className="h-4 bg-card rounded-lg w-24"></div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="h-4 bg-card rounded-lg w-16"></div>
+                    <div className="h-4 bg-card rounded-lg w-16"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   if (selectedBlogSlug) {
@@ -153,7 +190,7 @@ export default function BlogPage() {
                     </div>
 
                     <div className="flex gap-3">
-                      {post.tags.map((tag: string) => (
+                      {post.tags?.map((tag: string) => (
                         <span key={tag} className="text-sm font-mono text-accent">
                           #{tag}
                         </span>
@@ -279,49 +316,4 @@ export default function BlogPage() {
   )
 }
 
-export const metadata = {
-  keywords: [
-    "kaushikieee",
-    "kaushikieee portfolio",
-    "kaushikieee developer",
-    "kaushikieee blog",
-    "kaushikieee projects",
-    "kaushikieee work",
-    "kaushikieee poetry",
-    "kaushikieee tech stack",
-    "kaushikieee github",
-    "kaushikieee contact",
-    "kaushikieee email",
-    "kaushikieee website",
-    "kaushikieee open source",
-    "kaushikieee india",
-    "kaushikieee software engineer",
-    "kaushikieee frontend developer",
-    "kaushikieee backend developer",
-    "kaushikieee full stack",
-    "kaushikieee creative",
-    "kaushikieee coder",
-    "kaushikieee programmer",
-    "kaushikieee resume",
-    "kaushikieee experience",
-    "kaushikieee achievements",
-    "kaushikieee skills",
-    "ghostgms",
-    "ghostgms github",
-    "ghostgms portfolio",
-    "ghostgms project",
-    "ghostgms veloxineology",
-    "veloxineologylabs portfolio",
-    "veloxineologylabs",
-    "veloxineology",
-    "veloxineology labs",
-    "veloxineology github",
-    "veloxineology labs portfolio",
-    "veloxineology labs github",
-    "veloxineology open source",
-    "veloxineology projects",
-    "veloxineology developer",
-    "veloxineology blog",
-    "veloxineology work"
-  ]
-};
+

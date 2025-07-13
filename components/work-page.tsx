@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Search } from "lucide-react"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { projectsData } from "@/lib/projects-data"
 import FloatingNavbar from "@/components/floating-navbar"
 
@@ -11,9 +11,16 @@ const PROJECTS_PER_PAGE = 6
 export default function WorkPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Filter projects based on search query
   const filteredProjects = useMemo(() => {
+    if (!isClient || !projectsData || !Array.isArray(projectsData)) return []
     if (!searchQuery.trim()) return projectsData
 
     const query = searchQuery.toLowerCase()
@@ -21,10 +28,10 @@ export default function WorkPage() {
       (project) =>
         project.title.toLowerCase().includes(query) ||
         project.description.toLowerCase().includes(query) ||
-        project.tech.some((tech) => tech.toLowerCase().includes(query)) ||
-        project.tags.some((tag) => tag.toLowerCase().includes(query)),
+        project.tech?.some((tech) => tech.toLowerCase().includes(query)) ||
+        project.tags?.some((tag) => tag.toLowerCase().includes(query)),
     )
-  }, [searchQuery])
+  }, [searchQuery, isClient])
 
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE)
   const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE
@@ -47,6 +54,32 @@ export default function WorkPage() {
 
   const goToNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
+  }
+
+  // Don't render until client-side
+  if (!isClient) {
+    return (
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
+        <div className="max-w-7xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-card rounded-lg w-1/3 mb-8"></div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="h-6 bg-card rounded-lg w-3/4 mb-4"></div>
+                  <div className="h-4 bg-card rounded-lg w-full mb-2"></div>
+                  <div className="h-4 bg-card rounded-lg w-5/6 mb-4"></div>
+                  <div className="flex gap-2 mb-4">
+                    <div className="h-4 bg-card rounded-lg w-16"></div>
+                    <div className="h-4 bg-card rounded-lg w-16"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -97,7 +130,7 @@ export default function WorkPage() {
                     <p className="text-sm font-mono text-secondary mb-4 leading-relaxed">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.slice(0, 3).map((tech) => (
+                      {project.tech?.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
                           className="px-2 py-1 bg-accent/10 text-accent text-xs font-mono rounded border border-accent/20"
@@ -105,7 +138,7 @@ export default function WorkPage() {
                           {tech}
                         </span>
                       ))}
-                      {project.tech.length > 3 && (
+                      {project.tech && project.tech.length > 3 && (
                         <span className="px-2 py-1 bg-muted/10 text-muted text-xs font-mono rounded">
                           +{project.tech.length - 3}
                         </span>
@@ -201,49 +234,4 @@ export default function WorkPage() {
   )
 }
 
-export const metadata = {
-  keywords: [
-    "kaushikieee",
-    "kaushikieee portfolio",
-    "kaushikieee developer",
-    "kaushikieee blog",
-    "kaushikieee projects",
-    "kaushikieee work",
-    "kaushikieee poetry",
-    "kaushikieee tech stack",
-    "kaushikieee github",
-    "kaushikieee contact",
-    "kaushikieee email",
-    "kaushikieee website",
-    "kaushikieee open source",
-    "kaushikieee india",
-    "kaushikieee software engineer",
-    "kaushikieee frontend developer",
-    "kaushikieee backend developer",
-    "kaushikieee full stack",
-    "kaushikieee creative",
-    "kaushikieee coder",
-    "kaushikieee programmer",
-    "kaushikieee resume",
-    "kaushikieee experience",
-    "kaushikieee achievements",
-    "kaushikieee skills",
-    "ghostgms",
-    "ghostgms github",
-    "ghostgms portfolio",
-    "ghostgms project",
-    "ghostgms veloxineology",
-    "veloxineologylabs portfolio",
-    "veloxineologylabs",
-    "veloxineology",
-    "veloxineology labs",
-    "veloxineology github",
-    "veloxineology labs portfolio",
-    "veloxineology labs github",
-    "veloxineology open source",
-    "veloxineology projects",
-    "veloxineology developer",
-    "veloxineology blog",
-    "veloxineology work"
-  ]
-};
+

@@ -1,0 +1,10 @@
+{
+  "/api/spotify/callback/route": "/api/spotify/callback",
+  "/_not-found/page": "/_not-found",
+  "/api/spotify/login/route": "/api/spotify/login",
+  "/api/spotify/now-playing/route": "/api/spotify/now-playing",
+  "/page": "/",
+  "/gallery/page": "/gallery",
+  "/blog/page": "/blog",
+  "/work/page": "/work"
+}

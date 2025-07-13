@@ -1,4 +1,4 @@
-import BlogPageServer from "@/components/blog-page-server";
+import BlogPage from "@/components/blog-page";
 
 export const metadata = {
   title: "Blog - Kaushik S Portfolio",
@@ -22,5 +22,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <BlogPageServer />;
+  return <BlogPage />;
 }

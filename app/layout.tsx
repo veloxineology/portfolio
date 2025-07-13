@@ -134,7 +134,9 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
-          <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18} children={children} />
+          <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
+            {children}
+          </ClickSpark>
 
         </ThemeProvider>
       </body>

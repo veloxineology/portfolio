@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, ArrowLeft, Search, Filter } from "lucide-react"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { siteData } from "@/lib/site-data"
 import GalleryItem from "@/components/gallery-item"
 import Lightbox from "@/components/lightbox"
@@ -13,6 +13,35 @@ const ITEMS_PER_PAGE = 6
 export default function GalleryPage() {
   const { gallery } = siteData
   const [currentPage, setCurrentPage] = useState(1)
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  // Don't render until client-side
+  if (!isClient) {
+    return (
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 main-content-mobile-pb">
+        <div className="max-w-6xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-card rounded-lg w-1/3 mb-8"></div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="h-48 bg-card rounded border border-border mb-3"></div>
+                  <div className="h-4 bg-card rounded-lg w-3/4 mb-1"></div>
+                  <div className="h-3 bg-card rounded-lg w-full mb-2"></div>
+                  <div className="h-3 bg-card rounded-lg w-1/4"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   const totalPages = Math.ceil(gallery.items.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
@@ -118,49 +147,4 @@ export default function GalleryPage() {
   )
 }
 
-export const metadata = {
-  keywords: [
-    "kaushikieee",
-    "kaushikieee portfolio",
-    "kaushikieee developer",
-    "kaushikieee blog",
-    "kaushikieee projects",
-    "kaushikieee work",
-    "kaushikieee poetry",
-    "kaushikieee tech stack",
-    "kaushikieee github",
-    "kaushikieee contact",
-    "kaushikieee email",
-    "kaushikieee website",
-    "kaushikieee open source",
-    "kaushikieee india",
-    "kaushikieee software engineer",
-    "kaushikieee frontend developer",
-    "kaushikieee backend developer",
-    "kaushikieee full stack",
-    "kaushikieee creative",
-    "kaushikieee coder",
-    "kaushikieee programmer",
-    "kaushikieee resume",
-    "kaushikieee experience",
-    "kaushikieee achievements",
-    "kaushikieee skills",
-    "ghostgms",
-    "ghostgms github",
-    "ghostgms portfolio",
-    "ghostgms project",
-    "ghostgms veloxineology",
-    "veloxineologylabs portfolio",
-    "veloxineologylabs",
-    "veloxineology",
-    "veloxineology labs",
-    "veloxineology github",
-    "veloxineology labs portfolio",
-    "veloxineology labs github",
-    "veloxineology open source",
-    "veloxineology projects",
-    "veloxineology developer",
-    "veloxineology blog",
-    "veloxineology work"
-  ]
-}
+
