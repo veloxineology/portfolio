@@ -57,13 +57,11 @@
   body {
     font-family: 'SF Pro Display', sans-serif;
     @apply bg-dark-bg text-dark-text transition-colors duration-300;
-    /* Ensure smooth scrolling */
     scroll-behavior: smooth;
-    /* Optimize animations */
     will-change: scroll-position;
   }
 
-  code, pre, .font-mono {
+  code, pre {
     font-family: "JetBrains Mono", "IBM Plex Mono", "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   }
 
