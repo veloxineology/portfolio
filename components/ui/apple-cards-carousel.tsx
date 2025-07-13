@@ -48,7 +48,7 @@ export const Card = ({ card, index }: CardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "relative h-[600px] w-full max-w-4xl rounded-3xl bg-white dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
+        "relative w-[320px] md:w-[420px] lg:w-[540px] aspect-[4/5] rounded-3xl bg-white dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out overflow-hidden flex-shrink-0",
         isHovered && "scale-105",
         isSelected && "scale-110"
       )}
@@ -56,34 +56,31 @@ export const Card = ({ card, index }: CardProps) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsSelected(!isSelected)}
     >
-      <div className="relative h-full w-full overflow-hidden rounded-3xl">
-        <img
-          src={card.src}
-          alt={card.title}
-          className="h-full w-full object-cover transition-transform duration-300 ease-out"
-          style={{
-            transform: isHovered ? "scale(1.1)" : "scale(1)",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <div className="mb-2 text-sm font-medium opacity-80">
-            {card.category}
-          </div>
-          <h3 className="text-xl font-bold">{card.title}</h3>
+      <img
+        src={card.src}
+        alt={card.title}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out z-0"
+        style={{
+          transform: isHovered ? "scale(1.08)" : "scale(1)",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 p-6 z-20">
+        <div className="mb-2 text-sm font-medium text-white/80 drop-shadow">
+          {card.category}
         </div>
-
-        {isSelected && (
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-3xl">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white dark:bg-neutral-800 rounded-2xl p-6 max-w-sm mx-4 max-h-96 overflow-y-auto">
-                {card.content}
-              </div>
-            </div>
-          </div>
-        )}
+        <h3 className="text-2xl font-bold text-white drop-shadow-lg leading-tight">
+          {card.title}
+        </h3>
       </div>
+      {/* Show expanded content on click */}
+      {isSelected && (
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl z-30 flex items-center justify-center">
+          <div className="bg-white dark:bg-neutral-800 rounded-2xl p-6 max-w-sm mx-4 max-h-96 overflow-y-auto">
+            {card.content}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -126,11 +123,13 @@ export const Carousel = ({ items }: CarouselProps) => {
   const scrollToIndex = (index: number) => {
     setCurrentIndex(index);
     if (carouselRef.current) {
-      const cardWidth = carouselRef.current.offsetWidth + 24; // card width + gap
-      carouselRef.current.scrollTo({
-        left: index * cardWidth,
-        behavior: "smooth",
-      });
+      const card = carouselRef.current.querySelectorAll('div[role="card"]')[index] as HTMLElement;
+      if (card) {
+        carouselRef.current.scrollTo({
+          left: card.offsetLeft,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -138,16 +137,19 @@ export const Carousel = ({ items }: CarouselProps) => {
     <div className="w-full mx-auto px-4">
       <div
         ref={carouselRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide py-8"
+        className="flex gap-8 overflow-x-auto scrollbar-hide py-8"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
         style={{ cursor: isDragging ? "grabbing" : "grab" }}
       >
-        {items}
+        {items.map((item, idx) => (
+          <div role="card" key={idx} className="flex-shrink-0">
+            {item}
+          </div>
+        ))}
       </div>
-      
       <div className="flex justify-center gap-2 mt-8">
         {items.map((_, index) => (
           <button
