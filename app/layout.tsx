@@ -5,8 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import ClickSpark from "@/components/click-spark"
 import { Analytics } from "@vercel/analytics/next"
-import GlassDockNavbar from "@/components/glass-dock-navbar"
-import MobileNavbar from "@/components/mobile-navbar"
+import FloatingNavbar from "@/components/floating-navbar"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -133,8 +132,7 @@ export default function RootLayout({
           <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
             {children}
           </ClickSpark>
-          <GlassDockNavbar />
-          <MobileNavbar />
+          <FloatingNavbar />
           <Analytics />
 
         </ThemeProvider>

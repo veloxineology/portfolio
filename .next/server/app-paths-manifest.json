@@ -1,8 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/spotify/callback/route": "app/api/spotify/callback/route.js",
-  "/api/spotify/login/route": "app/api/spotify/login/route.js",
   "/api/spotify/now-playing/route": "app/api/spotify/now-playing/route.js",
+  "/api/spotify/login/route": "app/api/spotify/login/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
   "/blog/page": "app/blog/page.js",
   "/gallery/page": "app/gallery/page.js",

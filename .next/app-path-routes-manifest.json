@@ -1,8 +1,8 @@
 {
-  "/_not-found/page": "/_not-found",
   "/api/spotify/callback/route": "/api/spotify/callback",
-  "/api/spotify/login/route": "/api/spotify/login",
   "/api/spotify/now-playing/route": "/api/spotify/now-playing",
+  "/api/spotify/login/route": "/api/spotify/login",
+  "/_not-found/page": "/_not-found",
   "/page": "/",
   "/blog/page": "/blog",
   "/gallery/page": "/gallery",
