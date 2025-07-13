@@ -36,30 +36,21 @@ interface CardProps {
 }
 
 export const Card = ({ card, index }: CardProps) => {
-  const [isSelected, setIsSelected] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useOutsideClick(cardRef, () => {
-    setIsSelected(false);
-  });
 
   return (
     <div
       ref={cardRef}
       className={cn(
-        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
-        isSelected && "scale-110"
+        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 transition-all duration-300 ease-out"
       )}
-      onClick={() => setIsSelected(!isSelected)}
     >
       {/* Image fills the card */}
       <img
         src={card.src}
         alt={card.title}
         className="absolute inset-0 z-10 w-full h-full object-cover transition-transform duration-300 ease-out"
-        style={{
-          transform: isSelected ? "scale(1.08)" : "scale(1)",
-        }}
+        style={{ transform: "scale(1)" }}
       />
       {/* Gradient overlay at top */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
@@ -72,14 +63,6 @@ export const Card = ({ card, index }: CardProps) => {
           {card.title}
         </div>
       </div>
-      {/* Show expanded content on click */}
-      {isSelected && (
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl z-30 flex items-center justify-center">
-          <div className="bg-white dark:bg-neutral-800 rounded-2xl p-6 max-w-sm mx-4 max-h-96 overflow-y-auto">
-            {card.content}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
