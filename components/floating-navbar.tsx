@@ -3,12 +3,18 @@
 import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { siteData } from "@/lib/site-data"
 
 export default function FloatingNavbar() {
   const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark")
@@ -50,7 +56,7 @@ export default function FloatingNavbar() {
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center gap-6">
-              {siteData.navigation.map((item) => (
+              {isClient && siteData.navigation?.map((item) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
@@ -86,7 +92,7 @@ export default function FloatingNavbar() {
         >
           <div className="bg-card/95 backdrop-blur-md border border-border rounded-lg px-6 py-4 shadow-lg">
             <div className="flex flex-col gap-4">
-              {siteData.navigation.map((item) => (
+              {isClient && siteData.navigation?.map((item) => (
                 <motion.a
                   key={item.href}
                   href={item.href}

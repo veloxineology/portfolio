@@ -74,9 +74,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preload critical resources */}
-        <link rel="preload" href="/api/spotify/now-playing" as="fetch" crossOrigin="anonymous" />
-        
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -87,12 +84,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//api.spotify.com" />
         
-        {/* Resource hints for better loading */}
-        <link rel="preload" href="/profile.jpg" as="image" />
-        
         {/* Security headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         
         {/* Performance optimizations */}
@@ -101,8 +94,8 @@ export default function RootLayout({
         <meta name="color-scheme" content="light dark" />
         
         {/* PWA support */}
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         
         {/* Structured data for SEO */}
         <script

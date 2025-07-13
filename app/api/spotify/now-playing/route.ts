@@ -36,6 +36,14 @@ async function getAccessToken() {
 
 export async function GET() {
   try {
+    // Check if Spotify credentials are configured
+    if (!process.env.SPOTIFY_REFRESH_TOKEN || !process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
+      return NextResponse.json({ 
+        isPlaying: false, 
+        message: "Spotify integration not configured" 
+      }, { status: 200 })
+    }
+
     const accessToken = await getAccessToken()
     const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
@@ -80,6 +88,10 @@ export async function GET() {
 
     return NextResponse.json(track)
   } catch (error) {
-    return NextResponse.json({ error: (error as Error).message || 'Failed to fetch from Spotify' }, { status: 500 })
+    // Return a graceful fallback instead of 500 error
+    return NextResponse.json({ 
+      isPlaying: false, 
+      message: "Unable to fetch current track" 
+    }, { status: 200 })
   }
 } 

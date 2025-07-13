@@ -190,6 +190,25 @@ export const siteData = {
     visible: true,
   },
 
+  navigation: [
+    {
+      href: "/",
+      label: "Home",
+    },
+    {
+      href: "/work",
+      label: "Work",
+    },
+    {
+      href: "/blog",
+      label: "Blog",
+    },
+    {
+      href: "/gallery",
+      label: "Gallery",
+    },
+  ],
+
   blog: {
     visible: true,
     posts: [
