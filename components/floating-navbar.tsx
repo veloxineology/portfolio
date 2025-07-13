@@ -7,12 +7,14 @@ import { useState, useEffect } from "react"
 import React from "react"
 import { siteData } from "@/lib/site-data"
 import { usePathname } from "next/navigation"
+import { useNavigation } from "@/hooks/use-navigation"
 import "./SpotlightCard.css"
 
 export default function FloatingNavbar() {
   const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isClient, setIsClient] = useState(false)
+  const { navigateTo } = useNavigation()
 
   // Ensure we're on the client side
   useEffect(() => {
@@ -71,15 +73,26 @@ export default function FloatingNavbar() {
             {/* Navigation Links */}
             <div className="hidden md:flex items-center gap-6">
               {isClient && siteData.navigation?.map((item) => (
-                <motion.a
+                <motion.button
                   key={item.href}
-                  href={item.href}
-                  className={`text-sm font-mono transition-colors duration-200 ${pathname === item.href ? "text-accent font-bold" : "text-secondary hover:text-accent"}`}
-                  whileHover={{ scale: 1.05 }}
+                  onClick={() => navigateTo(item.href)}
+                  className={`text-sm font-mono transition-all duration-300 relative ${pathname === item.href ? "text-accent font-bold" : "text-secondary hover:text-accent"}`}
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -2
+                  }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {item.label}
-                </motion.a>
+                  {pathname === item.href && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full"
+                      layoutId="activeTab"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
               ))}
             </div>
 
@@ -107,16 +120,18 @@ export default function FloatingNavbar() {
           <div className="bg-card/95 backdrop-blur-md border border-border rounded-lg px-6 py-4 shadow-lg">
             <div className="flex flex-col gap-4">
               {isClient && siteData.navigation?.map((item) => (
-                <motion.a
+                <motion.button
                   key={item.href}
-                  href={item.href}
+                  onClick={() => {
+                    navigateTo(item.href)
+                    setIsMenuOpen(false)
+                  }}
                   className="text-sm font-mono text-secondary hover:text-accent transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </motion.a>
+                </motion.button>
               ))}
             </div>
           </div>

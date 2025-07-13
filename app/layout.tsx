@@ -6,6 +6,8 @@ import { ThemeProvider } from "next-themes"
 import ClickSpark from "@/components/click-spark"
 import { Analytics } from "@vercel/analytics/next"
 import FloatingNavbar from "@/components/floating-navbar"
+import PageTransition from "@/components/page-transition"
+import NavigationProgress from "@/components/navigation-progress"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -129,12 +131,14 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
+          <NavigationProgress />
           <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </ClickSpark>
           <FloatingNavbar />
           <Analytics />
-
         </ThemeProvider>
       </body>
     </html>
