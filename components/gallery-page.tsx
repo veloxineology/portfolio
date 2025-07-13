@@ -37,14 +37,14 @@ export default function GalleryPage() {
   // Don't render until client-side
   if (!isClient) {
     return (
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 pb-40 main-content-mobile-pb">
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-8 pb-32 main-content-mobile-pb">
         <div className="max-w-6xl mx-auto">
           <div className="animate-pulse">
             <div className="h-8 bg-card rounded-lg w-1/3 mb-8"></div>
             <div className="flex gap-6 overflow-x-auto py-8">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="animate-pulse">
-                  <div className="h-[500px] w-[350px] bg-card rounded-3xl"></div>
+                  <div className="h-[600px] w-full max-w-4xl bg-card rounded-3xl"></div>
                 </div>
               ))}
             </div>
@@ -68,12 +68,12 @@ export default function GalleryPage() {
 
   return (
     <>
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 pb-40 main-content-mobile-pb">
+      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-8 pb-32 main-content-mobile-pb">
         <div className="max-w-6xl mx-auto">
           <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans mb-8">
             // Gallery
           </h2>
-          <div className="w-full h-full py-20">
+          <div className="w-full h-full py-8">
             <Carousel items={cards} />
           </div>
         </div>

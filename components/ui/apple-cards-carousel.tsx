@@ -48,7 +48,7 @@ export const Card = ({ card, index }: CardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "relative h-[500px] w-[350px] rounded-3xl bg-white dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
+        "relative h-[600px] w-full max-w-4xl rounded-3xl bg-white dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
         isHovered && "scale-105",
         isSelected && "scale-110"
       )}
@@ -126,7 +126,7 @@ export const Carousel = ({ items }: CarouselProps) => {
   const scrollToIndex = (index: number) => {
     setCurrentIndex(index);
     if (carouselRef.current) {
-      const cardWidth = 350 + 24; // card width + gap
+      const cardWidth = carouselRef.current.offsetWidth + 24; // card width + gap
       carouselRef.current.scrollTo({
         left: index * cardWidth,
         behavior: "smooth",
@@ -135,7 +135,7 @@ export const Carousel = ({ items }: CarouselProps) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4">
+    <div className="w-full mx-auto px-4">
       <div
         ref={carouselRef}
         className="flex gap-6 overflow-x-auto scrollbar-hide py-8"
