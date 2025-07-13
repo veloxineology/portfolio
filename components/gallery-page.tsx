@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { siteData } from "@/lib/site-data"
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel"
+import Masonry from "@/components/Masonry"
 import FloatingDock from "@/components/floating-navbar"
 
 const DummyContent = ({ item }: { item: any }) => {
@@ -54,24 +54,45 @@ export default function GalleryPage() {
     )
   }
 
-  // Transform gallery items to carousel format
-  const carouselData = gallery.items.map((item) => ({
-    category: item.category,
-    title: item.title,
-    src: item.image || "/image-not-found.png",
-    content: <DummyContent item={item} />,
-  }));
-
-  const cards = carouselData.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
-  ));
+  // Example images for Masonry
+  const items = [
+    {
+      id: "1",
+      img: "https://picsum.photos/id/1015/600/900?grayscale",
+      url: "https://example.com/one",
+      height: 400,
+    },
+    {
+      id: "2",
+      img: "https://picsum.photos/id/1011/600/750?grayscale",
+      url: "https://example.com/two",
+      height: 250,
+    },
+    {
+      id: "3",
+      img: "https://picsum.photos/id/1020/600/800?grayscale",
+      url: "https://example.com/three",
+      height: 600,
+    },
+    // ... more items
+  ];
 
   return (
     <>
       <div className="min-h-screen py-8 pb-32 main-content-mobile-pb">
         <h1 className="text-3xl font-bold text-primary mb-8 px-8 md:px-16 lg:px-24">// Gallery</h1>
         <div className="w-full h-full">
-          <Carousel items={cards} />
+          <Masonry
+            items={items}
+            ease="power3.out"
+            duration={0.6}
+            stagger={0.05}
+            animateFrom="bottom"
+            scaleOnHover={true}
+            hoverScale={0.95}
+            blurToFocus={true}
+            colorShiftOnHover={false}
+          />
         </div>
       </div>
       <FloatingDock />
