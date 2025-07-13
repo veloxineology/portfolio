@@ -5,7 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import ClickSpark from "@/components/click-spark"
 import { Analytics } from "@vercel/analytics/next"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 import PageTransition from "@/components/page-transition"
 import NavigationProgress from "@/components/navigation-progress"
 import AuroraBackground from "@/components/aurora-background";
@@ -141,7 +141,7 @@ export default function RootLayout({
               {children}
             </PageTransition>
           </ClickSpark>
-          <FloatingNavbar />
+          <FloatingDock />
           <Analytics />
         </ThemeProvider>
       </body>

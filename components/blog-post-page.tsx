@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-data"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 
 interface BlogPostPageProps {
   post: BlogPost
@@ -191,7 +191,7 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
           </motion.div>
         </div>
       </div>
-      <FloatingNavbar />
+      <FloatingDock />
     </>
   )
 }

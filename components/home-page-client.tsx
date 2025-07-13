@@ -6,7 +6,7 @@ import { Github, Mail, Camera, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import SpotifyWidget from "@/components/spotify-widget"
 import CurrentlyDoing from "@/components/currently-doing"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 import WorkPage from "@/components/work-page"
 import BlogPage from "@/components/blog-page"
 import GalleryPage from "@/components/gallery-page"
@@ -50,7 +50,7 @@ export default function HomePageClient({ home, about }: HomePageClientProps) {
 
   return (
     <>
-      <FloatingNavbar onSectionChange={setActiveSection} activeSection={activeSection} />
+      <FloatingDock />
       <div className="w-full">
         {renderSection()}
       </div>

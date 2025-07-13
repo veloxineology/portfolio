@@ -7,7 +7,7 @@ import { useState, useMemo, useEffect } from "react"
 import { getBlogPosts, BlogPost } from "@/lib/blog-data"
 import PersonalStuffPage from "@/components/personal-stuff-page"
 import BlogPostPage from "@/components/blog-post-page"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 
 const POSTS_PER_PAGE = 3
 
@@ -294,7 +294,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-      <FloatingNavbar />
+      <FloatingDock />
     </>
   )
 }

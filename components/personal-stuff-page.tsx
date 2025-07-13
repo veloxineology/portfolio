@@ -2,7 +2,7 @@
 
 import { ArrowLeft, Calendar, Heart } from "lucide-react"
 import { protectedData } from "@/lib/protected-data"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 import { FadeIn, FadeInUp, FadeInLeft } from "@/components/animation-wrapper"
 
 // Markdown parser for italic text
@@ -108,7 +108,7 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
           </FadeInUp>
         </div>
       </div>
-      <FloatingNavbar />
+      <FloatingDock />
     </>
   )
 }

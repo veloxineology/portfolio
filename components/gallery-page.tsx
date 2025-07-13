@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { siteData } from "@/lib/site-data"
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 
 const DummyContent = ({ item }: { item: any }) => {
   return (
@@ -76,7 +76,7 @@ export default function GalleryPage() {
           </div>
         </div>
       </div>
-      <FloatingNavbar />
+      <FloatingDock />
     </>
   )
 }

@@ -3,7 +3,7 @@
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Search } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
 import { projectsData } from "@/lib/projects-data"
-import FloatingNavbar from "@/components/floating-navbar"
+import FloatingDock from "@/components/floating-navbar"
 
 const PROJECTS_PER_PAGE = 6
 
@@ -216,7 +216,7 @@ export default function WorkPage() {
           </div>
         </div>
       </div>
-      <FloatingNavbar />
+      <FloatingDock />
     </>
   )
 }
