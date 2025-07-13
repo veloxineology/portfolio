@@ -1,10 +1,10 @@
 {
   "/api/spotify/login/route": "/api/spotify/login",
   "/api/spotify/callback/route": "/api/spotify/callback",
-  "/_not-found/page": "/_not-found",
   "/api/spotify/now-playing/route": "/api/spotify/now-playing",
+  "/_not-found/page": "/_not-found",
   "/page": "/",
-  "/work/page": "/work",
   "/gallery/page": "/gallery",
+  "/work/page": "/work",
   "/blog/page": "/blog"
 }

@@ -46,7 +46,7 @@ export default function FloatingNavbar() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
+        className="fixed bottom-4 left-0 right-0 flex justify-center z-50"
       >
         <div 
           ref={divRef}
@@ -106,7 +106,7 @@ export default function FloatingNavbar() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-40 md:hidden"
+          className="fixed bottom-20 left-0 right-0 flex justify-center z-40 md:hidden"
         >
           <div className="bg-card/95 backdrop-blur-md border border-border rounded-lg px-6 py-4 shadow-lg">
             <div className="flex flex-col gap-4">
