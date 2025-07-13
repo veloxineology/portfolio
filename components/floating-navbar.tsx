@@ -50,7 +50,7 @@ export default function FloatingNavbar() {
         <div
           ref={divRef}
           onMouseMove={handleMouseMove}
-          className="card-spotlight bg-card/80 backdrop-blur-xl border border-border rounded-full px-6 py-3 shadow-lg"
+          className="dock-nav px-6 py-3 shadow-lg"
         >
           <div className="flex items-center gap-6">
             {/* Theme Toggle */}
