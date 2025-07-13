@@ -55,7 +55,7 @@
   }
 
   body {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     @apply bg-dark-bg text-dark-text transition-colors duration-300;
     /* Ensure smooth scrolling */
     scroll-behavior: smooth;
