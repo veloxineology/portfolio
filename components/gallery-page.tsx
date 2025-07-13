@@ -69,7 +69,9 @@ export default function GalleryPage() {
   return (
     <>
       <div className="min-h-screen py-8 pb-32 main-content-mobile-pb">
-        <h2 className="text-3xl font-bold text-primary mb-8 px-4">// Gallery</h2>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 px-4">
+          <h1 className="text-3xl font-bold text-primary">// Gallery</h1>
+        </div>
         <div className="w-full h-full">
           <Carousel items={cards} />
         </div>
