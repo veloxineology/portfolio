@@ -3,18 +3,31 @@
 import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, X } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { siteData } from "@/lib/site-data"
+import "./SpotlightCard.css"
 
 export default function FloatingNavbar() {
   const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isClient, setIsClient] = useState(false)
+  const divRef = useRef<HTMLDivElement>(null)
 
   // Ensure we're on the client side
   useEffect(() => {
     setIsClient(true)
   }, [])
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!divRef.current) return
+    const rect = divRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    divRef.current.style.setProperty("--mouse-x", `${x}px`)
+    divRef.current.style.setProperty("--mouse-y", `${y}px`)
+    divRef.current.style.setProperty("--spotlight-color", "rgba(100, 255, 218, 0.15)")
+  }
 
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark")
@@ -30,12 +43,17 @@ export default function FloatingNavbar() {
     <>
       {/* Floating Navigation Bar */}
       <motion.div
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
       >
-        <div className="bg-card/80 backdrop-blur-md border border-border rounded-full px-6 py-3 shadow-lg">
+        <div 
+          ref={divRef}
+          onMouseMove={handleMouseMove}
+          className="card-spotlight bg-card/80 backdrop-blur-md border border-border rounded-full px-6 py-3 shadow-lg"
+          style={{ padding: '0.75rem 1.5rem' }}
+        >
           <div className="flex items-center gap-6">
             {/* Theme Toggle */}
             <motion.button
@@ -85,10 +103,10 @@ export default function FloatingNavbar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 md:hidden"
+          exit={{ opacity: 0, y: 20 }}
+          className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-40 md:hidden"
         >
           <div className="bg-card/95 backdrop-blur-md border border-border rounded-lg px-6 py-4 shadow-lg">
             <div className="flex flex-col gap-4">
