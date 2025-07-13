@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useNavigation } from "@/hooks/use-navigation";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sun, Moon, Home, Briefcase, Image, Book, Menu, X, LucideIcon } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { siteData } from "@/lib/site-data";
 
@@ -13,7 +13,6 @@ import { siteData } from "@/lib/site-data";
 interface NavItem {
   href: string;
   label: string;
-  icon?: React.ReactNode;
   title?: string;
 }
 
@@ -30,17 +29,8 @@ interface FloatingDockListProps {
 interface IconContainerProps {
   mouseX: import("framer-motion").MotionValue<number>;
   title: string;
-  icon: React.ReactNode;
   href: string;
 }
-
-// Icon mapping for nav items
-const navIcons: Record<string, LucideIcon> = {
-  Home,
-  Work: Briefcase,
-  Gallery: Image,
-  Blog: Book,
-};
 
 export default function FloatingDock({
   desktopClassName,
@@ -51,15 +41,11 @@ export default function FloatingDock({
 
   useEffect(() => {
     setIsClient(true);
-    // Create nav items with icons on the client side
-    const items: NavItem[] = siteData.navigation.map((item: { href: string; label: string }) => {
-      const IconComponent = navIcons[item.label];
-      return {
-        ...item,
-        icon: IconComponent ? <IconComponent className="w-full h-full" /> : null,
-        title: item.label,
-      };
-    });
+    // Create nav items with text labels
+    const items: NavItem[] = siteData.navigation.map((item: { href: string; label: string }) => ({
+      ...item,
+      title: item.label,
+    }));
     setNavItems(items);
   }, []);
 
@@ -97,9 +83,9 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 shadow"
+                className="flex h-10 px-4 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 shadow text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
               >
-                <div className="h-5 w-5">{item.icon}</div>
+                {item.label}
               </motion.a>
             ))}
             <ThemeToggleButtonMobile />
@@ -123,19 +109,19 @@ function FloatingDockDesktop({ items, className }: FloatingDockListProps) {
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 mx-auto hidden h-20 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-xl px-8 pb-4 md:flex shadow-lg border border-gray-200 dark:border-neutral-800",
+        "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 mx-auto hidden h-16 items-center gap-3 rounded-2xl bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-xl px-6 md:flex shadow-lg border border-gray-200 dark:border-neutral-800",
         className
       )}
     >
       {items.map((item: NavItem) => (
-        <IconContainer mouseX={mouseX} key={item.title ?? ""} title={item.title ?? ""} icon={item.icon} href={item.href} />
+        <IconContainer mouseX={mouseX} key={item.title ?? ""} title={item.title ?? ""} href={item.href} />
       ))}
       <ThemeToggleButton />
     </motion.div>
   );
 }
 
-function IconContainer({ mouseX, title, icon, href }: IconContainerProps) {
+function IconContainer({ mouseX, title, href }: IconContainerProps) {
   const ref = useRef<HTMLButtonElement | null>(null);
   const pathname = usePathname();
   const { navigateTo } = useNavigation();
@@ -145,30 +131,23 @@ function IconContainer({ mouseX, title, icon, href }: IconContainerProps) {
     return val - bounds.x - bounds.width / 2;
   });
 
-  const widthTransform = useTransform(distance, [-150, 0, 150], [48, 80, 48]);
-  const heightTransform = useTransform(distance, [-150, 0, 150], [48, 80, 48]);
-  const widthIcon = useTransform(distance, [-150, 0, 150], [24, 40, 24]);
-  const heightIcon = useTransform(distance, [-150, 0, 150], [24, 40, 24]);
-
-  const width = useSpring(widthTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-  const height = useSpring(heightTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-  const widthIconSpring = useSpring(widthIcon, { mass: 0.1, stiffness: 150, damping: 12 });
-  const heightIconSpring = useSpring(heightIcon, { mass: 0.1, stiffness: 150, damping: 12 });
+  const scaleTransform = useTransform(distance, [-150, 0, 150], [0.9, 1.1, 0.9]);
+  const scale = useSpring(scaleTransform, { mass: 0.1, stiffness: 150, damping: 12 });
 
   const [hovered, setHovered] = useState(false);
 
   return (
     <button
       ref={ref}
-      style={{ width: width as any, height: height as any }}
+      style={{ scale: scale as any }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => navigateTo(href)}
       className={cn(
-        "relative flex aspect-square items-center justify-center rounded-full transition-colors",
+        "relative px-4 py-2 rounded-xl transition-all duration-200 font-medium text-sm",
         pathname === href
-          ? "bg-gray-200 dark:bg-neutral-800 border-2 border-accent"
-          : "bg-gray-100 dark:bg-neutral-900 border border-transparent hover:bg-gray-200/80 dark:hover:bg-neutral-800/80"
+          ? "bg-gray-200 dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-sm"
+          : "bg-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-neutral-800/50"
       )}
       aria-label={title}
     >
@@ -184,12 +163,7 @@ function IconContainer({ mouseX, title, icon, href }: IconContainerProps) {
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.div
-        style={{ width: widthIconSpring as any, height: heightIconSpring as any }}
-        className="flex items-center justify-center"
-      >
-        {icon}
-      </motion.div>
+      {title}
     </button>
   );
 }
@@ -200,10 +174,10 @@ function ThemeToggleButton() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex aspect-square h-12 w-12 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 hover:bg-gray-200/80 dark:hover:bg-neutral-800/80 transition-colors"
+      className="flex aspect-square h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 hover:bg-gray-200/80 dark:hover:bg-neutral-800/80 transition-colors"
       aria-label="Toggle theme"
     >
-      {isDark ? <Sun className="h-6 w-6 text-yellow-400" /> : <Moon className="h-6 w-6 text-neutral-600" />}
+      {isDark ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-neutral-600" />}
     </button>
   );
 }
