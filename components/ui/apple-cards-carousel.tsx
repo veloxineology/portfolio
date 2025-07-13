@@ -48,7 +48,7 @@ export const Card = ({ card, index }: CardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "relative w-[320px] md:w-[420px] lg:w-[540px] aspect-[4/5] rounded-3xl bg-white dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out overflow-hidden flex-shrink-0",
+        "relative z-10 flex h-80 w-56 md:h-[40rem] md:w-96 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 cursor-pointer transition-all duration-300 ease-out",
         isHovered && "scale-105",
         isSelected && "scale-110"
       )}
@@ -56,22 +56,25 @@ export const Card = ({ card, index }: CardProps) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsSelected(!isSelected)}
     >
+      {/* Image fills the card */}
       <img
         src={card.src}
         alt={card.title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out z-0"
+        className="absolute inset-0 z-10 w-full h-full object-cover transition-transform duration-300 ease-out"
         style={{
           transform: isHovered ? "scale(1.08)" : "scale(1)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-10" />
-      <div className="absolute top-0 left-0 right-0 p-6 z-20">
-        <div className="mb-2 text-sm font-medium text-white/80 drop-shadow">
+      {/* Gradient overlay at top */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+      {/* Text at the top */}
+      <div className="relative z-40 p-8">
+        <div className="text-left font-sans text-sm font-medium text-white md:text-base mb-2">
           {card.category}
         </div>
-        <h3 className="text-2xl font-bold text-white drop-shadow-lg leading-tight">
+        <div className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
           {card.title}
-        </h3>
+        </div>
       </div>
       {/* Show expanded content on click */}
       {isSelected && (
