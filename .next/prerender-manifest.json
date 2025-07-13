@@ -1,30 +1,6 @@
 {
   "version": 4,
   "routes": {
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/blog": {
       "experimentalBypassFor": [
         {
@@ -40,6 +16,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/blog",
       "dataRoute": "/blog.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/work": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/work",
+      "dataRoute": "/work.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -73,7 +73,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/work": {
+    "/": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -86,8 +86,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/work",
-      "dataRoute": "/work.rsc",
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -101,8 +101,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "d6d29a9105f031d44a9d055b019543bb",
-    "previewModeSigningKey": "bc781c5e4d8def00dab12acc5e72a8a4c204c401ff52cf3154dcafde76ba1f7a",
-    "previewModeEncryptionKey": "59880d274d73cf46bcb1429b0e8339da96862cd390289def4dd07567f3dac8ab"
+    "previewModeId": "85e0798ac367cc0bef3fbf1eb90f68f2",
+    "previewModeSigningKey": "59e758c9ef3067b138aad0297d3f03ef024421d197add406ba989b30f05fd6c4",
+    "previewModeEncryptionKey": "d658b4988fda89868d62dd988665b2e4891d9531d8e1290a7b16ac719f62b71a"
   }
 }

@@ -2,7 +2,6 @@
 
 import type React from "react"
 
-import { motion } from "framer-motion"
 import { Calendar, Clock, Lock, ChevronLeft, ChevronRight, ArrowRight, Search } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
 import { getBlogPosts, BlogPost } from "@/lib/blog-data"
@@ -134,7 +133,7 @@ export default function BlogPage() {
     <>
       <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12 pb-40 main-content-mobile-pb">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+          <div>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
               <h1 className="text-3xl font-mono font-bold text-primary">// Blog & Thoughts</h1>
 
@@ -153,22 +152,18 @@ export default function BlogPage() {
 
             {/* Results count */}
             {searchQuery && (
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-mono text-muted mb-6">
+              <p className="text-sm font-mono text-muted mb-6">
                 Found {filteredPosts.length} post{filteredPosts.length !== 1 ? "s" : ""} matching "{searchQuery}"
-              </motion.p>
+              </p>
             )}
 
             {/* Blog Posts */}
             {currentPosts.length > 0 ? (
               <div className="space-y-8 mb-8">
                 {currentPosts.map((post: BlogPost, index: number) => (
-                  <motion.article
+                  <article
                     key={post.slug}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
                     className="blog-card cursor-pointer"
-                    whileHover={{ scale: 1.005 }}
                     onClick={() => handleBlogClick(post.slug)}
                   >
                     <div className="flex items-start justify-between mb-4">
@@ -196,34 +191,32 @@ export default function BlogPage() {
                         </span>
                       ))}
                     </div>
-                  </motion.article>
+                  </article>
                 ))}
               </div>
             ) : (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
+              <div className="text-center py-12">
                 <div className="text-4xl mb-4">📝</div>
                 <h3 className="text-lg font-mono font-bold text-primary mb-2">No posts found</h3>
                 <p className="text-sm font-mono text-muted">Try adjusting your search terms</p>
-              </motion.div>
+              </div>
             )}
 
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-4 mb-8">
-                <motion.button
+                <button
                   onClick={goToPrevious}
                   disabled={currentPage === 1}
                   className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-secondary font-mono text-sm rounded-lg hover:bg-accent/10 hover:text-accent hover:border-accent/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: currentPage === 1 ? 1 : 1.02 }}
-                  whileTap={{ scale: currentPage === 1 ? 1 : 0.98 }}
                 >
                   <ChevronLeft size={14} />
                   Previous
-                </motion.button>
+                </button>
 
                 <div className="flex gap-2">
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page: number) => (
-                    <motion.button
+                    <button
                       key={page}
                       onClick={() => goToPage(page)}
                       className={`w-10 h-10 font-mono text-sm rounded-lg transition-all duration-200 ${
@@ -231,51 +224,41 @@ export default function BlogPage() {
                           ? "bg-accent text-white"
                           : "bg-card border border-border text-secondary hover:bg-accent/10 hover:text-accent hover:border-accent/50"
                       }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                     >
                       {page}
-                    </motion.button>
+                    </button>
                   ))}
                 </div>
 
-                <motion.button
+                <button
                   onClick={goToNext}
                   disabled={currentPage === totalPages}
                   className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-secondary font-mono text-sm rounded-lg hover:bg-accent/10 hover:text-accent hover:border-accent/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: currentPage === totalPages ? 1 : 1.02 }}
-                  whileTap={{ scale: currentPage === totalPages ? 1 : 0.98 }}
                 >
                   Next
                   <ChevronRight size={14} />
-                </motion.button>
+                </button>
               </div>
             )}
 
             {/* Personal Stuff Button at Bottom */}
             <div className="flex justify-center pt-8 border-t border-border">
-              <motion.button
+              <button
                 onClick={handlePersonalStuffClick}
                 className="flex items-center gap-2 px-6 py-3 bg-muted/10 hover:bg-muted/20 border border-muted/30 text-muted hover:text-primary font-mono text-sm rounded-xl transition-all duration-200 personal-stuff-btn-mobile"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <Lock size={14} />
                 <span>Personal Stuff</span>
-              </motion.button>
+              </button>
             </div>
 
             {/* Password Prompt Modal */}
             {showPasswordPrompt && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+              <div
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
                 onClick={() => setShowPasswordPrompt(false)}
               >
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
+                <div
                   className="bg-card border border-border rounded-xl p-6 max-w-sm w-full mx-4"
                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 >
@@ -305,10 +288,10 @@ export default function BlogPage() {
                       </button>
                     </div>
                   </form>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
       <FloatingNavbar />

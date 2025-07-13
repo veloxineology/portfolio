@@ -22,12 +22,7 @@ export default function NavigationProgress() {
 
   return (
     <>
-      {/* Navigation Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-50"
-        style={{ scaleX }}
-      />
-      
+      {/* Navigation Progress Bar - Removed scroll animation */}
       {/* Page Transition Progress */}
       {isNavigating && (
         <motion.div
