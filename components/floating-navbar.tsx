@@ -109,7 +109,7 @@ export default function FloatingNavbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Mznu */}
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
