@@ -6,7 +6,7 @@ import { useNavigation } from "@/hooks/use-navigation";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Sun, Moon, Home, Briefcase, Image, Book, Menu, X, LucideIcon } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { siteData } from "@/lib/site-data";
 
 // Types
@@ -46,13 +46,28 @@ export default function FloatingDock({
   desktopClassName,
   mobileClassName,
 }: FloatingDockProps) {
-  // Compose nav items from siteData.navigation
-  const navItems: NavItem[] = siteData.navigation.map((item: { href: string; label: string }) => ({
-    ...item,
-    icon: navIcons[item.label] ? navIcons[item.label]({ className: "w-full h-full" }) : null,
-    title: item.label,
-  }));
-  // Add theme toggle as a dock item
+  const [navItems, setNavItems] = useState<NavItem[]>([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Create nav items with icons on the client side
+    const items: NavItem[] = siteData.navigation.map((item: { href: string; label: string }) => {
+      const IconComponent = navIcons[item.label];
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-full h-full" /> : null,
+        title: item.label,
+      };
+    });
+    setNavItems(items);
+  }, []);
+
+  // Don't render until client-side
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <>
       <FloatingDockDesktop items={navItems} className={desktopClassName} />
