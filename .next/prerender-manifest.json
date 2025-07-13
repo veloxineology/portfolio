@@ -1,7 +1,7 @@
 {
   "version": 4,
   "routes": {
-    "/gallery": {
+    "/blog": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -14,8 +14,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/gallery",
-      "dataRoute": "/gallery.rsc",
+      "srcRoute": "/blog",
+      "dataRoute": "/blog.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -49,7 +49,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/blog": {
+    "/gallery": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -62,8 +62,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/blog",
-      "dataRoute": "/blog.rsc",
+      "srcRoute": "/gallery",
+      "dataRoute": "/gallery.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -101,8 +101,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "a3244249da470fea11ffb46fe23668c5",
-    "previewModeSigningKey": "cb37c3059cdcaa595fc5d12aee435af9ef92f2604021aaeded2e541f3822436c",
-    "previewModeEncryptionKey": "413dc64fb1a83879b1cfcd23adb3aa596fcbf2ab6716d8a744c8fa4a1d2728a9"
+    "previewModeId": "97ea8e9d746a1ffc044480cc5bb9b9f2",
+    "previewModeSigningKey": "9ee83847ac2d370f2605152d158f4fc109a99b31d2576c3e6703a7f8cef987e8",
+    "previewModeEncryptionKey": "288f1c179b43010e2d1c82db365165998838a439639c7d095290de3aec0731f8"
   }
 }
