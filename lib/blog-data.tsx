@@ -16,7 +16,6 @@ const blogPostsData: BlogPost[] = [
     "What if you could design love like software—modular, resilient, alive? Here's what it taught me about feelings, code, and things that scale silently within.",
   date: "2025-07-13",
   readTime: "6 min read",
-  tags: ["love", "systems", "life", "developer-notes", "growth"],
   body: `
 # Loving Someone Like a System
 
