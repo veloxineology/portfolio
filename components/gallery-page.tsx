@@ -98,6 +98,7 @@ export default function GalleryPage() {
               hoverScale={0.95}
               blurToFocus={true}
               colorShiftOnHover={false}
+              gap={16}
             />
           </div>
         </div>

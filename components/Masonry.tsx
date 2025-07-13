@@ -78,6 +78,7 @@ interface MasonryProps {
   hoverScale?: number;
   blurToFocus?: boolean;
   colorShiftOnHover?: boolean;
+  gap?: number;
 }
 
 const Masonry = ({
@@ -90,6 +91,7 @@ const Masonry = ({
   hoverScale = 0.95,
   blurToFocus = true,
   colorShiftOnHover = false,
+  gap = 16,
 }: MasonryProps) => {
   const columns = useMedia(
     [
@@ -145,19 +147,19 @@ const Masonry = ({
     if (!width) return [];
 
     const colHeights = new Array(columns).fill(0);
-    const columnWidth = width / columns;
+    const columnWidth = (width - gap * (columns - 1)) / columns;
 
-    return items.map((child) => {
+    return items.map((child, idx) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
-      const x = columnWidth * col;
+      const x = col * (columnWidth + gap);
       const height = child.height / 2;
       const y = colHeights[col];
 
-      colHeights[col] += height;
+      colHeights[col] += height + gap;
 
       return { ...child, x, y, w: columnWidth, h: height };
     });
-  }, [columns, items, width]);
+  }, [columns, items, width, gap]);
 
   const hasMounted = useRef(false);
 
