@@ -19,6 +19,7 @@ export default function AuroraBackground(props: any) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.log('AuroraBackground mounted');
     const ctn = ctnDom.current;
     if (!ctn) return;
 
@@ -100,5 +101,5 @@ export default function AuroraBackground(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="aurora-container" />;
+  return <div ref={ctnDom} className="aurora-container" style={{ border: '2px solid red' }} />;
 } 
