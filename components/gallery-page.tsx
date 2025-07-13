@@ -68,6 +68,18 @@ export default function GalleryPage() {
     { id: "10", img: "https://picsum.photos/200/425?random=10", url: "https://picsum.photos/200/425?random=10", height: 425 },
     { id: "11", img: "https://picsum.photos/200/475?random=11", url: "https://picsum.photos/200/475?random=11", height: 475 },
     { id: "12", img: "https://picsum.photos/200/525?random=12", url: "https://picsum.photos/200/525?random=12", height: 525 },
+    { id: "13", img: "https://picsum.photos/200/260?random=13", url: "https://picsum.photos/200/260?random=13", height: 260 },
+    { id: "14", img: "https://picsum.photos/200/310?random=14", url: "https://picsum.photos/200/310?random=14", height: 310 },
+    { id: "15", img: "https://picsum.photos/200/360?random=15", url: "https://picsum.photos/200/360?random=15", height: 360 },
+    { id: "16", img: "https://picsum.photos/200/410?random=16", url: "https://picsum.photos/200/410?random=16", height: 410 },
+    { id: "17", img: "https://picsum.photos/200/460?random=17", url: "https://picsum.photos/200/460?random=17", height: 460 },
+    { id: "18", img: "https://picsum.photos/200/510?random=18", url: "https://picsum.photos/200/510?random=18", height: 510 },
+    { id: "19", img: "https://picsum.photos/200/285?random=19", url: "https://picsum.photos/200/285?random=19", height: 285 },
+    { id: "20", img: "https://picsum.photos/200/335?random=20", url: "https://picsum.photos/200/335?random=20", height: 335 },
+    { id: "21", img: "https://picsum.photos/200/385?random=21", url: "https://picsum.photos/200/385?random=21", height: 385 },
+    { id: "22", img: "https://picsum.photos/200/435?random=22", url: "https://picsum.photos/200/435?random=22", height: 435 },
+    { id: "23", img: "https://picsum.photos/200/485?random=23", url: "https://picsum.photos/200/485?random=23", height: 485 },
+    { id: "24", img: "https://picsum.photos/200/535?random=24", url: "https://picsum.photos/200/535?random=24", height: 535 },
   ];
 
   return (
