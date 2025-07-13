@@ -76,7 +76,7 @@ export default function FloatingNavbar() {
                 <motion.button
                   key={item.href}
                   onClick={() => navigateTo(item.href)}
-                  className={`text-sm font-mono transition-all duration-300 relative ${pathname === item.href ? "text-accent font-bold" : "text-secondary hover:text-accent"}`}
+                  className={`text-sm transition-all duration-300 relative ${pathname === item.href ? "text-accent font-bold" : "text-secondary hover:text-accent"}`}
                   whileHover={{ 
                     scale: 1.05,
                     y: -2
@@ -126,7 +126,7 @@ export default function FloatingNavbar() {
                     navigateTo(item.href)
                     setIsMenuOpen(false)
                   }}
-                  className="text-sm font-mono text-secondary hover:text-accent transition-colors duration-200"
+                  className="text-sm text-secondary hover:text-accent transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

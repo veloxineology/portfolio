@@ -48,7 +48,7 @@ export default function SpotifyCard() {
     >
       <div className="flex items-center gap-3 mb-2">
         <Music className="text-green-500" size={20} />
-        <span className="font-mono font-semibold text-gray-800 dark:text-white">Now Playing</span>
+        <span className="font-semibold text-gray-800 dark:text-white">Now Playing</span>
       </div>
 
       {isLoading ? (

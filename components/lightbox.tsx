@@ -47,7 +47,7 @@ export default function Lightbox({ image, onClose }: LightboxProps) {
 
           {/* Caption */}
           <div className="p-6 text-white">
-            <h3 className="font-mono font-bold text-lg mb-2">{image.caption}</h3>
+            <h3 className="font-bold text-lg mb-2">{image.caption}</h3>
             <span className="px-3 py-1 bg-orange-500/80 text-white text-sm rounded-full">{image.category}</span>
           </div>
         </motion.div>

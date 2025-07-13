@@ -60,14 +60,14 @@ export default function CurrentlyDoing() {
     <div className="card-minimal">
       <div className="flex items-center gap-2 mb-4">
         <Clock size={14} className="text-accent" />
-        <h3 className="text-sm font-mono font-bold text-accent">Currently Doing</h3>
+        <h3 className="text-sm font-bold text-accent">Currently Doing</h3>
       </div>
 
       <div className="space-y-3">
         {/* Current Time & Day */}
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-muted">{getDayName(currentTime)}</span>
-          <span className="text-sm font-mono font-bold text-primary">{formatTime(currentTime)}</span>
+          <span className="text-xs text-muted">{getDayName(currentTime)}</span>
+          <span className="text-sm font-bold text-primary">{formatTime(currentTime)}</span>
         </div>
 
         {/* Current Activity */}
@@ -79,8 +79,8 @@ export default function CurrentlyDoing() {
           >
             <span className="text-xl">{currentActivity.emoji}</span>
             <div>
-              <p className="text-xs font-mono font-bold text-accent">{currentActivity.time}</p>
-              <p className="text-xs font-mono text-secondary">{currentActivity.activity}</p>
+              <p className="text-xs font-bold text-accent">{currentActivity.time}</p>
+              <p className="text-xs text-secondary">{currentActivity.activity}</p>
             </div>
           </motion.div>
         )}

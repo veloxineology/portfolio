@@ -154,7 +154,7 @@ function HomeContent({ home, about }: { home: any; about: any }) {
 
               {/* Languages/Skills Tags */}
               <div className="space-y-3">
-                <h3 className="text-sm font-mono font-bold text-accent">Languages I Speak & Code</h3>
+                <h3 className="text-sm font-bold text-accent">Languages I Speak & Code</h3>
                 <div className="flex flex-wrap gap-2">
                   {home.languages.map((language: any, index: number) => {
                     const getLanguageStyle = (lang: { name: string; type: string }) => {
@@ -187,7 +187,7 @@ function HomeContent({ home, about }: { home: any; about: any }) {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
-                        className={`px-3 py-1.5 text-xs font-mono rounded-full border transition-all duration-200 hover:scale-105 ${getLanguageStyle(language)}`}
+                        className={`px-3 py-1.5 text-xs rounded-full border transition-all duration-200 hover:scale-105 ${getLanguageStyle(language)}`}
                       >
                         {language.name}
                       </motion.span>
@@ -210,13 +210,13 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">🎵</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Favorite Genres</h3>
+                <h3 className="text-sm font-bold text-accent">Favorite Genres</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {about.favoriteGenres.map((genre: string) => (
                   <span
                     key={genre}
-                    className="px-2 py-1 bg-accent/10 text-accent text-xs font-mono rounded border border-accent/20"
+                    className="px-2 py-1 bg-accent/10 text-accent text-xs rounded border border-accent/20"
                   >
                     {genre}
                   </span>
@@ -228,11 +228,11 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">🎧</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Top 5 Songs</h3>
+                <h3 className="text-sm font-bold text-accent">Top 5 Songs</h3>
               </div>
               <ul className="space-y-2">
                 {about.topSongs.slice(0, 5).map((song: string, index: number) => (
-                  <li key={song} className="text-xs font-mono text-secondary flex items-start gap-2">
+                  <li key={song} className="text-xs text-secondary flex items-start gap-2">
                     <span className="text-accent font-bold flex-shrink-0">{index + 1}.</span>
                     <span className="leading-relaxed">{song}</span>
                   </li>
@@ -244,11 +244,11 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">🎬</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Favorite Movies</h3>
+                <h3 className="text-sm font-bold text-accent">Favorite Movies</h3>
               </div>
               <ul className="space-y-1">
                 {about.favoriteMovies.slice(0, 5).map((movie: string) => (
-                  <li key={movie} className="text-xs font-mono text-secondary">
+                  <li key={movie} className="text-xs text-secondary">
                     • {movie}
                   </li>
                 ))}
@@ -259,11 +259,11 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">📚</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Favorite Books</h3>
+                <h3 className="text-sm font-bold text-accent">Favorite Books</h3>
               </div>
               <ul className="space-y-1">
                 {about.favoriteBooks.slice(0, 4).map((book: string) => (
-                  <li key={book} className="text-xs font-mono text-secondary">
+                  <li key={book} className="text-xs text-secondary">
                     • {book}
                   </li>
                 ))}
@@ -277,11 +277,11 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">💬</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Things I Say</h3>
+                <h3 className="text-sm font-bold text-accent">Things I Say</h3>
               </div>
               <ul className="space-y-2">
                 {about.quotesYouSay.slice(0, 4).map((quote: string, index: number) => (
-                  <li key={index} className="text-xs font-mono text-secondary italic">
+                  <li key={index} className="text-xs text-secondary italic">
                     "{quote}"
                   </li>
                 ))}
@@ -292,9 +292,9 @@ function HomeContent({ home, about }: { home: any; about: any }) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">✨</span>
-                <h3 className="text-sm font-mono font-bold text-accent">Quote of the Day</h3>
+                <h3 className="text-sm font-bold text-accent">Quote of the Day</h3>
               </div>
-              <p className="text-xs font-mono text-secondary italic leading-relaxed">"{about.dailyQuote}"</p>
+              <p className="text-xs text-secondary italic leading-relaxed">"{about.dailyQuote}"</p>
             </div>
           </div>
 
@@ -302,7 +302,7 @@ function HomeContent({ home, about }: { home: any; about: any }) {
           <div className="card-minimal">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-lg">🎯</span>
-              <h3 className="text-lg font-mono font-bold text-accent">Fun Facts About Me</h3>
+              <h3 className="text-lg font-bold text-accent">Fun Facts About Me</h3>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {about.funFacts.map((fact: string, index: number) => (
@@ -313,7 +313,7 @@ function HomeContent({ home, about }: { home: any; about: any }) {
                   transition={{ delay: index * 0.1 }}
                   className="p-3 bg-accent/5 rounded-lg border border-accent/20"
                 >
-                  <p className="text-xs font-mono text-secondary">• {fact}</p>
+                  <p className="text-xs text-secondary">• {fact}</p>
                 </motion.div>
               ))}
             </div>

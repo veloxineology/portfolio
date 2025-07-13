@@ -13,7 +13,7 @@ export default function TechStack() {
       transition={{ delay: 0.5 }}
       className="text-center"
     >
-      <h2 className="text-3xl font-mono font-bold text-gray-800 dark:text-white mb-8">My Tech Stack</h2>
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">My Tech Stack</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
         {work.techStack.map((tech, index) => (
           <motion.div
@@ -25,7 +25,7 @@ export default function TechStack() {
             className="backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl p-6 border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl text-center"
           >
             <img src={tech.logo || "/placeholder.svg"} alt={tech.name} className="w-12 h-12 mx-auto mb-3" />
-            <p className="font-mono text-sm text-gray-700 dark:text-gray-300">{tech.name}</p>
+            <p className="text-sm text-gray-700 dark:text-gray-300">{tech.name}</p>
           </motion.div>
         ))}
       </div>

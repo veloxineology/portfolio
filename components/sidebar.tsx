@@ -32,7 +32,7 @@ export default function Sidebar() {
               <Home className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-lg font-mono font-bold text-white">Portfolio</h2>
+              <h2 className="text-lg font-bold text-white">Portfolio</h2>
               <p className="text-xs text-gray-400">Kaushik's Space</p>
             </div>
           </div>

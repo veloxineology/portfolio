@@ -24,8 +24,8 @@ export default function DailyRoutine({ routine }: DailyRoutineProps) {
           className="card-minimal text-center"
         >
           <div className="text-2xl mb-2">{item.emoji}</div>
-          <div className="text-sm font-mono font-bold text-accent mb-1">{item.time}</div>
-          <div className="text-xs font-mono text-secondary">{item.activity}</div>
+          <div className="text-sm font-bold text-accent mb-1">{item.time}</div>
+          <div className="text-xs text-secondary">{item.activity}</div>
         </motion.div>
       ))}
     </div>

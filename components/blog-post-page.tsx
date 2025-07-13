@@ -131,10 +131,10 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
             {/* Article Header */}
             <article className="prose prose-lg max-w-none">
               <header className="mb-8">
-                <h1 className="text-4xl font-mono font-bold text-primary mb-4">{post.title}</h1>
-                <p className="text-lg font-mono text-secondary mb-6 leading-relaxed">{post.description}</p>
+                <h1 className="text-4xl font-bold text-primary mb-4">{post.title}</h1>
+                <p className="text-lg font-secondary mb-6 leading-relaxed">{post.description}</p>
 
-                <div className="flex items-center gap-6 text-sm font-mono text-muted mb-6">
+                <div className="flex items-center gap-6 text-sm text-muted mb-6">
                   <div className="flex items-center gap-2">
                     <Calendar size={16} />
                     <span>{post.date}</span>
@@ -149,7 +149,7 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-accent/10 text-accent text-sm font-mono rounded-full border border-accent/20"
+                      className="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full border border-accent/20"
                     >
                       #{tag}
                     </span>
@@ -159,7 +159,7 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
 
               {/* Article Content */}
               <div
-                className="blog-content font-mono text-secondary leading-relaxed"
+                className="blog-content"
                 dangerouslySetInnerHTML={{ __html: parsedContent }}
               />
             </article>

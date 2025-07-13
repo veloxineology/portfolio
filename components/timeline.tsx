@@ -35,7 +35,7 @@ export default function Timeline({ items }: TimelineProps) {
               <div className="flex items-center gap-3">
                 <span className="text-2xl">{item.emoji}</span>
                 <div>
-                  <p className="font-mono font-semibold text-gray-800 dark:text-white">{item.time}</p>
+                  <p className="font-semibold text-gray-800 dark:text-white">{item.time}</p>
                   <p className="text-gray-600 dark:text-gray-300">{item.activity}</p>
                 </div>
               </div>

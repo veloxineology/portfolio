@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="absolute inset-0 backface-hidden backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl overflow-hidden">
           <img src={project.image || "/placeholder.svg"} alt={project.title} className="w-full h-48 object-cover" />
           <div className="p-6">
-            <h3 className="text-xl font-mono font-bold text-gray-800 dark:text-white mb-2">{project.title}</h3>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2">
               {project.techStack.slice(0, 3).map((tech) => (
@@ -58,7 +58,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Back of card */}
         <div className="absolute inset-0 backface-hidden rotate-y-180 backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl p-6 flex flex-col justify-between">
           <div>
-            <h3 className="text-xl font-mono font-bold text-gray-800 dark:text-white mb-4">Project Story</h3>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Project Story</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{project.story}</p>
           </div>
           <div className="flex gap-4 mt-6">

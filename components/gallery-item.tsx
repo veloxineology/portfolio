@@ -39,7 +39,7 @@ export default function GalleryItem({ image, index, isFavorite, onToggleFavorite
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end">
           <div className="p-4 w-full transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <p className="text-white font-mono text-sm mb-2">{image.caption}</p>
+            <p className="text-white text-sm mb-2">{image.caption}</p>
             <div className="flex items-center justify-between">
               <span className="px-2 py-1 bg-orange-500/80 text-white text-xs rounded-full">{image.category}</span>
               <button

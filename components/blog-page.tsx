@@ -135,7 +135,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto">
           <div>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-              <h1 className="text-3xl font-mono font-bold text-primary">// Blog & Thoughts</h1>
+              <h1 className="text-3xl font-bold text-primary">// Blog & Thoughts</h1>
 
               {/* Search Bar */}
               <div className="relative max-w-md w-full">
@@ -167,13 +167,13 @@ export default function BlogPage() {
                     onClick={() => handleBlogClick(post.slug)}
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <h2 className="text-2xl font-mono font-bold text-primary leading-tight">{post.title}</h2>
+                      <h2 className="text-2xl font-bold text-primary leading-tight">{post.title}</h2>
                       <ArrowRight size={18} className="text-muted flex-shrink-0 ml-4 mt-1" />
                     </div>
 
-                    <p className="text-base font-mono text-secondary mb-6 leading-relaxed">{post.description}</p>
+                    <p className="text-base text-secondary mb-6 leading-relaxed">{post.description}</p>
 
-                    <div className="flex items-center gap-6 text-sm font-mono text-muted mb-4">
+                    <div className="flex items-center gap-6 text-sm text-muted mb-4">
                       <div className="flex items-center gap-2">
                         <Calendar size={14} />
                         <span>{post.date}</span>
@@ -186,7 +186,7 @@ export default function BlogPage() {
 
                     <div className="flex gap-3">
                       {post.tags?.map((tag: string) => (
-                        <span key={tag} className="text-sm font-mono text-accent">
+                        <span key={tag} className="text-sm text-accent">
                           #{tag}
                         </span>
                       ))}
@@ -197,8 +197,8 @@ export default function BlogPage() {
             ) : (
               <div className="text-center py-12">
                 <div className="text-4xl mb-4">📝</div>
-                <h3 className="text-lg font-mono font-bold text-primary mb-2">No posts found</h3>
-                <p className="text-sm font-mono text-muted">Try adjusting your search terms</p>
+                <h3 className="text-lg font-bold text-primary mb-2">No posts found</h3>
+                <p className="text-sm text-muted">Try adjusting your search terms</p>
               </div>
             )}
 
@@ -262,7 +262,7 @@ export default function BlogPage() {
                   className="bg-card border border-border rounded-xl p-6 max-w-sm w-full mx-4"
                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 >
-                  <h3 className="text-lg font-mono font-bold text-primary mb-4">Enter Password</h3>
+                  <h3 className="text-lg font-bold text-primary mb-4">Enter Password</h3>
                   <form onSubmit={handlePasswordSubmit}>
                     <input
                       type="password"

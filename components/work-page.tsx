@@ -87,7 +87,7 @@ export default function WorkPage() {
         <div className="max-w-7xl mx-auto">
           <div>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-              <h1 className="text-3xl font-mono font-bold text-primary">// Work & Projects</h1>
+              <h1 className="text-3xl font-bold text-primary">// Work & Projects</h1>
 
               {/* Search Bar */}
               <div className="relative max-w-md w-full">
@@ -119,10 +119,10 @@ export default function WorkPage() {
                   >
                     <div className="flex items-center gap-3 mb-4">
                       <span className="text-3xl">{project.emoji}</span>
-                      <h3 className="text-lg font-mono font-bold text-primary">{project.title}</h3>
+                      <h3 className="text-lg font-bold text-primary">{project.title}</h3>
                     </div>
 
-                    <p className="text-sm font-mono text-secondary mb-4 leading-relaxed">{project.description}</p>
+                    <p className="text-sm text-secondary mb-4 leading-relaxed">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech?.slice(0, 3).map((tech) => (
@@ -170,8 +170,8 @@ export default function WorkPage() {
             ) : (
               <div className="text-center py-12">
                 <div className="text-4xl mb-4">🔍</div>
-                <h3 className="text-lg font-mono font-bold text-primary mb-2">No projects found</h3>
-                <p className="text-sm font-mono text-muted">Try adjusting your search terms</p>
+                <h3 className="text-lg font-bold text-primary mb-2">No projects found</h3>
+                <p className="text-sm text-muted">Try adjusting your search terms</p>
               </div>
             )}
 

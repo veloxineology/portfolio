@@ -38,7 +38,7 @@ export default function ContactPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-mono font-bold text-gray-800 dark:text-white mb-4">Contact Me</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4">Contact Me</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">I'd love to hear from you!</p>
         </motion.div>
 
@@ -51,7 +51,7 @@ export default function ContactPage() {
             className="space-y-8"
           >
             <div className="backdrop-blur-lg bg-white/20 dark:bg-white/5 rounded-2xl p-8 border border-orange-200/30 dark:border-white/10 shadow-lg dark:shadow-2xl">
-              <h2 className="text-2xl font-mono font-bold text-gray-800 dark:text-white mb-6">Get in Touch</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Get in Touch</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{contact.description}</p>
 
               {/* Social Links */}
@@ -109,7 +109,7 @@ export default function ContactPage() {
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block font-mono font-semibold text-gray-700 dark:text-gray-200 mb-2">Name</label>
+                  <label className="block font-semibold text-gray-700 dark:text-gray-200 mb-2">Name</label>
                   <input
                     type="text"
                     name="name"
@@ -122,7 +122,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block font-mono font-semibold text-gray-700 dark:text-gray-200 mb-2">Email</label>
+                  <label className="block font-semibold text-gray-700 dark:text-gray-200 mb-2">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -135,7 +135,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block font-mono font-semibold text-gray-700 dark:text-gray-200 mb-2">Message</label>
+                  <label className="block font-semibold text-gray-700 dark:text-gray-200 mb-2">Message</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -149,7 +149,7 @@ export default function ContactPage() {
 
                 <motion.button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-mono font-semibold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -173,7 +173,7 @@ export default function ContactPage() {
                 >
                   📨
                 </motion.div>
-                <h3 className="text-2xl font-mono font-bold text-gray-800 dark:text-white mb-4">Message Sent!</h3>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Message Sent!</h3>
                 <p className="text-gray-600 dark:text-gray-300 dark:hidden">
                   Thanks for reaching out! I'll get back to you soon.
                 </p>

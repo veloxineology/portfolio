@@ -41,7 +41,7 @@ return (
 <div className="card-minimal spotify-card">
 <div className="flex items-center gap-2 mb-4">
 <Music size={16} className="text-green-500" />
-<h3 className="text-sm font-mono font-bold text-primary">Now Playing</h3>
+<h3 className="text-sm font-bold text-primary">Now Playing</h3>
 <div className="ml-auto">
 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
 </div>
@@ -72,11 +72,11 @@ className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items
 </motion.div>
 </div>
 <div className="flex-1 min-w-0">
-<p className="text-sm font-mono font-bold text-primary truncate">{currentTrack.name}</p>
-<p className="text-xs font-mono text-secondary truncate">{currentTrack.artist}</p>
-<p className="text-xs font-mono text-muted truncate">{currentTrack.album}</p>
+<p className="text-sm font-bold text-primary truncate">{currentTrack.name}</p>
+<p className="text-xs font-secondary truncate">{currentTrack.artist}</p>
+<p className="text-xs font-muted truncate">{currentTrack.album}</p>
             {currentTrack.playlistOwner && (
-              <p className="text-xs font-mono text-accent mt-1">
+              <p className="text-xs font-accent mt-1">
                  {currentTrack.playlistOwner}
               </p>
             )}
@@ -88,8 +88,8 @@ className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items
 <Pause size={20} />
 </div>
 <div>
-<p className="text-sm font-mono">{about.nowPlaying.fallbackMessage}</p>
-<p className="text-xs font-mono text-muted">Spotify</p>
+<p className="text-sm">{about.nowPlaying.fallbackMessage}</p>
+<p className="text-xs font-secondary">Spotify</p>
 </div>
 </div>
 )}

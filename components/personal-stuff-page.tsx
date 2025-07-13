@@ -32,8 +32,8 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
                 Back
               </button>
               <div>
-                <h1 className="text-3xl font-mono font-bold text-primary">{personalStuff.title}</h1>
-                <p className="text-sm font-mono text-secondary mt-1">{personalStuff.description}</p>
+                <h1 className="text-3xl font-bold text-primary">{personalStuff.title}</h1>
+                <p className="text-sm text-secondary mt-1">{personalStuff.description}</p>
               </div>
             </div>
 
@@ -42,11 +42,11 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Heart size={16} className="text-accent" />
-                  <span className="font-mono text-sm font-bold text-accent">Current Mood</span>
+                  <span className="font-bold text-accent">Current Mood</span>
                 </div>
-                <span className="font-mono text-sm text-secondary">Last updated: {personalStuff.lastUpdated}</span>
+                <span className="text-sm text-secondary">Last updated: {personalStuff.lastUpdated}</span>
               </div>
-              <p className="font-mono text-lg text-primary mt-2">{personalStuff.currentMood}</p>
+              <p className="text-lg text-primary mt-2">{personalStuff.currentMood}</p>
             </div>
           </FadeIn>
 
@@ -57,11 +57,11 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
                 <div className="card-minimal">
                   <div className="flex items-center gap-2 mb-4">
                     <span className="text-lg">{section.emoji}</span>
-                    <h3 className="text-sm font-mono font-bold text-accent">{section.title}</h3>
+                    <h3 className="font-bold text-accent">{section.title}</h3>
                   </div>
                   <ul className="space-y-2">
                     {section.content.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-xs font-mono text-secondary leading-relaxed">
+                      <li key={itemIndex} className="text-xs text-secondary leading-relaxed">
                         • <span dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }} />
                       </li>
                     ))}
@@ -73,17 +73,17 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
 
           {/* Personal Notes */}
           <div className="mb-8">
-            <h2 className="text-xl font-mono font-bold text-primary mb-6">// Personal Notes</h2>
+            <h2 className="text-xl font-bold text-primary mb-6">// Personal Notes</h2>
             <div className="space-y-4">
               {personalStuff.personalNotes.map((note, index) => (
                 <FadeInLeft key={note.date} delay={index * 0.1}>
                   <div className="card-minimal">
                     <div className="flex items-center gap-2 mb-2">
                       <Calendar size={14} className="text-accent" />
-                      <span className="text-xs font-mono text-accent">{note.date}</span>
-                      <span className="text-sm font-mono font-bold text-primary">{note.title}</span>
+                      <span className="text-xs text-accent">{note.date}</span>
+                      <span className="font-bold text-primary">{note.title}</span>
                     </div>
-                    <p className="text-sm font-mono text-secondary leading-relaxed">{note.content}</p>
+                    <p className="text-sm text-secondary leading-relaxed">{note.content}</p>
                   </div>
                 </FadeInLeft>
               ))}
@@ -95,11 +95,11 @@ export default function PersonalStuffPage({ onBack }: PersonalStuffPageProps) {
             <div className="card-minimal">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">💝</span>
-                <h3 className="text-lg font-mono font-bold text-accent">Favorite Memories</h3>
+                <h3 className="text-lg font-bold text-accent">Favorite Memories</h3>
               </div>
               <ul className="space-y-2">
                 {personalStuff.favoriteMemories.map((memory, index) => (
-                  <li key={index} className="text-sm font-mono text-secondary leading-relaxed">
+                  <li key={index} className="text-sm text-secondary leading-relaxed">
                     • {memory}
                   </li>
                 ))}
