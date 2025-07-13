@@ -68,12 +68,10 @@ export default function GalleryPage() {
 
   return (
     <>
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-8 pb-32 main-content-mobile-pb">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-primary mb-8">// Gallery</h2>
-          <div className="w-full h-full py-8">
-            <Carousel items={cards} />
-          </div>
+      <div className="min-h-screen py-8 pb-32 main-content-mobile-pb">
+        <h2 className="text-3xl font-bold text-primary mb-8 px-4">// Gallery</h2>
+        <div className="w-full h-full">
+          <Carousel items={cards} />
         </div>
       </div>
       <FloatingDock />
