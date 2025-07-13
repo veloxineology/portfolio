@@ -80,19 +80,21 @@ export default function GalleryPage() {
   return (
     <>
       <div className="min-h-screen py-8 pb-32 main-content-mobile-pb">
-        <h1 className="text-3xl font-bold text-primary mb-8 px-8 md:px-16 lg:px-24">// Gallery</h1>
-        <div className="w-full h-full">
-          <Masonry
-            items={items}
-            ease="power3.out"
-            duration={0.6}
-            stagger={0.05}
-            animateFrom="bottom"
-            scaleOnHover={true}
-            hoverScale={0.95}
-            blurToFocus={true}
-            colorShiftOnHover={false}
-          />
+        <div className="px-8 md:px-16 lg:px-24">
+          <h1 className="text-3xl font-bold text-primary mb-8">// Gallery</h1>
+          <div className="w-full h-full">
+            <Masonry
+              items={items}
+              ease="power3.out"
+              duration={0.6}
+              stagger={0.05}
+              animateFrom="bottom"
+              scaleOnHover={true}
+              hoverScale={0.95}
+              blurToFocus={true}
+              colorShiftOnHover={false}
+            />
+          </div>
         </div>
       </div>
       <FloatingDock />
