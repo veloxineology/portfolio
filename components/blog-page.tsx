@@ -4,8 +4,8 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import { Calendar, Clock, Lock, ChevronLeft, ChevronRight, ArrowRight, Search } from "lucide-react"
-import { useState, useMemo } from "react"
-import { blogPosts } from "@/lib/blog-data"
+import { useState, useMemo, useEffect } from "react"
+import { getBlogPosts, BlogPost } from "@/lib/blog-data"
 import PersonalStuffPage from "@/components/personal-stuff-page"
 import BlogPostPage from "@/components/blog-post-page"
 import FloatingNavbar from "@/components/floating-navbar"
@@ -19,6 +19,7 @@ export default function BlogPage() {
   const [showPasswordPrompt, setShowPasswordPrompt] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
+  const [blogPosts, setBlogPosts] = useState(getBlogPosts())
 
   // Filter blog posts based on search query
   const filteredPosts = useMemo(() => {
@@ -29,10 +30,10 @@ export default function BlogPage() {
       (post) =>
         post.title.toLowerCase().includes(query) ||
         post.description.toLowerCase().includes(query) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(query)) ||
-        post.body.toLowerCase().includes(query),
+        post.tags.some((tag: string) => tag.toLowerCase().includes(query)) ||
+        post.body.toLowerCase().includes(query)
     )
-  }, [searchQuery])
+  }, [searchQuery, blogPosts])
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE
@@ -40,28 +41,28 @@ export default function BlogPage() {
   const currentPosts = filteredPosts.slice(startIndex, endIndex)
 
   // Reset to page 1 when search changes
-  const handleSearchChange = (value: string) => {
+  const handleSearchChange = (value: string): void => {
     setSearchQuery(value)
     setCurrentPage(1)
   }
 
-  const goToPage = (page: number) => {
+  const goToPage = (page: number): void => {
     setCurrentPage(page)
   }
 
-  const goToPrevious = () => {
+  const goToPrevious = (): void => {
     if (currentPage > 1) setCurrentPage(currentPage - 1)
   }
 
-  const goToNext = () => {
+  const goToNext = (): void => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
-  const handlePersonalStuffClick = () => {
+  const handlePersonalStuffClick = (): void => {
     setShowPasswordPrompt(true)
   }
 
-  const handlePasswordSubmit = (e: React.FormEvent) => {
+  const handlePasswordSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     if (password === "shelovesgwagons") {
       setShowPersonalStuff(true)
@@ -73,11 +74,11 @@ export default function BlogPage() {
     }
   }
 
-  const handleBlogClick = (slug: string) => {
+  const handleBlogClick = (slug: string): void => {
     setSelectedBlogSlug(slug)
   }
 
-  const handleBackToBlog = () => {
+  const handleBackToBlog = (): void => {
     setSelectedBlogSlug(null)
   }
 
@@ -86,7 +87,7 @@ export default function BlogPage() {
   }
 
   if (selectedBlogSlug) {
-    const selectedPost = blogPosts.find((post) => post.slug === selectedBlogSlug)
+    const selectedPost = filteredPosts.find((post) => post.slug === selectedBlogSlug)
     if (selectedPost) {
       return <BlogPostPage post={selectedPost} onBack={handleBackToBlog} />
     }
@@ -107,7 +108,7 @@ export default function BlogPage() {
                   type="text"
                   placeholder="Search posts..."
                   value={searchQuery}
-                  onChange={(e) => handleSearchChange(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-xl font-mono text-sm text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200"
                 />
               </div>
@@ -123,7 +124,7 @@ export default function BlogPage() {
             {/* Blog Posts */}
             {currentPosts.length > 0 ? (
               <div className="space-y-8 mb-8">
-                {currentPosts.map((post, index) => (
+                {currentPosts.map((post: BlogPost, index: number) => (
                   <motion.article
                     key={post.slug}
                     initial={{ opacity: 0, y: 20 }}
@@ -152,7 +153,7 @@ export default function BlogPage() {
                     </div>
 
                     <div className="flex gap-3">
-                      {post.tags.map((tag) => (
+                      {post.tags.map((tag: string) => (
                         <span key={tag} className="text-sm font-mono text-accent">
                           #{tag}
                         </span>
@@ -184,7 +185,7 @@ export default function BlogPage() {
                 </motion.button>
 
                 <div className="flex gap-2">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page: number) => (
                     <motion.button
                       key={page}
                       onClick={() => goToPage(page)}
@@ -239,14 +240,14 @@ export default function BlogPage() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   className="bg-card border border-border rounded-xl p-6 max-w-sm w-full mx-4"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 >
                   <h3 className="text-lg font-mono font-bold text-primary mb-4">Enter Password</h3>
                   <form onSubmit={handlePasswordSubmit}>
                     <input
                       type="password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                       placeholder="Password..."
                       className="w-full px-4 py-3 bg-dark-bg border border-border rounded-lg font-mono text-sm text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-accent mb-4"
                       autoFocus

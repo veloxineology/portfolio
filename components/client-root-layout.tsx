@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import type React from "react"
 import LoadingScreen from "@/components/loading-screen"
 import { useEffect, useRef, useState } from "react"
+import ClickSpark from "@/components/click-spark"
 
 // Preload all page components and data
 function PreloadAllContent() {
@@ -86,7 +87,9 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
       {loading && !hasLoaded ? (
         <LoadingScreen />
       ) : (
-        <div className="transition-opacity duration-300 ease-in-out">{children}</div>
+        <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18} children={
+          <div className="transition-opacity duration-300 ease-in-out">{children}</div>
+        } />
       )}
     </ThemeProvider>
   )

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
+import ClickSpark from "@/components/click-spark"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -133,7 +134,8 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
-          {children}
+          <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18} children={children} />
+
         </ThemeProvider>
       </body>
     </html>
