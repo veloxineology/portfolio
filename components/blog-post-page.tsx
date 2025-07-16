@@ -4,79 +4,12 @@ import { motion } from "framer-motion"
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-data"
 import FloatingDock from "@/components/floating-navbar"
+import { CodeBlock } from "@/components/ui/code-block";
+import ReactMarkdown from "react-markdown";
 
 interface BlogPostPageProps {
   post: BlogPost
   onBack: () => void
-}
-
-// Enhanced markdown parser
-const parseMarkdown = (markdown: string): string => {
-  let html = markdown
-
-  // Headers
-  html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>")
-  html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>")
-  html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>")
-
-  // Bold and Italic
-  html = html.replace(/\*\*\*(.*?)\*\*\*/g, "<strong><em>$1</em></strong>")
-  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>")
-
-  // Strikethrough
-  html = html.replace(/~~(.*?)~~/g, "<del>$1</del>")
-
-  // Code blocks with language support
-  html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-    const language = lang || "text"
-    return `<pre class="code-block" data-language="${language}"><code>${code.trim()}</code></pre>`
-  })
-
-  // Inline code
-  html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
-
-  // Blockquotes
-  html = html.replace(/^> (.*$)/gim, "<blockquote>$1</blockquote>")
-
-  // Lists
-  html = html.replace(/^- (.*$)/gim, "<li>$1</li>")
-  html = html.replace(/^(\d+)\. (.*$)/gim, "<li>$2</li>")
-
-  // Wrap consecutive <li> elements in <ul> or <ol>
-  html = html.replace(/(<li>.*<\/li>)/gs, (match) => {
-    if (match.includes("1.")) {
-      return `<ol>${match}</ol>`
-    }
-    return `<ul>${match}</ul>`
-  })
-
-  // Links
-  html = html.replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-
-  // Horizontal rules
-  html = html.replace(/^---$/gim, "<hr>")
-
-  // Paragraphs (split by double newlines)
-  html = html.replace(/\n\n/g, "</p><p>")
-  html = `<p>${html}</p>`
-
-  // Clean up empty paragraphs
-  html = html.replace(/<p><\/p>/g, "")
-  html = html.replace(/<p>(<h[1-6]>)/g, "$1")
-  html = html.replace(/(<\/h[1-6]>)<\/p>/g, "$1")
-  html = html.replace(/<p>(<pre)/g, "$1")
-  html = html.replace(/(<\/pre>)<\/p>/g, "$1")
-  html = html.replace(/<p>(<blockquote>)/g, "$1")
-  html = html.replace(/(<\/blockquote>)<\/p>/g, "$1")
-  html = html.replace(/<p>(<ul>)/g, "$1")
-  html = html.replace(/(<\/ul>)<\/p>/g, "$1")
-  html = html.replace(/<p>(<ol>)/g, "$1")
-  html = html.replace(/(<\/ol>)<\/p>/g, "$1")
-  html = html.replace(/<p>(<hr>)/g, "$1")
-  html = html.replace(/(<hr>)<\/p>/g, "$1")
-
-  return html
 }
 
 export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
@@ -97,8 +30,6 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
       alert("Link copied to clipboard!")
     }
   }
-
-  const parsedContent = parseMarkdown(post.body)
 
   return (
     <>
@@ -158,10 +89,26 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
               </header>
 
               {/* Article Content */}
-              <div
-                className="blog-content"
-                dangerouslySetInnerHTML={{ __html: parsedContent }}
-              />
+              <div className="blog-content">
+                <ReactMarkdown
+                  components={{
+                    code({node, inline, className, children, ...props}) {
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline ? (
+                        <CodeBlock
+                          language={match ? match[1] : "text"}
+                          filename={""}
+                          code={String(children).replace(/\n$/, "")}
+                        />
+                      ) : (
+                        <code className={className} {...props}>{children}</code>
+                      );
+                    },
+                  }}
+                >
+                  {post.body}
+                </ReactMarkdown>
+              </div>
             </article>
 
             {/* Footer */}
