@@ -85,14 +85,19 @@ export function TweetCard({
     >
       <Card
         className={cn(
-          "group relative overflow-hidden bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/50 transition-all duration-200 hover:shadow-lg",
-          {
-            "min-h-[8rem] max-h-[12rem]": compact && !hasMedia,
-            "max-h-[12rem]": hideMedia,
-            "h-fit": !hideMedia && hasMedia,
-          },
+          "group relative overflow-hidden transition-all duration-200 hover:shadow-lg",
+          "tweet-card-twitter-light",
+          "dark:bg-[#15202b] dark:border-[#22303c] dark:text-white",
           className
         )}
+        style={{
+          background: '#f5f8fa',
+          width: 400,
+          maxWidth: '100%',
+          borderRadius: 16,
+          boxShadow: '0 1px 3px rgba(20,23,26,0.04)',
+          border: '1px solid #e1e8ed',
+        }}
       >
         <div
           className={cn("p-6", {
@@ -106,7 +111,7 @@ export function TweetCard({
                 href={user.url}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1da1f2] focus:ring-offset-2"
               >
                 <div
                   className={cn(
@@ -137,7 +142,8 @@ export function TweetCard({
                   href={user.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center font-semibold text-foreground transition-colors hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="flex items-center font-semibold transition-colors hover:text-[#1da1f2] focus:outline-none focus:ring-2 focus:ring-[#1da1f2] focus:ring-offset-2 dark:text-white"
+                  style={{ color: '#14171a' }}
                 >
                   {truncate(user.name, compact ? 15 : 20)}
                   {(user.verified ||
@@ -148,7 +154,7 @@ export function TweetCard({
                       className={cn("ml-1 inline", {
                         "h-4 w-4": !compact,
                         "h-3 w-3": compact,
-                        "text-blue-500": user.is_blue_verified,
+                        "text-[#1da1f2]": user.is_blue_verified,
                         "text-yellow-500": user.verified_type === "Business",
                       })}
                       viewBox="0 0 24 24"
@@ -172,27 +178,30 @@ export function TweetCard({
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
-                      "text-muted-foreground transition-all duration-75 hover:text-foreground",
+                      "transition-all duration-75 hover:text-[#1da1f2]",
                       {
                         "text-sm": !compact,
                         "text-xs": compact,
-                      }
+                      },
+                      "dark:text-[#657786]"
                     )}
+                    style={{ color: '#657786' }}
                   >
                     @{truncate(user.screen_name, compact ? 12 : 16)}
                   </a>
-                  <span className="text-muted-foreground">·</span>
+                  <span className="text-[#657786] dark:text-[#657786]">·</span>
                   <a
                     href={url}
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
-                      "text-muted-foreground transition-all duration-75 hover:text-foreground",
+                      "transition-all duration-75 hover:text-[#1da1f2]",
                       {
                         "text-sm": !compact,
                         "text-xs": compact,
                       }
                     )}
+                    style={{ color: '#657786' }}
                   >
                     {createdAt.toLocaleDateString("en-US", {
                       month: "short",
@@ -217,10 +226,11 @@ export function TweetCard({
           </div>
 
           <div
-            className={cn("whitespace-pre-wrap text-foreground", {
+            className={cn("whitespace-pre-wrap", {
               "mb-2 mt-4 text-[15px]": !compact,
               "mb-1 mt-2 text-sm": compact,
             })}
+            style={{ color: '#14171a' }}
           >
             {text}
           </div>

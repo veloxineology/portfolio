@@ -18,10 +18,32 @@ export default function PinsPage() {
       <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold text-primary mb-8">// Pins</h1>
-          <div className="flex flex-col items-center gap-8">
-            {pins.map((pin, i) => (
-              <TweetCard key={i} {...pin} />
-            ))}
+          <div
+            className="gap-6"
+            style={{
+              columnCount: 1,
+              columnGap: 24,
+            }}
+          >
+            {/* Responsive columns via media queries */}
+            <style>{`
+              @media (min-width: 600px) {
+                .pins-masonry { column-count: 2; }
+              }
+              @media (min-width: 900px) {
+                .pins-masonry { column-count: 3; }
+              }
+              @media (min-width: 1200px) {
+                .pins-masonry { column-count: 4; }
+              }
+            `}</style>
+            <div className="pins-masonry bg-white dark:bg-[#15202b]">
+              {pins.map((pin, i) => (
+                <div key={i} style={{ breakInside: 'avoid', marginBottom: 24 }}>
+                  <TweetCard {...pin} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
