@@ -10,6 +10,7 @@ import FloatingDock from "@/components/floating-navbar"
 import WorkPage from "@/components/work-page"
 import BlogPage from "@/components/blog-page"
 import GalleryPage from "@/components/gallery-page"
+import PinsPage from "@/app/pins/page";
 
 interface HomePageClientProps {
   home: any
@@ -39,6 +40,8 @@ export default function HomePageClient({ home, about }: HomePageClientProps) {
         return <BlogPage key="blog" />
       case "gallery":
         return <GalleryPage key="gallery" />
+      case "pins":
+        return <PinsPage key="pins" />
       default:
         return <HomeContent home={home} about={about} />
     }

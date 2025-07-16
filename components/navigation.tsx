@@ -9,6 +9,7 @@ const navItems = [
   { id: "about", emoji: "👤", label: "About" },
   { id: "work", emoji: "🛠️", label: "Work" },
   { id: "gallery", emoji: "🖼️", label: "Gallery" },
+  { id: "pins", emoji: "📌", label: "Pins" },
   { id: "contact", emoji: "📞", label: "Contact" },
 ]
 
