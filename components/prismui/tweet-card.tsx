@@ -2,11 +2,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
-import { Heart, MessageCircle, Twitter } from "lucide-react";
+import { Heart, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
 import {
   Tooltip,
   TooltipContent,
@@ -74,8 +73,7 @@ export function TweetCard({
   compact = false,
   hideMedia = false,
 }: TweetCardProps) {
-  const Icon = iconVariant === "twitter" ? Twitter : Icons.twitter;
-  const iconColor = iconVariant === "twitter" ? "text-[#3BA9EE]" : "text-foreground";
+  // Use the twitterlogo.png from public for the Twitter icon
   const createdAt = new Date(date);
   const hasMedia = !hideMedia && (video || (photos && photos.length > 0));
 
@@ -204,42 +202,18 @@ export function TweetCard({
                 </div>
               </div>
             </div>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                    className="h-9 w-9 rounded-full p-0 hover:bg-blue-50 hover:text-blue-500"
-                  >
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center"
-                    >
-                      <span className="sr-only">
-                        View on {iconVariant === "twitter" ? "Twitter" : "X"}
-                      </span>
-                      <Icon
-                        className={cn(
-                          iconColor,
-                          "transition-all duration-200 ease-in-out group-hover:scale-110",
-                          {
-                            "h-5 w-5": !compact,
-                            "h-4 w-4": compact,
-                          }
-                        )}
-                      />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  View on {iconVariant === "twitter" ? "Twitter" : "X"}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            {/* Twitter icon in top right */}
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="ml-2 flex-shrink-0">
+              <Image
+                src="/twitterlogo.png"
+                alt="Twitter"
+                width={20}
+                height={20}
+                className="object-contain"
+                style={{ minWidth: 20, minHeight: 20 }}
+                priority
+              />
+            </a>
           </div>
 
           <div
