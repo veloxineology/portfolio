@@ -2,8 +2,18 @@
 import { TweetCard } from "@/components/prismui/tweet-card";
 import { pins } from "@/lib/pins-data";
 import Head from "next/head";
+import { useMemo } from "react";
 
 export default function PinsPage() {
+  // Generate random like and reply counts for each pin
+  const pinCounts = useMemo(
+    () =>
+      pins.map(() => ({
+        likeCount: Math.floor(Math.random() * 1000) + 1,
+        replyCount: Math.floor(Math.random() * 200) + 1,
+      })),
+    []
+  );
   return (
     <>
       <Head>
@@ -15,36 +25,34 @@ export default function PinsPage() {
         <meta property="og:url" content="https://kaushikieee.me/pins" />
         <meta property="og:type" content="website" />
       </Head>
-      <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold text-primary mb-8">// Pins</h1>
-          <div
-            className="gap-6"
-            style={{
-              columnCount: 1,
-              columnGap: 24,
-            }}
-          >
-            {/* Responsive columns via media queries */}
-            <style>{`
-              @media (min-width: 600px) {
-                .pins-masonry { column-count: 2; }
-              }
-              @media (min-width: 900px) {
-                .pins-masonry { column-count: 3; }
-              }
-              @media (min-width: 1200px) {
-                .pins-masonry { column-count: 4; }
-              }
-            `}</style>
-            <div className="pins-masonry bg-white dark:bg-[#15202b]">
-              {pins.map((pin, i) => (
-                <div key={i} style={{ breakInside: 'avoid', marginBottom: 24 }}>
-                  <TweetCard {...pin} />
-                </div>
-              ))}
+      <div className="min-h-screen">
+        <style jsx global>{`
+          .pins-masonry {
+            column-count: 3;
+            column-gap: 20px;
+            padding-left: 23px;
+            padding-right: 23px;
+            padding-top: 23px;
+            padding-bottom: 23px;
+            width: 100%;
+            max-width: 100vw;
+            margin: 0;
+            background: none !important;
+          }
+          .pin-card-wrapper {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+            display: block;
+            padding: 0;
+          }
+        `}</style>
+        <div className="pins-masonry">
+          {pins.map((pin, i) => (
+            <div key={i} className="pin-card-wrapper">
+              <TweetCard {...pin} likeCount={pinCounts[i].likeCount} replyCount={pinCounts[i].replyCount} />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

@@ -99,7 +99,7 @@ export default function BlogPostPage({ post, onBack }: BlogPostPageProps) {
                           language={match ? match[1] : "text"}
                           filename={""}
                           code={String(children).replace(/\n$/, "")}
-                        />
+              />
                       ) : (
                         <code className={className} {...props}>{children}</code>
                       );
