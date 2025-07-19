@@ -8,7 +8,6 @@ const sidebarItems = [
   { id: "experience", icon: Briefcase, label: "Work Experience" },
   { id: "studies", icon: GraduationCap, label: "Studies" },
   { id: "skills", icon: Code, label: "Technical Skills" },
-  { id: "contact", icon: Mail, label: "Contact" },
 ]
 
 export default function Sidebar() {

@@ -4,14 +4,17 @@ import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 import { Sun, Moon } from "lucide-react"
 
+const showPins = true; // Set to true to HIDE the pins page/button
+
 const navItems = [
   { id: "home", emoji: "🏠", label: "Home" },
   { id: "about", emoji: "👤", label: "About" },
   { id: "work", emoji: "🛠️", label: "Work" },
   { id: "gallery", emoji: "🖼️", label: "Gallery" },
-  { id: "pins", emoji: "📌", label: "Pins" },
-  { id: "contact", emoji: "📞", label: "Contact" },
-]
+  // Pins button is conditionally included below
+  // { id: "pins", emoji: "📌", label: "Pins" },
+  // { id: "contact", emoji: "📞", label: "Contact" },
+];
 
 interface NavigationProps {
   currentPage: string
@@ -35,7 +38,10 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
       className="fixed top-6 left-6 z-50 backdrop-blur-lg bg-white/20 dark:bg-white/10 rounded-2xl p-2 border border-orange-200/30 dark:border-white/20 shadow-lg dark:shadow-2xl"
     >
       <div className="flex items-center gap-2">
-        {navItems.map((item) => (
+        {navItems.filter(item => {
+          if (item.id === "pins") return !showPins;
+          return true;
+        }).map((item) => (
           <motion.button
             key={item.id}
             onClick={() => setCurrentPage(item.id)}

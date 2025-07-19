@@ -20,6 +20,7 @@ interface HomePageClientProps {
 export default function HomePageClient({ home, about }: HomePageClientProps) {
   const [activeSection, setActiveSection] = useState("home")
   const [isClient, setIsClient] = useState(false)
+  const showPins = false; // Set to true to HIDE the pins page
 
   useEffect(() => {
     setIsClient(true)
@@ -41,6 +42,7 @@ export default function HomePageClient({ home, about }: HomePageClientProps) {
       case "gallery":
         return <GalleryPage key="gallery" />
       case "pins":
+        if (showPins) return null;
         return <PinsPage key="pins" />
       default:
         return <HomeContent home={home} about={about} />
