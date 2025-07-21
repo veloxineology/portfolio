@@ -207,6 +207,10 @@ export const siteData = {
       href: "/gallery",
       label: "Gallery",
     },
+    {
+      href: "/resources",
+      label: "Resources",
+    },
   ],
 
   blog: {
