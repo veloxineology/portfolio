@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function ResourcesPage() {
   const [search, setSearch] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState(false);
   const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
   const [selectedResource, setSelectedResource] = useState<ResourceItem | null>(null);
   const [error, setError] = useState("");
@@ -24,15 +24,31 @@ export default function ResourcesPage() {
     setShowPasswordPrompt(true);
   };
 
-  const handlePasswordSubmit = (e: React.FormEvent) => {
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedResource && passwordInput === selectedResource.password) {
-      setDownloadUrl(selectedResource.fileLink);
+    if (!selectedResource) return;
+    setDownloading(true);
+    setError("");
+    // Call the API route to validate password and proxy the file
+    const res = await fetch(`/api/resources/download?title=${encodeURIComponent(selectedResource.title)}&password=${encodeURIComponent(passwordInput)}`);
+    if (res.status === 200) {
+      // Download the file as a blob
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = selectedResource.title + selectedResource.fileLink.substring(selectedResource.fileLink.lastIndexOf('.'));
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
       setShowPasswordPrompt(false);
-      setTimeout(() => setDownloadUrl(null), 1000); // Reset after download
-    } else {
+    } else if (res.status === 401) {
       setError("Incorrect password. Please try again.");
+    } else {
+      setError("Failed to download file. Please try again later.");
     }
+    setDownloading(false);
   };
 
   return (
@@ -65,7 +81,7 @@ export default function ResourcesPage() {
             >
               <div>
                 <h2 className="text-lg font-bold text-accent mb-1">{resource.title}</h2>
-                <p className="text-xs text-muted break-all">{resource.fileLink}</p>
+                {resource.description && <p className="text-xs text-muted break-all">{resource.description}</p>}
               </div>
               <button
                 className="btn-primary flex items-center gap-2"
@@ -95,6 +111,7 @@ export default function ResourcesPage() {
                 onChange={(e) => setPasswordInput(e.target.value)}
                 className="w-full px-4 py-2 border border-border rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
                 autoFocus
+                disabled={downloading}
               />
               {error && <p className="text-xs text-red-500">{error}</p>}
               <div className="flex gap-2 justify-end">
@@ -102,19 +119,16 @@ export default function ResourcesPage() {
                   type="button"
                   className="btn-secondary"
                   onClick={() => setShowPasswordPrompt(false)}
+                  disabled={downloading}
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn-primary">
-                  Download
+                <button type="submit" className="btn-primary" disabled={downloading}>
+                  {downloading ? "Downloading..." : "Download"}
                 </button>
               </div>
             </form>
           </div>
-        )}
-        {/* Hidden download link */}
-        {downloadUrl && (
-          <a href={downloadUrl} download className="hidden" id="hidden-download-link" />
         )}
       </div>
     </div>
