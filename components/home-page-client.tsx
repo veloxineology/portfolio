@@ -64,6 +64,27 @@ export default function HomePageClient({ home, about }: HomePageClientProps) {
 }
 
 function HomeContent({ home, about }: { home: any; about: any }) {
+  const [dailyQuote, setDailyQuote] = React.useState<string>(about.dailyQuote);
+  React.useEffect(() => {
+    fetch("https://love-quote.p.rapidapi.com/lovequote", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "love-quote.p.rapidapi.com",
+        "x-rapidapi-key": "dce1a8d29cmsh442af440d17b517p157f66jsnc9142eb904da",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && typeof data === "string") {
+          setDailyQuote(data);
+        } else if (data && data.quote) {
+          setDailyQuote(data.quote);
+        }
+      })
+      .catch(() => {
+        setDailyQuote(about.dailyQuote);
+      });
+  }, [about.dailyQuote]);
   return (
     <div className="min-h-screen px-8 md:px-16 lg:px-24 py-12">
       <div className="max-w-7xl mx-auto">
@@ -299,7 +320,7 @@ function HomeContent({ home, about }: { home: any; about: any }) {
                 <span className="text-lg">✨</span>
                 <h3 className="text-sm font-bold text-accent">Quote of the Day</h3>
               </div>
-              <p className="text-xs text-secondary italic leading-relaxed">"{about.dailyQuote}"</p>
+              <p className="text-xs text-secondary italic leading-relaxed">"{dailyQuote}"</p>
             </div>
           </div>
 
