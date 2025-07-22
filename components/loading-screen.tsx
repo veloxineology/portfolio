@@ -36,6 +36,10 @@ export default function LoadingScreen() {
             autoplay
           />
         </div>
+        {/* Loading Text */}
+        <div className="mt-8 text-2xl font-bold text-black dark:text-white transition-colors duration-300">
+          Loading...
+        </div>
       </div>
     </div>
   )
