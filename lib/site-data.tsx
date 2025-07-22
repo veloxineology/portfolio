@@ -5,7 +5,7 @@ export const siteData = {
     greetingEmoji: "👋",
     location: "📍 Coimbatore, India",
     description:
-      "Poet at heart, with an obsessive devotion to precision—every word, every pixel, placed with purpose in pursuit of perfection.",
+      "Poet at heart, with an obsessive devotion to precision in every word, every pixel, placed with purpose in pursuit of perfection.",
     ctaText: "Explore My Work",
     profileImage: "/placeholder.svg?height=80&width=80",
     languages: [

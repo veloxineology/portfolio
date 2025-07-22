@@ -43,3 +43,5 @@ export function prefersReducedMotion() {
   // Default to false on server
   return false;
 }
+
+export { getBotInfo as getBotDetails } from './bot-detection';

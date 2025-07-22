@@ -130,22 +130,22 @@ export default function RootLayout({
           <AuroraBackground />
         </div>
         <ClientRootLayout>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-            storageKey="theme"
-          >
-            <NavigationProgress />
-            <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
-              <PageTransition>
-                {children}
-              </PageTransition>
-            </ClickSpark>
-            <FloatingDock />
-            <Analytics />
-          </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="theme"
+        >
+          <NavigationProgress />
+          <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </ClickSpark>
+          <FloatingDock />
+          <Analytics />
+        </ThemeProvider>
         </ClientRootLayout>
       </body>
     </html>
