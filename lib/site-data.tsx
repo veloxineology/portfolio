@@ -33,7 +33,7 @@ export const siteData = {
     social: {
       github: "https://github.com/veloxineology",
       instagram: "https://instagram.com/kaushikieee",
-      snapchat: "https://snapchat.com/add/veloxine.rr",
+      snapchat: "https://snapchat.com/add/kaushikieeee",
       email: "veloxineology@gmail.com",
     },
     calendarLink: "https://cal.com/kaushik",
@@ -61,22 +61,23 @@ export const siteData = {
       "champagne problems - Taylor Swift",
       "Nee Kavithaigala -  Dhibu Ninan Thomas",
       "Chaudhary Reimagined - Shush & Yohan",
+      "Avalukena - Anirudh Ravichander",
       "Channa Mereya - you know it.",
     ],
 
     // Entertainment
-    favoriteMovies: ["La La Land", "Thudarum", "GBU", "500 Days Of Summer", "Me and Her in Late 2024 (iykyk)"],
+    favoriteMovies: ["La La Land", "Thudarum", "Tourist Family", "500 Days Of Summer", "Me and Her in Late 2024 (iykyk)"],
     toWatchList: ["Retro", "Ford vs Ferarri (Rewatch)", "Ennu Ninte Moideen", "June"],
-    favoriteBooks: ["Letters To Milena", "The Fault In Our Stars", "Things we never got over", "Her Texts at 3AM"],
+    favoriteBooks: ["Letters To Milena", "The Fault In Our Stars", "Things we never got over", "Her Texts at 3AM (iykyk)"],
 
     // Personal details
     funFacts: [
-      "I'm currently making her my world (Literally)",
-      "I built my first computer at age 7",
-      "I can solve complex bugs within 30 seconds",
-      "I speak 15 programming languages fluently",
-      "I once debugged code for 26 hours straight",
-      "I have over 4000 contributions on GitHub in a single year",
+      "Currently working on the ISS (hint btw)",
+      "Currently building the front end of Apple Music for web",
+      "I have over 4000 commits on my repositories",
+      "Working on Blob Tracking in TouchDesigner",
+      "I have worked on code for over 24 hours without a break",
+      "also, if u got ideas for Thalir - 2025, contact me",
     ],
 
     // Weekly routine - different for each day
