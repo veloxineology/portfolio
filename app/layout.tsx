@@ -9,6 +9,7 @@ import FloatingDock from "@/components/floating-navbar"
 import PageTransition from "@/components/page-transition"
 import NavigationProgress from "@/components/navigation-progress"
 import AuroraBackground from "@/components/aurora-background";
+import ClientRootLayout from "@/components/client-root-layout";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -128,22 +129,24 @@ export default function RootLayout({
         <div className="hidden dark:block">
           <AuroraBackground />
         </div>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          storageKey="theme"
-        >
-          <NavigationProgress />
-          <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </ClickSpark>
-          <FloatingDock />
-          <Analytics />
-        </ThemeProvider>
+        <ClientRootLayout>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey="theme"
+          >
+            <NavigationProgress />
+            <ClickSpark sparkColor="#64ffda" sparkSize={12} sparkRadius={18}>
+              <PageTransition>
+                {children}
+              </PageTransition>
+            </ClickSpark>
+            <FloatingDock />
+            <Analytics />
+          </ThemeProvider>
+        </ClientRootLayout>
       </body>
     </html>
   )
