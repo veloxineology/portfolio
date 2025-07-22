@@ -21,7 +21,7 @@ export const resources: ResourceItem[] = [
   },
   {
     title: "Chemistry Record - Reference",
-    fileLink: "https://github.com/veloxineology/portfolio/blob/main/resources/chemrecord2025July22.pdf",
+    fileLink: "https://raw.githubusercontent.com/veloxineology/portfolio/refs/heads/main/resources/chemrecord2025July22.pdf",
     password: "chemistry",
     description: "Reference Chemistry Record. Download requires password.",
   },
