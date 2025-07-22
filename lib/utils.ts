@@ -35,3 +35,11 @@ export function getAnimationVariants() {
     }
   };
 }
+
+export function prefersReducedMotion() {
+  if (typeof window !== "undefined") {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+  // Default to false on server
+  return false;
+}
