@@ -19,4 +19,10 @@ export const resources: ResourceItem[] = [
     password: "sombr",
     description: "A chill track by Sombr. Download requires password.",
   },
+  {
+    title: "Chemistry Record - Reference",
+    fileLink: "https://github.com/veloxineology/portfolio/blob/main/resources/chemrecord2025July22.pdf",
+    password: "chemistry",
+    description: "Reference Chemistry Record. Download requires password.",
+  },
 ]; 
