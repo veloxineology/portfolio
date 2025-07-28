@@ -41,7 +41,6 @@ export default function FloatingDock({
 
   useEffect(() => {
     setIsClient(true);
-    // Create nav items with text labels
     const items: NavItem[] = siteData.navigation.map((item: { href: string; label: string }) => ({
       ...item,
       title: item.label,
@@ -49,10 +48,7 @@ export default function FloatingDock({
     setNavItems(items);
   }, []);
 
-  // Don't render until client-side
-  if (!isClient) {
-    return null;
-  }
+  if (!isClient) return null;
 
   return (
     <>
@@ -70,7 +66,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute right-0 bottom-full mb-2 flex flex-col gap-2"
+            className="absolute right-0 bottom-full mb-2 flex flex-col gap-2 rounded-full backdrop-blur-3xl bg-white/30 dark:bg-white/10 border border-white/20 dark:border-white/10 shadow-xl p-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
@@ -83,7 +79,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="flex h-10 px-4 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 shadow text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                className="flex h-10 px-4 items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors shadow"
               >
                 {item.label}
               </motion.a>
@@ -94,7 +90,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800 shadow"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-white/10 border border-white/20 dark:border-white/10 shadow"
       >
         {open ? <X className="h-6 w-6 text-neutral-500 dark:text-neutral-400" /> : <Menu className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />}
       </button>
@@ -109,7 +105,7 @@ function FloatingDockDesktop({ items, className }: FloatingDockListProps) {
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 mx-auto hidden h-16 items-center gap-3 rounded-2xl bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-xl px-6 md:flex shadow-lg border border-gray-200 dark:border-neutral-800",
+        "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 mx-auto hidden h-16 items-center gap-4 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-3xl px-6 md:flex border border-white/30 dark:border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.15)]",
         className
       )}
     >
@@ -144,10 +140,10 @@ function IconContainer({ mouseX, title, href }: IconContainerProps) {
       onMouseLeave={() => setHovered(false)}
       onClick={() => navigateTo(href)}
       className={cn(
-        "relative px-4 py-2 rounded-xl transition-all duration-200 font-medium text-sm",
+        "relative px-4 py-2 rounded-full transition-all duration-200 font-medium text-sm bg-white dark:bg-neutral-900 shadow",
         pathname === href
-          ? "bg-gray-200 dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-sm"
-          : "bg-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-neutral-800/50"
+          ? "text-neutral-900 dark:text-white"
+          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
       )}
       aria-label={title}
     >
@@ -174,7 +170,7 @@ function ThemeToggleButton() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex aspect-square h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 hover:bg-gray-200/80 dark:hover:bg-neutral-800/80 transition-colors"
+      className="flex aspect-square h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-white/10 border border-white/30 dark:border-white/10 hover:bg-white/40 dark:hover:bg-white/20 transition-all shadow-md"
       aria-label="Toggle theme"
     >
       {isDark ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-neutral-600" />}
@@ -188,7 +184,7 @@ function ThemeToggleButtonMobile() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 shadow mt-2"
+      className="flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-neutral-900 shadow mt-2"
       aria-label="Toggle theme"
     >
       {isDark ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-neutral-600" />}

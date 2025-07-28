@@ -1,4 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/blog/page": "app/blog/page.js"
+  "/api/spotify/now-playing/route": "app/api/spotify/now-playing/route.js",
+  "/page": "app/page.js"
 }
