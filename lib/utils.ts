@@ -44,4 +44,19 @@ export function prefersReducedMotion() {
   return false;
 }
 
+// ✅ NEW FUNCTION TO FIX THE ERROR
+export function shouldDisableAnimations(userAgent?: string): boolean {
+  const botAgents = ['bot', 'crawler', 'spider', 'crawl', 'slurp'];
+  const isBot = userAgent
+    ? botAgents.some(agent => userAgent.toLowerCase().includes(agent))
+    : false;
+
+  const reducedMotion =
+    typeof window !== 'undefined'
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false;
+
+  return reducedMotion || isBot;
+}
+
 export { getBotInfo as getBotDetails } from './bot-detection';

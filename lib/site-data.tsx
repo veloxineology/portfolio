@@ -28,7 +28,7 @@ export const siteData = {
       { name: "YAML", type: "code" },
       { name: "SQL", type: "code" },
       { name: "C", type: "code" },
-      { name: "C++", type: "code" },
+      { name: "C++", type: "code" }
     ],
     social: {
       github: "https://github.com/veloxineology",
@@ -189,26 +189,6 @@ export const siteData = {
       "Vera level da – can’t lie, she’s different.",
       "Avlothaan po – maybe that’s how it ends, maybe not.",
     ],
-
-    // Skills
-    skills: [
-      {
-        category: "Frontend",
-        items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-      },
-      {
-        category: "Design",
-        items: ["Figma", "Framer", "Prototyping", "Design Systems", "UI/UX"],
-      },
-      {
-        category: "Backend",
-        items: ["Node.js", "Python", "PostgreSQL", "API Design", "GraphQL"],
-      },
-      {
-        category: "Tools",
-        items: ["Git", "Docker", "Vercel", "Linear", "Notion"],
-      },
-    ],
   },
 
   work: {
@@ -237,39 +217,6 @@ export const siteData = {
       label: "Resources",
     },
   ],
-
-  blog: {
-    visible: true,
-    posts: [
-      {
-        id: "1",
-        title: "Building Design Systems That Scale",
-        excerpt: "Lessons learned from building and maintaining design systems across multiple products and teams.",
-        date: "2024-01-15",
-        readTime: "8 min read",
-        tags: ["design-systems", "react", "figma"],
-        url: "https://blog.kaushik.dev/design-systems-scale",
-      },
-      {
-        id: "2",
-        title: "The Art of Code Reviews",
-        excerpt: "How to give and receive feedback that improves code quality and team collaboration.",
-        date: "2024-01-08",
-        readTime: "6 min read",
-        tags: ["code-review", "team", "best-practices"],
-        url: "https://blog.kaushik.dev/art-of-code-reviews",
-      },
-      {
-        id: "3",
-        title: "Designing for Developers",
-        excerpt: "Understanding the developer experience and creating tools that developers actually want to use.",
-        date: "2024-01-01",
-        readTime: "10 min read",
-        tags: ["dx", "tools", "design"],
-        url: "https://blog.kaushik.dev/designing-for-developers",
-      },
-    ],
-  },
 
   gallery: {
     visible: true,

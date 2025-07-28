@@ -1,4 +1,82 @@
 {
+  "components/client-root-layout.tsx -> @/components/blog-page": {
+    "id": "components/client-root-layout.tsx -> @/components/blog-page",
+    "files": [
+      "static/chunks/_app-pages-browser_components_blog-page_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/gallery-item": {
+    "id": "components/client-root-layout.tsx -> @/components/gallery-item",
+    "files": [
+      "static/chunks/_app-pages-browser_components_gallery-item_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/gallery-page": {
+    "id": "components/client-root-layout.tsx -> @/components/gallery-page",
+    "files": [
+      "static/css/_app-pages-browser_components_gallery-page_tsx.css",
+      "static/chunks/_app-pages-browser_components_gallery-page_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/home-page": {
+    "id": "components/client-root-layout.tsx -> @/components/home-page",
+    "files": [
+      "static/chunks/_app-pages-browser_components_home-page_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/lightbox": {
+    "id": "components/client-root-layout.tsx -> @/components/lightbox",
+    "files": [
+      "static/chunks/_app-pages-browser_components_lightbox_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/project-card": {
+    "id": "components/client-root-layout.tsx -> @/components/project-card",
+    "files": [
+      "static/chunks/_app-pages-browser_components_project-card_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/spotify-widget": {
+    "id": "components/client-root-layout.tsx -> @/components/spotify-widget",
+    "files": [
+      "static/chunks/_app-pages-browser_components_spotify-widget_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/tech-stack": {
+    "id": "components/client-root-layout.tsx -> @/components/tech-stack",
+    "files": [
+      "static/chunks/_app-pages-browser_components_tech-stack_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/timeline": {
+    "id": "components/client-root-layout.tsx -> @/components/timeline",
+    "files": [
+      "static/chunks/_app-pages-browser_components_timeline_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/components/work-page": {
+    "id": "components/client-root-layout.tsx -> @/components/work-page",
+    "files": [
+      "static/css/_app-pages-browser_components_work-page_tsx.css",
+      "static/chunks/_app-pages-browser_components_work-page_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/lib/blog-data": {
+    "id": "components/client-root-layout.tsx -> @/lib/blog-data",
+    "files": [
+      "static/chunks/_app-pages-browser_lib_blog-data_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/lib/projects-data": {
+    "id": "components/client-root-layout.tsx -> @/lib/projects-data",
+    "files": [
+      "static/chunks/_app-pages-browser_lib_projects-data_tsx.js"
+    ]
+  },
+  "components/client-root-layout.tsx -> @/lib/site-data": {
+    "id": "components/client-root-layout.tsx -> @/lib/site-data",
+    "files": []
+  },
   "node_modules/.pnpm/react-syntax-highlighter@15.0.0_react@19.1.0/node_modules/react-syntax-highlighter/dist/esm/async-languages/hljs.js -> highlight.js/lib/languages/1c": {
     "id": "node_modules/.pnpm/react-syntax-highlighter@15.0.0_react@19.1.0/node_modules/react-syntax-highlighter/dist/esm/async-languages/hljs.js -> highlight.js/lib/languages/1c",
     "files": []
