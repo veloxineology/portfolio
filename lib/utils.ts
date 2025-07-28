@@ -45,18 +45,18 @@ export function prefersReducedMotion() {
 }
 
 // ✅ NEW FUNCTION TO FIX THE ERROR
-export function shouldDisableAnimations(userAgent?: string): boolean {
-  const botAgents = ['bot', 'crawler', 'spider', 'crawl', 'slurp'];
-  const isBot = userAgent
-    ? botAgents.some(agent => userAgent.toLowerCase().includes(agent))
-    : false;
+import { isBot } from './bot-detection';
 
+export function shouldDisableAnimations(userAgent?: string): boolean {
   const reducedMotion =
     typeof window !== 'undefined'
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false;
 
-  return reducedMotion || isBot;
+  const ua = userAgent || (typeof window !== 'undefined' ? navigator.userAgent : '');
+  const botDetected = isBot(ua);
+
+  return reducedMotion || botDetected;
 }
 
-export { getBotInfo as getBotDetails } from './bot-detection';
+export { getBotInfo as getBotDetails, isBot } from './bot-detection';

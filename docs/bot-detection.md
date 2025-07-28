@@ -320,7 +320,7 @@ Add new variants in `lib/utils.ts`:
 
 ```typescript
 export const getAnimationVariants = (userAgent?: string) => {
-  const disableAnimations = shouldDisableAnimations(userAgent)
+  const disableAnimations = isBot(userAgent)
   
   return {
     // ... existing variants

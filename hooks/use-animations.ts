@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { isBot, prefersReducedMotion, shouldDisableAnimations, getAnimationVariants, getBotDetails } from '@/lib/utils'
+import { isBot, prefersReducedMotion, getAnimationVariants, getBotDetails } from '@/lib/utils'
 
 export const useAnimations = () => {
   const [disableAnimations, setDisableAnimations] = useState(false)
@@ -14,7 +14,7 @@ export const useAnimations = () => {
     setBotDetails(details)
     
     // Check if animations should be disabled
-    const shouldDisable = shouldDisableAnimations()
+    const shouldDisable = isBot()
     setDisableAnimations(shouldDisable)
 
     // Listen for changes in reduced motion preference
@@ -60,7 +60,7 @@ export const useAnimationsWithUserAgent = (userAgent?: string) => {
     setBotDetails(details)
     
     // Check if animations should be disabled
-    const shouldDisable = shouldDisableAnimations(userAgent)
+    const shouldDisable = isBot(userAgent)
     setDisableAnimations(shouldDisable)
 
     // Listen for changes in reduced motion preference
