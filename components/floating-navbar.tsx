@@ -66,7 +66,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute right-0 bottom-full mb-2 flex flex-col gap-2 rounded-full backdrop-blur-3xl bg-white/30 dark:bg-white/10 border border-white/20 dark:border-white/10 shadow-xl p-2"
+            className="absolute right-0 bottom-full mb-3 flex flex-col gap-2 rounded-2xl backdrop-blur-2xl bg-white/30 dark:bg-white/10 border border-white/20 dark:border-white/10 shadow-xl p-3"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
@@ -79,7 +79,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="flex h-10 px-4 items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors shadow"
+                className="flex h-10 px-4 items-center justify-center rounded-md bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors shadow"
               >
                 {item.label}
               </motion.a>
@@ -90,9 +90,13 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-white/10 border border-white/20 dark:border-white/10 shadow"
+        className="flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-white/10 border border-white/20 dark:border-white/10 shadow"
       >
-        {open ? <X className="h-6 w-6 text-neutral-500 dark:text-neutral-400" /> : <Menu className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />}
+        {open ? (
+          <X className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+        ) : (
+          <Menu className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+        )}
       </button>
     </div>
   );
