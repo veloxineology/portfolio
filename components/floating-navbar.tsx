@@ -79,7 +79,7 @@ function FloatingDockMobile({ items, className }: FloatingDockListProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10, transition: { delay: idx * 0.05 } }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="flex h-10 px-4 items-center justify-center rounded-md bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors shadow"
+                className="flex h-10 px-4 items-center justify-center rounded-xl bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors shadow"
               >
                 {item.label}
               </motion.a>
