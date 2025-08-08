@@ -10,14 +10,14 @@ export interface BlogPost {
 
 const blogPostsData: BlogPost[] = [
   {
-  slug: "romance-in-the-render-loop",
-  title: "Romance in the render loop",
-  description:
-    "What if you could design love like software—modular, resilient, alive? Here's what it taught me about feelings, code, and things that scale silently within.",
-  date: "2025-07-13",
-  tags: ["people"],
-  readTime: "6 min read",
-  body: `
+    slug: "romance-in-the-render-loop",
+    title: "Romance in the render loop",
+    description:
+      "What if you could design love like software—modular, resilient, alive? Here's what it taught me about feelings, code, and things that scale silently within.",
+    date: "2025-07-13",
+    tags: ["people"],
+    readTime: "6 min read",
+    body: `
 # Loving Someone Like a System
 
 > "Some systems aren't meant to scale universally. They're built for one user, one use case, and still... they're perfect."
@@ -80,8 +80,65 @@ But just like the best code you’ve ever written, loving her made you a better 
 
 ***And that’s the only successful build I ever needed.***
 `
-}
-  // Add the rest of the blog posts here
+  },
+  {
+    slug: "aesthetic-memories-and-fading-silhouettes",
+    title: "Aesthetic Memories and Fading Silhouettes",
+    description:
+      "When someone becomes a part of your personal gallery, their absence still hangs on the wall—just blurred, muted, or replaced by empty space.",
+    date: "2025-08-08",
+    tags: ["feelings", "aesthetic", "loss"],
+    readTime: "5 min read",
+    body: `
+# The Art of Keeping Someone Who’s Leaving
+
+> "Sometimes the most beautiful picture is the one you can’t fully see anymore."
+
+There’s this strange comfort in candid moments—the kind that feel unposed, accidental, yet impossibly perfect. Like a blurry photo you took in passing, only to realize years later that it’s your favorite.
+
+The cover art of *linger* by *i don't like mirrors* is exactly that feeling:  
+A real place, a real moment… but someone’s been cut out. Not maliciously. Just—gone.
+
+## Why We Keep Empty Spaces
+
+People always talk about moving on as if erasing is the only way forward. But maybe, sometimes, it’s okay to let their outline stay in the frame.  
+Because the silhouette still tells a story. It says:
+
+- *Someone mattered here.*
+- *They made this scene worth remembering.*
+- *Even if they’re not here now, the light they brought is.*
+
+Keeping the space they occupied is its own kind of art. Not clinging. Not replacing. Just… acknowledging.
+
+## The Aesthetic of Unfinished Love
+
+Love, especially unreciprocated, is a little like those candid pictures: raw, imperfect, but too real to throw away.  
+
+You might know the ending before it happens—counting down days until the message reads *“this won’t work out”*. But you still keep showing up, like a photographer chasing the last bit of sunset.
+
+***Because even if the light fades, the photograph still exists.***
+
+## The Fade Effect
+
+In design, there’s something called the **masking** or **cutout effect**—you remove part of an image, leaving only an outline.  
+In life, it’s what happens when someone leaves but your memories keep their shape.
+
+Maybe your heart works like Photoshop layers:  
+- Background: the life you keep living  
+- Foreground: the memories you can’t delete  
+- Mask: the shape of them, still here, still gone
+
+> “A silhouette can be lonelier than emptiness—because it proves something *was* there.”
+
+## Closing Frame
+
+If I ever change my profile picture, I’d want it to look like that cover art. Not because I’m hiding the pain, but because I’m letting it be part of the art.  
+
+When someone’s gone, all you can do is honor the fact they were here.  
+And maybe that’s the most candid thing of all.
+`
+  }
+//add blog posts here
 ];
 
 // Function to get blog posts for static site generation
