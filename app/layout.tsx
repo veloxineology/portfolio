@@ -8,7 +8,6 @@ import { Analytics } from "@vercel/analytics/next"
 import FloatingDock from "@/components/floating-navbar"
 import PageTransition from "@/components/page-transition"
 import NavigationProgress from "@/components/navigation-progress"
-import AuroraBackground from "@/components/aurora-background";
 import ClientRootLayout from "@/components/client-root-layout";
 
 const inter = Inter({ 
@@ -126,9 +125,6 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <div className="hidden dark:block">
-          <AuroraBackground />
-        </div>
         <ClientRootLayout>
         <ThemeProvider
           attribute="class"
