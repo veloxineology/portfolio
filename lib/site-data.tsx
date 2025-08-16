@@ -209,60 +209,8 @@ export const siteData = {
       label: "Blog",
     },
     {
-      href: "/gallery",
-      label: "Gallery",
-    },
-    {
       href: "/resources",
       label: "Resources",
     },
   ],
-
-  gallery: {
-    visible: true,
-    items: [
-      {
-        id: "1",
-        title: "Workspace Setup",
-        description: "My minimal home office setup",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "workspace",
-      },
-      {
-        id: "2",
-        title: "UI Explorations",
-        description: "Daily UI challenge submissions",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "design",
-      },
-      {
-        id: "3",
-        title: "Code Snippets",
-        description: "Beautiful code screenshots",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "code",
-      },
-      {
-        id: "4",
-        title: "Typography Study",
-        description: "Font pairing experiments",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "design",
-      },
-      {
-        id: "5",
-        title: "Terminal Themes",
-        description: "Custom terminal configurations",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "code",
-      },
-      {
-        id: "6",
-        title: "Sketch Notes",
-        description: "Hand-drawn design concepts",
-        image: "/placeholder.svg?height=250&width=300",
-        category: "sketches",
-      },
-    ],
-  },
 }

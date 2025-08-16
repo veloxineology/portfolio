@@ -16,7 +16,6 @@ function PreloadAllContent() {
           import("@/components/home-page"),
           import("@/components/work-page"),
           import("@/components/blog-page"),
-          import("@/components/gallery-page"),
 
           // Preload data modules
           import("@/lib/projects-data"),
@@ -28,7 +27,6 @@ function PreloadAllContent() {
           import("@/components/spotify-widget"),
           import("@/components/tech-stack"),
           import("@/components/timeline"),
-          import("@/components/gallery-item"),
           import("@/components/lightbox"),
         ])
 

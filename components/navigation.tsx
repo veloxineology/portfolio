@@ -10,7 +10,6 @@ const navItems = [
   { id: "home", emoji: "🏠", label: "Home" },
   { id: "about", emoji: "👤", label: "About" },
   { id: "work", emoji: "🛠️", label: "Work" },
-  { id: "gallery", emoji: "🖼️", label: "Gallery" },
   // Pins button is conditionally included below
   // { id: "pins", emoji: "📌", label: "Pins" },
   // { id: "contact", emoji: "📞", label: "Contact" },

@@ -9,7 +9,6 @@ import CurrentlyDoing from "@/components/currently-doing"
 import FloatingDock from "@/components/floating-navbar"
 import WorkPage from "@/components/work-page"
 import BlogPage from "@/components/blog-page"
-import GalleryPage from "@/components/gallery-page"
 import PinsPage from "@/app/pins/page";
 
 interface HomePageClientProps {
@@ -39,8 +38,6 @@ export default function HomePageClient({ home, about }: HomePageClientProps) {
         return <WorkPage key="work" />
       case "blog":
         return <BlogPage key="blog" />
-      case "gallery":
-        return <GalleryPage key="gallery" />
       case "pins":
         if (showPins) return null;
         return <PinsPage key="pins" />
