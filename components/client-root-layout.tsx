@@ -71,7 +71,7 @@ export default function ClientRootLayout({ children }: { children: React.ReactNo
         setHasLoaded(true)
         isFirstLoad.current = false
         console.log("🚀 Site fully loaded and ready")
-      }, 2500)
+      }, 5000)
 
       return () => clearTimeout(timer)
     } else {
